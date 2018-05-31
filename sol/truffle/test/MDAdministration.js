@@ -14,6 +14,7 @@ contract('MDAdministration', async(accounts) => {
   let wannabeMember       = accounts[5];
   let wannabeMemberToo    = accounts[6];
 
+
   before(async() => {
     mdOrg3Members = await MDOrg.new();
     // first cooptation
@@ -104,15 +105,21 @@ contract('MDAdministration', async(accounts) => {
     let ownerBefore = await mdOrg2Members.owner();
     await mdOrg2Members.handleAdminAction(mdAdmin.address);
     let ownerAfter = await mdOrg2Members.owner();
+    let mdAdmin2 = await MDAdmin.new(mdOrg2Members.address, owner, 1);
+    await mdAdmin2.vote();
+    await mdAdmin2.vote({from:wannabeMember});
+    await mdOrg2Members.handleAdminAction(mdAdmin2.address);
+    let ownerAfter2 = await mdOrg2Members.owner();
     assert.equal(ownerBefore, owner, "Owneship Before");
     assert.equal(ownerAfter, wannabeMember, "Owneship changed :) Good luck");
+    assert.equal(ownerAfter2, owner, "Owneship After again");
   });
 
   it("Simple vote OWNERSHIP change refused because maintenance mode", async() => {
     let mdAdmin = await MDAdmin.new(mdOrg2Members.address, wannabeMember, 1);
     await mdAdmin.vote();
     await mdAdmin.vote({from:wannabeMember});
-    await mdOrg.switchMaintenanceMode();
+    await mdOrg2Members.switchMaintenanceMode({from:owner});
     await tryCatch(mdOrg2Members.handleAdminAction(mdAdmin.address), errTypes.revert);
   });
 
