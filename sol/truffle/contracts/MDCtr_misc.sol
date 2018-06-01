@@ -27,6 +27,7 @@ contract MDReferendum {
     /// Vote  $(_vote) -1 for No, 0 for abstention, 1 for Yes
     /// Other votes will be considered invalids :)
     function vote(int8 _vote) public onlyMDMembers {
+        require((_vote == 1) || (_vote == 0) || (_vote == -1), "Invalid vote");
         if (!didVotes[msg.sender]) {
             didVotes[msg.sender] = true;
             voteCount ++;
@@ -35,11 +36,10 @@ contract MDReferendum {
     }
 
     function unvote() public onlyMDMembers {
-        if (didVotes[msg.sender]) {
-            didVotes[msg.sender] = false;
-            voteCount --;
-            votes[msg.sender] = 0;
-        }
+        require(didVotes[msg.sender], "No vote found to unvote");
+        didVotes[msg.sender] = false;
+        voteCount --;
+        votes[msg.sender] = 0;
     }
 }
 
@@ -49,17 +49,9 @@ contract MDAdministration {
     
     MDOrg public mdCtr;
 
-    AdminAction public adminAction;
     address public proposedMember;
     mapping (address => bool) public didVotes;
     uint public voteCount;
-    
-    constructor(address _mdCtr, address _proposedMember, uint _actionType) public {
-        require(uint(AdminAction.SELFDESTRUCT) >= _actionType, "Invalid administration action type");
-        proposedMember = _proposedMember;
-        mdCtr = MDOrg(_mdCtr);
-        adminAction = AdminAction(_actionType);
-    }
     
     modifier onlyMDMembers() {
         require(
@@ -68,7 +60,7 @@ contract MDAdministration {
         );
         _;
     }
-    
+
     /// Vote for the administration action
     function vote() public onlyMDMembers {
         if (!didVotes[msg.sender]) {
@@ -83,5 +75,40 @@ contract MDAdministration {
             didVotes[msg.sender] = false;
             voteCount --;
         }
+    }
+
+    function getAdminActionType() public view returns (AdminAction);
+}
+
+contract MDAdministrationMemberban is MDAdministration {
+    AdminAction public adminAction = AdminAction.MEMBERBAN;
+    constructor(address _mdCtr, address _proposedMember) public {
+        proposedMember = _proposedMember;
+        mdCtr = MDOrg(_mdCtr);
+    }
+    function getAdminActionType() public view returns (AdminAction) {
+        return adminAction;
+    }
+}
+
+contract MDAdministrationOwnerchange is MDAdministration {
+    AdminAction public adminAction = AdminAction.OWNERCHANGE;
+    constructor(address _mdCtr, address _proposedMember) public {
+        proposedMember = _proposedMember;
+        mdCtr = MDOrg(_mdCtr);
+    }
+    function getAdminActionType() public view returns (AdminAction) {
+        return adminAction;
+    }
+}
+
+contract MDAdministrationSelfdestruct is MDAdministration {
+    AdminAction public adminAction = AdminAction.SELFDESTRUCT;
+    constructor(address _mdCtr, address _proposedMember) public {
+        proposedMember = _proposedMember;
+        mdCtr = MDOrg(_mdCtr);
+    }
+    function getAdminActionType() public view returns (AdminAction) {
+        return adminAction;
     }
 }

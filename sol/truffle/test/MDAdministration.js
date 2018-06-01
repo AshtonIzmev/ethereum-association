@@ -1,6 +1,8 @@
 var MDOrg = artifacts.require("MDOrg");
 var MDCoopt = artifacts.require("MDCoopt");
-var MDAdmin = artifacts.require("MDAdministration");
+var MDAdminOC = artifacts.require("MDAdministrationOwnerchange");
+var MDAdminMB = artifacts.require("MDAdministrationMemberban");
+var MDAdminSD = artifacts.require("MDAdministrationSelfdestruct");
 
 contract('MDAdministration', async(accounts) => {
 
@@ -35,17 +37,22 @@ contract('MDAdministration', async(accounts) => {
   });
 
   it("should not allow a non-member to vote", async() => {
-    let mdAdmin = await MDAdmin.new(mdOrg3Members.address, randomGuy, 1);
+    let mdAdmin = await MDAdminOC.new(mdOrg3Members.address, randomGuy);
     await tryCatch(mdAdmin.vote({from: randomGuy}), errTypes.revert);
   });
 
+  it("should allow a owner to vote", async() => {
+    let mdAdmin = await MDAdminOC.new(mdOrg3Members.address, randomGuy);
+    await mdAdmin.vote({from: owner});
+  });
+
   it("Valid vote", async() => {
-    let mdAdmin = await MDAdmin.new(mdOrg3Members.address, randomGuy, 1);
-    let voteCountBefore = await mdAdmin.voteCount();
-    await mdAdmin.vote({from: wannabeMember});
-    let voteCountAfter = await mdAdmin.voteCount();
-    let didVote = await mdAdmin.didVotes(wannabeMember);
-    let didNotVote = await mdAdmin.didVotes(wannabeMemberToo);
+    let mdAdminOC = await MDAdminOC.new(mdOrg3Members.address, randomGuy);
+    let voteCountBefore = await mdAdminOC.voteCount();
+    await mdAdminOC.vote({from: wannabeMember});
+    let voteCountAfter = await mdAdminOC.voteCount();
+    let didVote = await mdAdminOC.didVotes(wannabeMember);
+    let didNotVote = await mdAdminOC.didVotes(wannabeMemberToo);
     assert.equal(voteCountBefore, 0, "No votes before");
     assert.equal(voteCountAfter, 1, "One single vote after");
     assert.isTrue(didVote, "He did vote");
@@ -53,37 +60,37 @@ contract('MDAdministration', async(accounts) => {
   });
 
   it("unvote please", async() => {
-    let mdAdmin = await MDAdmin.new(mdOrg3Members.address, randomGuy, 0);
-    let voteCountBefore = await mdAdmin.voteCount();
-    await mdAdmin.vote({from: wannabeMember});
-    await mdAdmin.unvote({from: wannabeMember});
-    let voteCountAfter = await mdAdmin.voteCount();
-    let didNotVote = await mdAdmin.didVotes(wannabeMember);
+    let mdAdminMB = await MDAdminMB.new(mdOrg3Members.address, randomGuy);
+    let voteCountBefore = await mdAdminMB.voteCount();
+    await mdAdminMB.vote({from: wannabeMember});
+    await mdAdminMB.unvote({from: wannabeMember});
+    let voteCountAfter = await mdAdminMB.voteCount();
+    let didNotVote = await mdAdminMB.didVotes(wannabeMember);
     assert.equal(voteCountBefore, 0, "No votes before");
     assert.equal(voteCountAfter, 0, "One single vote after");
     assert.isFalse(didNotVote, "He did not vote");
   });
 
   it("Duplicate vote", async() => {
-    let mdAdmin = await MDAdmin.new(mdOrg3Members.address, randomGuy, 1);
-    let voteCountBefore = await mdAdmin.voteCount();
-    await mdAdmin.vote({from: wannabeMember});
-    let voteCountAfter = await mdAdmin.voteCount();
-    await mdAdmin.vote({from: wannabeMember});
-    let voteCountAfter2 = await mdAdmin.voteCount();
+    let mdAdminMB = await MDAdminMB.new(mdOrg3Members.address, randomGuy);
+    let voteCountBefore = await mdAdminMB.voteCount();
+    await mdAdminMB.vote({from: wannabeMember});
+    let voteCountAfter = await mdAdminMB.voteCount();
+    await mdAdminMB.vote({from: wannabeMember});
+    let voteCountAfter2 = await mdAdminMB.voteCount();
     assert.equal(voteCountBefore, 0, "No votes before");
     assert.equal(voteCountAfter, 1, "One single vote after");
     assert.equal(voteCountAfter2, 1, "One single vote after duplicate vote");
   });
 
   it("fake unvote please", async() => {
-    let mdAdmin = await MDAdmin.new(mdOrg3Members.address, randomGuy, 2);
-    let voteCountBefore = await mdAdmin.voteCount();
-    await mdAdmin.vote({from: wannabeMember});
-    await mdAdmin.unvote({from: wannabeMemberToo});
-    let voteCountAfter = await mdAdmin.voteCount();
-    let didVote = await mdAdmin.didVotes(wannabeMember);
-    let didNotVote = await mdAdmin.didVotes(wannabeMemberToo);
+    let mdAdminSD = await MDAdminSD.new(mdOrg3Members.address, randomGuy);
+    let voteCountBefore = await mdAdminSD.voteCount();
+    await mdAdminSD.vote({from: wannabeMember});
+    await mdAdminSD.unvote({from: wannabeMemberToo});
+    let voteCountAfter = await mdAdminSD.voteCount();
+    let didVote = await mdAdminSD.didVotes(wannabeMember);
+    let didNotVote = await mdAdminSD.didVotes(wannabeMemberToo);
     assert.equal(voteCountBefore, 0, "No votes before");
     assert.equal(voteCountAfter, 1, "One single vote after");
     assert.isTrue(didVote, "He did vote");
@@ -93,22 +100,22 @@ contract('MDAdministration', async(accounts) => {
   it("bad mdOrg reference", async() => {
     let mdOrg = await MDOrg.new();
     let mdOrgFake = await MDOrg.new();
-    let mdAdmin = await MDAdmin.new(mdOrgFake.address, randomGuy, 0);
-    await mdAdmin.vote();
-    await tryCatch(mdOrg.handleAdminAction(mdAdmin.address), errTypes.revert);  
+    let mdAdminOC = await MDAdminOC.new(mdOrgFake.address, randomGuy);
+    await mdAdminOC.vote();
+    await tryCatch(mdOrg.handleOwnerchangeAction(mdAdminOC.address), errTypes.revert);  
   });
 
   it("Simple vote OWNERSHIP change", async() => {
-    let mdAdmin = await MDAdmin.new(mdOrg2Members.address, wannabeMember, 1);
-    await mdAdmin.vote();
-    await mdAdmin.vote({from:wannabeMember});
+    let mdAdminOC = await MDAdminOC.new(mdOrg2Members.address, wannabeMember);
+    await mdAdminOC.vote();
+    await mdAdminOC.vote({from:wannabeMember});
     let ownerBefore = await mdOrg2Members.owner();
-    await mdOrg2Members.handleAdminAction(mdAdmin.address);
+    await mdOrg2Members.handleOwnerchangeAction(mdAdminOC.address);
     let ownerAfter = await mdOrg2Members.owner();
-    let mdAdmin2 = await MDAdmin.new(mdOrg2Members.address, owner, 1);
-    await mdAdmin2.vote();
-    await mdAdmin2.vote({from:wannabeMember});
-    await mdOrg2Members.handleAdminAction(mdAdmin2.address);
+    let mdAdminOC2 = await MDAdminOC.new(mdOrg2Members.address, owner);
+    await mdAdminOC2.vote();
+    await mdAdminOC2.vote({from:wannabeMember});
+    await mdOrg2Members.handleOwnerchangeAction(mdAdminOC2.address);
     let ownerAfter2 = await mdOrg2Members.owner();
     assert.equal(ownerBefore, owner, "Owneship Before");
     assert.equal(ownerAfter, wannabeMember, "Owneship changed :) Good luck");
@@ -116,11 +123,11 @@ contract('MDAdministration', async(accounts) => {
   });
 
   it("Simple vote OWNERSHIP change refused because maintenance mode", async() => {
-    let mdAdmin = await MDAdmin.new(mdOrg2Members.address, wannabeMember, 1);
-    await mdAdmin.vote();
-    await mdAdmin.vote({from:wannabeMember});
+    let mdAdminOC = await MDAdminOC.new(mdOrg2Members.address, wannabeMember);
+    await mdAdminOC.vote();
+    await mdAdminOC.vote({from:wannabeMember});
     await mdOrg2Members.switchMaintenanceMode({from:owner});
-    await tryCatch(mdOrg2Members.handleAdminAction(mdAdmin.address), errTypes.revert);
+    await tryCatch(mdOrg2Members.handleOwnerchangeAction(mdAdminOC.address), errTypes.revert);
   });
 
 

@@ -31,21 +31,25 @@ contract MDOrg {
         _;
     }
 
+    modifier maintenanceOff() {
+        require(!maintenanceMode, "Maintenance mode activated");
+        _;
+    }
+
     /// In case of a smart contract problem, activate maintenance mode
     function switchMaintenanceMode() public onlyOwner {
         maintenanceMode = !maintenanceMode;
     }
     
     /// Propose $(_cooptedMember) to be a part of the organization
-    function cooptMember(address _cooptCtr) public {
-        require(!maintenanceMode, "Maintenance mode activated");
+    function cooptMember(address _cooptCtr) public maintenanceOff {
         MDCoopt mdCooptCtr = MDCoopt(_cooptCtr);
         require(
             mdCooptCtr.mdCtr() == this, 
             "Invalid CooptationContract reference to MoroccanContract");
         require(
             mdCooptCtr.cooptationCount() > membersCount/2,
-            "Insufficient number of member cooptations");
+            "Insufficient number of member cooptations (need 51%)");
         require(
             !members[mdCooptCtr.cooptedMember()], 
             "Already a member");
@@ -53,32 +57,32 @@ contract MDOrg {
         membersCount ++;
     }
 
-    function handleAdminAction(address _adminCtr) public {
-        require(!maintenanceMode, "Maintenance mode activated");
-        MDAdministration mdAdminCtr = MDAdministration(_adminCtr);
-        require(
-            mdAdminCtr.mdCtr() == this, 
-            "Invalid AdministrationContract reference to MoroccanContract");
-        require(
-            mdAdminCtr.voteCount() > (2*membersCount)/3, 
-            "Need at least 66% of the votes to operate an administration operation");
-        if (mdAdminCtr.adminAction() == MDAdministration.AdminAction.MEMBERBAN) {
-            require(
-                membersCount > 1, 
-                "Can't ban if only a one member");
-            require(
-                members[mdAdminCtr.proposedMember()], 
-                "Proposed ban is not a member");
-            members[mdAdminCtr.proposedMember()] = false;
-            membersCount --;
-        } else if (mdAdminCtr.adminAction() == MDAdministration.AdminAction.OWNERCHANGE) {
-            require(
-                members[mdAdminCtr.proposedMember()], 
-                "Proposed ban is not a member");
-            owner = mdAdminCtr.proposedMember();
-        } else if (mdAdminCtr.adminAction() == MDAdministration.AdminAction.SELFDESTRUCT) {
-            selfdestruct(owner);
-        }
+    function handleMemberbanAction(address _adminCtr) public maintenanceOff {
+        MDAdministrationMemberban mdAdminCtr = MDAdministrationMemberban(_adminCtr);
+        require(mdAdminCtr.adminAction() == MDAdministration.AdminAction.MEMBERBAN, "Memberban action required");
+        require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
+        require(mdAdminCtr.voteCount() > membersCount/3, "Need at least 34% of the votes");
+        require(membersCount > 1, "Can't ban if only a one member left");
+        require(members[mdAdminCtr.proposedMember()], "Member to ban is not a member");
+        members[mdAdminCtr.proposedMember()] = false;
+        membersCount --;
+    }
+
+    function handleOwnerchangeAction(address _adminCtr) public maintenanceOff {
+        MDAdministrationOwnerchange mdAdminCtr = MDAdministrationOwnerchange(_adminCtr);
+        require(mdAdminCtr.adminAction() == MDAdministration.AdminAction.OWNERCHANGE, "Ownerchange action required");
+        require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
+        require(mdAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
+        require(members[mdAdminCtr.proposedMember()], "New owner is not a member");
+        owner = mdAdminCtr.proposedMember();
+    }
+
+    function handleSelfdestructAction(address _adminCtr) public maintenanceOff {
+        MDAdministrationSelfdestruct mdAdminCtr = MDAdministrationSelfdestruct(_adminCtr);
+        require(mdAdminCtr.adminAction() == MDAdministration.AdminAction.SELFDESTRUCT, "Selfdestruct action required");
+        require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
+        require(mdAdminCtr.voteCount() > (2*membersCount)/3, "Need at least 66% of the votes ");
+        selfdestruct(owner);
     }
     
     /// Check if I am a member (same as calling members public variable)

@@ -76,7 +76,7 @@ contract('MDReferendum', async(accounts) => {
     let mdRef = await MDReferendum.new(mdOrg3Members.address, "What is the answer ?");
     let voteCountBefore = await mdRef.voteCount();
     await mdRef.vote(-1, {from: wannabeMember});
-    await mdRef.unvote({from: wannabeMemberToo});
+    await tryCatch(mdRef.unvote({from: wannabeMemberToo}), errTypes.revert);
     let voteCountAfter = await mdRef.voteCount();
     let didVote = await mdRef.didVotes(wannabeMember);
     let didNotVote = await mdRef.didVotes(wannabeMemberToo);
@@ -84,6 +84,12 @@ contract('MDReferendum', async(accounts) => {
     assert.equal(voteCountAfter, 1, "One single vote after");
     assert.isTrue(didVote, "He did vote");
     assert.isFalse(didNotVote, "He did not vote");
+  });
+
+  it("Invalid vote", async() => {
+    let mdRef = await MDReferendum.new(mdOrg3Members.address, "What is the answer ?");
+    let voteCountBefore = await mdRef.voteCount();
+    await tryCatch(mdRef.vote(2, {from: wannabeMember}), errTypes.revert);
   });
 
 });
