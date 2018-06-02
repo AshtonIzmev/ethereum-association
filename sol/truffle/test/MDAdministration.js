@@ -84,7 +84,7 @@ contract('MDAdministration', async(accounts) => {
   });
 
   it("fake unvote please", async() => {
-    let mdAdminSD = await MDAdminSD.new(mdOrg3Members.address, randomGuy);
+    let mdAdminSD = await MDAdminSD.new(mdOrg3Members.address);
     let voteCountBefore = await mdAdminSD.voteCount();
     await mdAdminSD.vote({from: wannabeMember});
     await mdAdminSD.unvote({from: wannabeMemberToo});
@@ -130,5 +130,38 @@ contract('MDAdministration', async(accounts) => {
     await tryCatch(mdOrg2Members.handleOwnerchangeAction(mdAdminOC.address), errTypes.revert);
   });
 
+  it("Self destruct", async() => {
+    let mdOrg = await MDOrg.new();
+    let mdAdminSD = await MDAdminSD.new(mdOrg.address);
+    await mdAdminSD.vote();
+    await mdOrg.handleSelfdestructAction(mdAdminSD.address);
+  });
+
+  it("Member ban", async() => {
+    let mdOrg2Mem = await MDOrg.new();
+    // first cooptation
+    let cooptCtr3 = await MDCoopt.new(mdOrg2Mem.address, {from: wannabeMember});
+    await cooptCtr3.cooptMember();
+    await mdOrg2Mem.cooptMember(cooptCtr3.address, {from: owner});
+    
+    let mdAdminMB = await MDAdminMB.new(mdOrg2Mem.address, wannabeMember);
+    await mdAdminMB.vote();
+    let memberCountBefore = await mdOrg2Mem.membersCount();
+    await mdOrg2Mem.handleMemberbanAction(mdAdminMB.address);
+    let memberCountAfter = await mdOrg2Mem.membersCount();
+
+    assert.equal(memberCountBefore, 2, "2 members before");
+    assert.equal(memberCountAfter, 1, "One member after");
+  })
+
+  it("Owner ban ??", async() => {
+    let mdOrg = await MDOrg.new();
+    await tryCatch(MDAdminMB.new(mdOrg.address, owner), errTypes.revert);
+  })
+
+  it("Owner owner change ??", async() => {
+    let mdOrg = await MDOrg.new();
+    await tryCatch(MDAdminOC.new(mdOrg.address, owner), errTypes.revert);
+  })
 
 });

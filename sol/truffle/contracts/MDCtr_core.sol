@@ -63,6 +63,7 @@ contract MDOrg {
         require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
         require(mdAdminCtr.voteCount() > membersCount/3, "Need at least 34% of the votes");
         require(membersCount > 1, "Can't ban if only a one member left");
+        require(mdAdminCtr.proposedMember() != owner, "Member to ban cannot be the owner");
         require(members[mdAdminCtr.proposedMember()], "Member to ban is not a member");
         members[mdAdminCtr.proposedMember()] = false;
         membersCount --;
@@ -73,6 +74,7 @@ contract MDOrg {
         require(mdAdminCtr.adminAction() == MDAdministration.AdminAction.OWNERCHANGE, "Ownerchange action required");
         require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
         require(mdAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
+        require(mdAdminCtr.proposedMember() != owner, "New owner cannot be the current owner");
         require(members[mdAdminCtr.proposedMember()], "New owner is not a member");
         owner = mdAdminCtr.proposedMember();
     }

@@ -85,6 +85,7 @@ contract MDAdministrationMemberban is MDAdministration {
     constructor(address _mdCtr, address _proposedMember) public {
         proposedMember = _proposedMember;
         mdCtr = MDOrg(_mdCtr);
+        require(_proposedMember != mdCtr.owner(), "Owner cannot be banned, change owner first");
     }
     function getAdminActionType() public view returns (AdminAction) {
         return adminAction;
@@ -96,6 +97,7 @@ contract MDAdministrationOwnerchange is MDAdministration {
     constructor(address _mdCtr, address _proposedMember) public {
         proposedMember = _proposedMember;
         mdCtr = MDOrg(_mdCtr);
+        require(_proposedMember != mdCtr.owner(), "New owner cannot be old owner");
     }
     function getAdminActionType() public view returns (AdminAction) {
         return adminAction;
@@ -104,8 +106,7 @@ contract MDAdministrationOwnerchange is MDAdministration {
 
 contract MDAdministrationSelfdestruct is MDAdministration {
     AdminAction public adminAction = AdminAction.SELFDESTRUCT;
-    constructor(address _mdCtr, address _proposedMember) public {
-        proposedMember = _proposedMember;
+    constructor(address _mdCtr) public {
         mdCtr = MDOrg(_mdCtr);
     }
     function getAdminActionType() public view returns (AdminAction) {
