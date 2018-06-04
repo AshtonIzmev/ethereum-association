@@ -5,6 +5,8 @@ import "../contracts/MDCtr_misc.sol";
 contract MDOrg {
     
     mapping (address => bool) public members;
+    mapping (address => uint) scores;
+    mapping (address => uint) lastScoreUpdate;
     uint public membersCount;
     address public owner;
     bool public maintenanceMode;
@@ -12,6 +14,8 @@ contract MDOrg {
     constructor() public {
         owner = msg.sender;
         members[msg.sender] = true;
+        scores[msg.sender] = 90;
+        lastScoreUpdate[msg.sender] = block.number;
         membersCount = 1;
     }
     
@@ -54,6 +58,8 @@ contract MDOrg {
             !members[mdCooptCtr.cooptedMember()], 
             "Already a member");
         members[mdCooptCtr.cooptedMember()] = true;
+        scores[mdCooptCtr.cooptedMember()] = 90;
+        lastScoreUpdate[mdCooptCtr.cooptedMember()] = block.number;
         membersCount ++;
     }
 
@@ -86,10 +92,27 @@ contract MDOrg {
         require(mdAdminCtr.voteCount() > (2*membersCount)/3, "Need at least 66% of the votes ");
         selfdestruct(owner);
     }
+
+    function handleRewardAction(address _rewardCtr) public maintenanceOff {
+        MDReward mdRewardCtr = MDReward(_rewardCtr);
+        require(members[mdRewardCtr.proposedMember()], "Rewarded address must be a member");
+        require(mdRewardCtr.mdCtr() == this, "Invalid RewardContract reference to MoroccanContract");
+        require(mdRewardCtr.voteCount() > membersCount/10, "Need at least 10% of the votes ");
+        scores[mdRewardCtr.proposedMember()] = getScore(mdRewardCtr.proposedMember()) + mdRewardCtr.reward();
+        lastScoreUpdate[mdRewardCtr.proposedMember()] = block.number;
+    }
     
     /// Check if I am a member (same as calling members public variable)
     function amIMember() public view returns (bool) {
         return members[msg.sender];
+    }
+
+    /// Check if I am a member (same as calling members public variable)
+    function getScore(address _address) public view returns (uint) {
+        require(members[_address], "_add is not a member");
+        // score is decreasing by 1 every day (given 15 secondes ethereum block)
+        uint sc = scores[_address] - ((1 + block.number - lastScoreUpdate[_address])/5760);
+        return sc;
     }
 }
 

@@ -43,6 +43,18 @@ contract MDReferendum {
     }
 }
 
+contract MDReward is MDReferendum {
+    uint public reward;
+    address public proposedMember;
+
+    constructor(address _mdCtr, address _proposedMember, uint _reward) public {
+        require(_reward < 90, "Reward cannot be greater than welcoming reward :)");
+        mdCtr = MDOrg(_mdCtr);
+        proposedMember = _proposedMember;
+        reward = _reward;
+    }
+}
+
 contract MDAdministration {
     
     enum AdminAction {MEMBERBAN, OWNERCHANGE, SELFDESTRUCT}
