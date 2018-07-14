@@ -836,7 +836,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 }
 
 #header h1.devise {
-	font-size: 0.65em;
+	font-size: 0.55em;
 }
 
 #header nav {
@@ -1055,4 +1055,53 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 
 .languagepicker li img {
 	margin-right: 5px;
+}
+
+.righty {
+	float:right;
+}
+
+.underlineconvince {
+	text-decoration: underline;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    width: 210px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 7px;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-bottom {
+  top: 135%;
+  left: 15%;
+}
+
+.tooltip-bottom::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
 }
