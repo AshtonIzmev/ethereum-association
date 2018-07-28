@@ -22,7 +22,7 @@ Le gardien peut à tout moment être déchu par un vote des membres. Le minimum 
 ### Auto-destruction
 L'association peut s'auto-dissoudre à tout moment par vote des membres. Le minimum requis des votes pour l'auto-destruction est défini dans le contrat blockchain de l'association.
 
-En cas d'auto-dissolution, l'ensemble des biens dématérialisée de l'association reviennent au gardien.
+En cas d'auto-dissolution, l'ensemble des biens dématérialisés de l'association reviennent au gardien.
 
 ### Vote
 Tout membre de l'association a un droit de vote dans les décisions matérialisées par le contrat blockchain de vote.
@@ -46,3 +46,37 @@ A titre indicatif, une bonification est octroyée à un membre lorsqu'il :
 
 Les membres décident de l'octroi des bonifications, que ce soit le montant ou la raison de l'octroi.
 
+
+# Getting started
+## Dev suite
+### Node
+Installer la suite Node https://nodejs.org/en/  
+Sous Ubuntu, suivre les steps suivants : https://doc.ubuntu-fr.org/nodejs  
+Vérifier l'installation via  
+`node -v && npm -v`
+### Suite Etherem
+Installer Truffle  
+`npm install -g truffle`
+
+Installer ganache-cli  
+`npm install -g ganache-cli`
+
+## Compiler et tester
+Afin de pouvoir tester notre code solidity, il faut une blockchain Ethereum de test. Ganache est là pour ça : On lance  
+`ganache -p 8545`  
+Le port 8454 a été déclaré dans le fichier _truffle.js_  
+Pour lancer les tests, il suffit de se placer dans ./sol/truffle et de lancer :  
+`truffle test`
+
+# Ethereum
+Afin de déployer le contrat de l'association sur la blockchain, nous utilisons une instance _semi-privée_ d'Ethereum avec un cout de gas égal à 0.  
+Cette blockchain a plusieurs particularités :
+  * Son utilisation est gratuite (le cout du gas est 0)
+  * Elle est d'initiative marocaine puisque contrôlée par des membres marocains
+  * La monnaie générée (de l'ether marocain) n'est pas mis en circulation par les mineurs, par conséquent il n'y a pas de monnaie numérique, seulement la partie distributed ledger publique
+
+Pourquoi avons-nous choisi de ne pas utiliser la vraie blockchain publique Ethereum ?
+  * La blockchain publique Ethereum nécessite de la devise pour acheter de l'Ether et du Gas. La détention d'Ether et de Gas est assimilable à la détention d'avoirs à l'étranger ce que nous voulons éviter.
+  * Le coût d'une transaction Ethereum reste élevé (varient de 3 à 50 dhs) car le réseau n'est pas scalable (mais des initiatives prometteuses avancent pour résoudre ce problème)
+
+Pour participer à notre réseau Ethereum, vous vous engagez à ne pas mettre en circulation d'Ether miné afin de ne pas déroger à l'esprit de la blockchain comme "grand ordinateur distribué". La conséquence logique est qu'il n'y a pas de rémunération pour le travail de mining.
