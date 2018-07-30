@@ -8,18 +8,28 @@ Le fichier genesis.json contient les informations pour initier le réseau Ethere
 Les instructions suivantes permettent de l'installer sous Ubuntu : https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu  
 
 ## Lancer une instance d'Ethereum
-Il faut tout d'abord initialiser le premier block :  
-`ETHDIR=./eth &&  geth --datadir ${ETHDIR}/data init ${ETHDIR}/genesis.json`
+Se placer dans le dossier eth, créer le dossier _data_ puis initialiser le premier block :  
+`ETHDIR=. && geth --datadir ${ETHDIR}/data init ${ETHDIR}/genesis.json`
 
-On définit un bootnode pour relier les instances entre elles, avec les deux commandes suivantes :  
-`bootnode --genkey=boot.key && bootnode --nodekey=boot.key`  
-Le fichier boot.key est créé. Une url _enode_ est affichée et sera utilisée pour la connection des instances au bootnode.
+Puis on lance l'instance avec la console :  
+̀`ETHDIR=. &&  geth --datadir ${ETHDIR}/data --nodiscover --networkid 2120212 --port 32313 --rpcport 8543 -verbosity 6 console 2>> ${ETHDIR}/01.log`  
+Normalement, il n'y a pas de peers :
+`admin.peers`  
+Pour trouver l'enode de l'instance :  
+`admin.nodeInfo`
 
-̀`ETHDIR=./eth && BOOTNODEIP="localhost" && geth --datadir ${ETHDIR}/data --networkid 2120212  --bootnodes enode://1fa9c35e6c7b73075a2a9cdaa76e20035f92c82c91d53a1a481560e8630ac1b221d6f23544c2f5d8f2dfd4a46c950496c3b75dd9505ccd567aa7ee2bdfd4466e@${BOOTNODEIP}:30301`
+Pour lancer un miner :  
+̀`ETHDIR=. &&  geth --datadir ${ETHDIR}/data --networkid 2120212 --mine --etherbase=0x2120212212021221202122120212212021202120 --nodiscover --minerthreads 1 --gasprice "0" --port 32313 --rpcport 8543`
+Comme vous pouvez le constatez, l'ether est envoyé sur une adresse non accessible (composée de 212). Il est impératif de respecter cette règle.
 
+## Se connecter à un noeud d'Ethereum
+Refaire les deux premières étapes précédentes pour obtenir la console.  
+`admin.addPeer("enode://pubkey@127.0.0.1:32313")`
 
-Puis on lance l'instance :  
-̀`ETHDIR=./eth &&  geth --datadir ${ETHDIR}/data --networkid 2120212 --mine --nodiscover --minerthreads 1 --gasprice "0" --port 32313 --etherbase=0x0000000000000000000000000000000000000000`
+Pour rendre l'ajout de ce peer persistant, utiliser le fichier _data/geth/static-nodes.json_  
+`["enode://pubkey1@ip:port", "enode://pubkey2@ip:port"]`
 
+## Autoriser l'ajout d'un Ethereum
+Ouvrir le port de l'ip cible afin d'autoriser celle-ci à se connecter.
 
 De la documentation se trouve ici : https://github.com/ethereum/go-ethereum/wiki/Setting-up-private-network-or-local-cluster et ici : https://github.com/ethereum/go-ethereum/wiki/Private-network
