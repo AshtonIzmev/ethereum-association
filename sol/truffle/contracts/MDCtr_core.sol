@@ -1,4 +1,5 @@
-pragma solidity ^0.4.23;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.5.16;
 
 import "../contracts/MDCtr_misc.sol";
 
@@ -8,7 +9,7 @@ contract MDOrg {
     mapping (address => uint) scores;
     mapping (address => uint) lastScoreUpdate;
     uint public membersCount;
-    address public owner;
+    address payable public owner;
     bool public maintenanceMode;
     
     constructor() public {
@@ -63,7 +64,7 @@ contract MDOrg {
         membersCount ++;
     }
 
-    function handleMemberbanAction(address _adminCtr) public maintenanceOff {
+    function handleMemberbanAction(address payable _adminCtr) public maintenanceOff {
         MDAdministrationMemberban mdAdminCtr = MDAdministrationMemberban(_adminCtr);
         require(mdAdminCtr.adminAction() == MDAdministration.AdminAction.MEMBERBAN, "Memberban action required");
         require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
@@ -75,7 +76,7 @@ contract MDOrg {
         membersCount --;
     }
 
-    function handleOwnerchangeAction(address _adminCtr) public maintenanceOff {
+    function handleOwnerchangeAction(address payable _adminCtr) public maintenanceOff {
         MDAdministrationOwnerchange mdAdminCtr = MDAdministrationOwnerchange(_adminCtr);
         require(mdAdminCtr.adminAction() == MDAdministration.AdminAction.OWNERCHANGE, "Ownerchange action required");
         require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
@@ -85,7 +86,7 @@ contract MDOrg {
         owner = mdAdminCtr.proposedMember();
     }
 
-    function handleSelfdestructAction(address _adminCtr) public maintenanceOff {
+    function handleSelfdestructAction(address payable _adminCtr) public maintenanceOff {
         MDAdministrationSelfdestruct mdAdminCtr = MDAdministrationSelfdestruct(_adminCtr);
         require(mdAdminCtr.adminAction() == MDAdministration.AdminAction.SELFDESTRUCT, "Selfdestruct action required");
         require(mdAdminCtr.mdCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");

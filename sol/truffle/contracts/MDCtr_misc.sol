@@ -1,4 +1,5 @@
-pragma solidity ^0.4.23;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.5.16;
 
 import "../contracts/MDCtr_core.sol";
 
@@ -11,7 +12,7 @@ contract MDReferendum {
     mapping (address => bool) public didVotes;
     uint public voteCount;
     
-    constructor(address _mdCtr, string _question) public {
+    constructor(address _mdCtr, string memory _question) public {
         mdCtr = MDOrg(_mdCtr); 
         referendumQuestion = _question;
     }
@@ -61,7 +62,7 @@ contract MDAdministration {
     
     MDOrg public mdCtr;
 
-    address public proposedMember;
+    address payable public proposedMember;
     mapping (address => bool) public didVotes;
     uint public voteCount;
     
@@ -94,7 +95,7 @@ contract MDAdministration {
 
 contract MDAdministrationMemberban is MDAdministration {
     AdminAction public adminAction = AdminAction.MEMBERBAN;
-    constructor(address _mdCtr, address _proposedMember) public {
+    constructor(address _mdCtr, address payable _proposedMember) public {
         proposedMember = _proposedMember;
         mdCtr = MDOrg(_mdCtr);
         require(_proposedMember != mdCtr.owner(), "Owner cannot be banned, change owner first");
@@ -106,7 +107,7 @@ contract MDAdministrationMemberban is MDAdministration {
 
 contract MDAdministrationOwnerchange is MDAdministration {
     AdminAction public adminAction = AdminAction.OWNERCHANGE;
-    constructor(address _mdCtr, address _proposedMember) public {
+    constructor(address _mdCtr, address payable _proposedMember) public {
         proposedMember = _proposedMember;
         mdCtr = MDOrg(_mdCtr);
         require(_proposedMember != mdCtr.owner(), "New owner cannot be old owner");
