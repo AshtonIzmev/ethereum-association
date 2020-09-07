@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.5.16;
+pragma solidity 0.7.0;
 
-import "../contracts/misc.sol";
+import "../contracts/referendum.sol";
+import "../contracts/administration.sol";
 
 contract AssociationOrg {
     
@@ -12,7 +13,7 @@ contract AssociationOrg {
     address payable public owner;
     bool public maintenanceMode;
     
-    constructor() public {
+    constructor() {
         owner = msg.sender;
         members[msg.sender] = true;
         scores[msg.sender] = 90;
@@ -94,6 +95,7 @@ contract AssociationOrg {
         selfdestruct(owner);
     }
 
+    /**
     function handleRewardAction(address _rewardCtr) public maintenanceOff {
         AssociationReward assoRewardCtr = AssociationReward(_rewardCtr);
         require(members[assoRewardCtr.proposedMember()], "Rewarded address must be a member");
@@ -102,6 +104,7 @@ contract AssociationOrg {
         scores[assoRewardCtr.proposedMember()] = getScore(assoRewardCtr.proposedMember()) + assoRewardCtr.reward();
         lastScoreUpdate[assoRewardCtr.proposedMember()] = block.number;
     }
+     */
     
     /// Check if I am a member (same as calling members public variable)
     function amIMember() public view returns (bool) {
@@ -125,7 +128,7 @@ contract AssociationCoopt {
     mapping (address => bool) public cooptations;
     uint public cooptationCount;
     
-    constructor(address _assoCtr) public {
+    constructor(address _assoCtr) {
         cooptedMember = msg.sender;
         assoCtr = AssociationOrg(_assoCtr); 
     }
