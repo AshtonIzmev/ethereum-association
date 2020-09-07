@@ -1,25 +1,25 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.5.16;
 
-import "../contracts/MDCtr_core.sol";
+import "../contracts/core.sol";
 
-contract MDReferendum {
+contract AssociationReferendum {
     
-    MDOrg public mdCtr;
+    AssociationOrg public assoCtr;
 
     string public referendumQuestion;
     mapping (address => int8) public votes;
     mapping (address => bool) public didVotes;
     uint public voteCount;
     
-    constructor(address _mdCtr, string memory _question) public {
-        mdCtr = MDOrg(_mdCtr); 
+    constructor(address _assoCtr, string memory _question) public {
+        assoCtr = AssociationOrg(_assoCtr); 
         referendumQuestion = _question;
     }
     
-    modifier onlyMDMembers() {
+    modifier onlyMembers() {
         require(
-            mdCtr.members(msg.sender),
+            assoCtr.members(msg.sender),
             "Only members are allowed to call this"
         );
         _;
@@ -27,7 +27,7 @@ contract MDReferendum {
     
     /// Vote  $(_vote) -1 for No, 0 for abstention, 1 for Yes
     /// Other votes will be considered invalids :)
-    function vote(int8 _vote) public onlyMDMembers {
+    function vote(int8 _vote) public onlyMembers {
         require((_vote == 1) || (_vote == 0) || (_vote == -1), "Invalid vote");
         if (!didVotes[msg.sender]) {
             didVotes[msg.sender] = true;
@@ -36,7 +36,7 @@ contract MDReferendum {
         votes[msg.sender] = _vote;
     }
 
-    function unvote() public onlyMDMembers {
+    function unvote() public onlyMembers {
         require(didVotes[msg.sender], "No vote found to unvote");
         didVotes[msg.sender] = false;
         voteCount --;
@@ -44,38 +44,38 @@ contract MDReferendum {
     }
 }
 
-contract MDReward is MDReferendum {
+contract AssociationReward is AssociationReferendum {
     uint public reward;
     address public proposedMember;
 
-    constructor(address _mdCtr, address _proposedMember, uint _reward) public {
+    constructor(address _assoCtr, address _proposedMember, uint _reward) public {
         require(_reward < 90, "Reward cannot be greater than welcoming reward :)");
-        mdCtr = MDOrg(_mdCtr);
+        assoCtr = AssociationOrg(_assoCtr);
         proposedMember = _proposedMember;
         reward = _reward;
     }
 }
 
-contract MDAdministration {
+contract AssociationAdministration {
     
     enum AdminAction {MEMBERBAN, OWNERCHANGE, SELFDESTRUCT}
     
-    MDOrg public mdCtr;
+    AssociationOrg public assoCtr;
 
     address payable public proposedMember;
     mapping (address => bool) public didVotes;
     uint public voteCount;
     
-    modifier onlyMDMembers() {
+    modifier onlyMembers() {
         require(
-            mdCtr.members(msg.sender),
+            assoCtr.members(msg.sender),
             "Only members are allowed to call this"
         );
         _;
     }
 
     /// Vote for the administration action
-    function vote() public onlyMDMembers {
+    function vote() public onlyMembers {
         if (!didVotes[msg.sender]) {
             didVotes[msg.sender] = true;
             voteCount ++;
@@ -83,7 +83,7 @@ contract MDAdministration {
     }
 
     /// Unvote for the administration action
-    function unvote() public onlyMDMembers {
+    function unvote() public onlyMembers {
         if (didVotes[msg.sender]) {
             didVotes[msg.sender] = false;
             voteCount --;
@@ -93,34 +93,34 @@ contract MDAdministration {
     function getAdminActionType() public view returns (AdminAction);
 }
 
-contract MDAdministrationMemberban is MDAdministration {
+contract AssociationAdministrationMemberban is AssociationAdministration {
     AdminAction public adminAction = AdminAction.MEMBERBAN;
-    constructor(address _mdCtr, address payable _proposedMember) public {
+    constructor(address _assoCtr, address payable _proposedMember) public {
         proposedMember = _proposedMember;
-        mdCtr = MDOrg(_mdCtr);
-        require(_proposedMember != mdCtr.owner(), "Owner cannot be banned, change owner first");
+        assoCtr = AssociationOrg(_assoCtr);
+        require(_proposedMember != assoCtr.owner(), "Owner cannot be banned, change owner first");
     }
     function getAdminActionType() public view returns (AdminAction) {
         return adminAction;
     }
 }
 
-contract MDAdministrationOwnerchange is MDAdministration {
+contract AssociationAdministrationOwnerchange is AssociationAdministration {
     AdminAction public adminAction = AdminAction.OWNERCHANGE;
-    constructor(address _mdCtr, address payable _proposedMember) public {
+    constructor(address _assoCtr, address payable _proposedMember) public {
         proposedMember = _proposedMember;
-        mdCtr = MDOrg(_mdCtr);
-        require(_proposedMember != mdCtr.owner(), "New owner cannot be old owner");
+        assoCtr = AssociationOrg(_assoCtr);
+        require(_proposedMember != assoCtr.owner(), "New owner cannot be old owner");
     }
     function getAdminActionType() public view returns (AdminAction) {
         return adminAction;
     }
 }
 
-contract MDAdministrationSelfdestruct is MDAdministration {
+contract AssociationAdministrationSelfdestruct is AssociationAdministration {
     AdminAction public adminAction = AdminAction.SELFDESTRUCT;
-    constructor(address _mdCtr) public {
-        mdCtr = MDOrg(_mdCtr);
+    constructor(address _assoCtr) public {
+        assoCtr = AssociationOrg(_assoCtr);
     }
     function getAdminActionType() public view returns (AdminAction) {
         return adminAction;
