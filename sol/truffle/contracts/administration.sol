@@ -45,6 +45,7 @@ contract AssociationAdministrationMemberban is AssociationAdministration {
     constructor(address _assoCtr, address payable _proposedMember) {
         proposedMember = _proposedMember;
         assoCtr = AssociationOrg(_assoCtr);
+        require(assoCtr.members(_proposedMember), "Only members can be banned");
         require(_proposedMember != assoCtr.owner(), "Owner cannot be banned, change owner first");
     }
     function getAdminActionType() public override view returns (AdminAction) {
@@ -54,10 +55,10 @@ contract AssociationAdministrationMemberban is AssociationAdministration {
 
 contract AssociationAdministrationOwnerchange is AssociationAdministration {
     AdminAction public adminAction = AdminAction.OWNERCHANGE;
-    constructor(address _assoCtr, address payable _proposedMember) {
-        proposedMember = _proposedMember;
+    constructor(address _assoCtr) {
+        proposedMember = msg.sender;
         assoCtr = AssociationOrg(_assoCtr);
-        require(_proposedMember != assoCtr.owner(), "New owner cannot be old owner");
+        require(msg.sender != assoCtr.owner(), "New owner cannot be old owner");
     }
     function getAdminActionType() public override view returns (AdminAction) {
         return adminAction;

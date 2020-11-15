@@ -37,17 +37,17 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("should not allow a non-member to vote", async() => {
-    let admin = await AssoAdminOC.new(assoOrg3Members.address, randomGuy);
+    let admin = await AssoAdminOC.new(assoOrg3Members.address, {from: randomGuy});
     await tryCatch(admin.vote({from: randomGuy}), errTypes.revert);
   });
 
   it("should allow a owner to vote", async() => {
-    let admin = await AssoAdminOC.new(assoOrg3Members.address, randomGuy);
+    let admin = await AssoAdminOC.new(assoOrg3Members.address, {from: randomGuy});
     await admin.vote({from: owner});
   });
 
   it("Valid vote", async() => {
-    let adminOC = await AssoAdminOC.new(assoOrg3Members.address, randomGuy);
+    let adminOC = await AssoAdminOC.new(assoOrg3Members.address, {from: randomGuy});
     let voteCountBefore = await adminOC.voteCount();
     await adminOC.vote({from: wannabeMember});
     let voteCountAfter = await adminOC.voteCount();
@@ -60,7 +60,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("unvote please", async() => {
-    let adminMB = await AssoAdminMB.new(assoOrg3Members.address, randomGuy);
+    let adminMB = await AssoAdminMB.new(assoOrg3Members.address, wannabeMemberToo);
     let voteCountBefore = await adminMB.voteCount();
     await adminMB.vote({from: wannabeMember});
     await adminMB.unvote({from: wannabeMember});
@@ -72,7 +72,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Duplicate vote", async() => {
-    let adminMB = await AssoAdminMB.new(assoOrg3Members.address, randomGuy);
+    let adminMB = await AssoAdminMB.new(assoOrg3Members.address, wannabeMemberToo);
     let voteCountBefore = await adminMB.voteCount();
     await adminMB.vote({from: wannabeMember});
     let voteCountAfter = await adminMB.voteCount();
@@ -100,19 +100,19 @@ contract('AssociationAdministration', async(accounts) => {
   it("bad assoOrg reference", async() => {
     let assoOrg = await AssoOrg.new();
     let assoOrgFake = await AssoOrg.new();
-    let assoAdminOC = await AssoAdminOC.new(assoOrgFake.address, randomGuy);
+    let assoAdminOC = await AssoAdminOC.new(assoOrgFake.address, {from: randomGuy});
     await assoAdminOC.vote();
     await tryCatch(assoOrg.handleOwnerchangeAction(assoAdminOC.address), errTypes.revert);  
   });
 
   it("Simple vote OWNERSHIP change", async() => {
-    let adminOC = await AssoAdminOC.new(assoOrg2Members.address, wannabeMember);
+    let adminOC = await AssoAdminOC.new(assoOrg2Members.address, {from: wannabeMember});
     await adminOC.vote();
     await adminOC.vote({from:wannabeMember});
     let ownerBefore = await assoOrg2Members.owner();
     await assoOrg2Members.handleOwnerchangeAction(adminOC.address);
     let ownerAfter = await assoOrg2Members.owner();
-    let adminOC2 = await AssoAdminOC.new(assoOrg2Members.address, owner);
+    let adminOC2 = await AssoAdminOC.new(assoOrg2Members.address, {from: owner});
     await adminOC2.vote();
     await adminOC2.vote({from:wannabeMember});
     await assoOrg2Members.handleOwnerchangeAction(adminOC2.address);
@@ -123,7 +123,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Simple vote OWNERSHIP change refused because maintenance mode", async() => {
-    let adminOC = await AssoAdminOC.new(assoOrg2Members.address, wannabeMember);
+    let adminOC = await AssoAdminOC.new(assoOrg2Members.address, {from: wannabeMember});
     await adminOC.vote();
     await adminOC.vote({from:wannabeMember});
     await assoOrg2Members.switchMaintenanceMode({from:owner});
@@ -154,14 +154,19 @@ contract('AssociationAdministration', async(accounts) => {
     assert.equal(memberCountAfter, 1, "One member after");
   })
 
-  it("Owner ban ??", async() => {
+  it("Owner ban impossible", async() => {
     let assoOrg = await AssoOrg.new();
     await tryCatch(AssoAdminMB.new(assoOrg.address, owner), errTypes.revert);
   })
 
+  it("Non member ban impossible", async() => {
+    let assoOrg = await AssoOrg.new();
+    await tryCatch(AssoAdminMB.new(assoOrg.address, wannabeMemberToo), errTypes.revert);
+  })
+
   it("Owner owner change ??", async() => {
     let assoOrg = await AssoOrg.new();
-    await tryCatch(AssoAdminOC.new(assoOrg.address, owner), errTypes.revert);
+    await tryCatch(AssoAdminOC.new(assoOrg.address, {from: owner}), errTypes.revert);
   })
 
 });

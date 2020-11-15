@@ -52,7 +52,7 @@ Installer ganache-cli
 ## Compiler et tester
 Afin de pouvoir tester notre code solidity, il faut une blockchain Ethereum de test. Ganache est là pour ça : On lance  
 `ganache-cli -p 8545`  
-Le port 8545 a été déclaré dans le fichier _truffle.js_  
+Le port 8545 a été déclaré dans le fichier _truffle.js_  et permet la fonction entre truffle et ganache.  
 Pour lancer les tests, il suffit de se placer dans ./sol/truffle et de lancer :  
 `truffle test`
 
