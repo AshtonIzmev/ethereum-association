@@ -1,5 +1,5 @@
 var AssoOrg = artifacts.require("AssociationOrg");
-var AssoCoopt = artifacts.require("AssociationCoopt");
+var AssoCoopt = artifacts.require("AssociationAdministrationCooptation");
 var AssoAdminOC = artifacts.require("AssociationAdministrationOwnerchange");
 var AssoAdminMB = artifacts.require("AssociationAdministrationMemberban");
 var AssoAdminSD = artifacts.require("AssociationAdministrationSelfdestruct");
@@ -21,19 +21,19 @@ contract('AssociationAdministration', async(accounts) => {
     assoOrg3Members = await AssoOrg.new();
     // first cooptation
     let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
-    await cooptCtr.cooptMember();
-    await assoOrg3Members.cooptMember(cooptCtr.address, {from: owner});
+    await cooptCtr.vote();
+    await assoOrg3Members.handleCooptationAction(cooptCtr.address, {from: owner});
     // second cooptation
     let cooptCtr2 = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMemberToo});
-    await cooptCtr2.cooptMember();
-    await cooptCtr2.cooptMember({from: wannabeMember})
-    await assoOrg3Members.cooptMember(cooptCtr2.address, {from: wannabeMemberToo});
+    await cooptCtr2.vote();
+    await cooptCtr2.vote({from: wannabeMember})
+    await assoOrg3Members.handleCooptationAction(cooptCtr2.address, {from: wannabeMemberToo});
 
     assoOrg2Members = await AssoOrg.new();
     // first cooptation
     let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, {from: wannabeMember});
-    await cooptCtr3.cooptMember();
-    await assoOrg2Members.cooptMember(cooptCtr3.address, {from: owner});
+    await cooptCtr3.vote();
+    await assoOrg2Members.handleCooptationAction(cooptCtr3.address, {from: owner});
   });
 
   it("should not allow a non-member to vote", async() => {
@@ -53,44 +53,6 @@ contract('AssociationAdministration', async(accounts) => {
     let voteCountAfter = await adminOC.voteCount();
     let didVote = await adminOC.didVotes(wannabeMember);
     let didNotVote = await adminOC.didVotes(wannabeMemberToo);
-    assert.equal(voteCountBefore, 0, "No votes before");
-    assert.equal(voteCountAfter, 1, "One single vote after");
-    assert.isTrue(didVote, "He did vote");
-    assert.isFalse(didNotVote, "He did not vote");
-  });
-
-  it("unvote please", async() => {
-    let adminMB = await AssoAdminMB.new(assoOrg3Members.address, wannabeMemberToo);
-    let voteCountBefore = await adminMB.voteCount();
-    await adminMB.vote({from: wannabeMember});
-    await adminMB.unvote({from: wannabeMember});
-    let voteCountAfter = await adminMB.voteCount();
-    let didNotVote = await adminMB.didVotes(wannabeMember);
-    assert.equal(voteCountBefore, 0, "No votes before");
-    assert.equal(voteCountAfter, 0, "One single vote after");
-    assert.isFalse(didNotVote, "He did not vote");
-  });
-
-  it("Duplicate vote", async() => {
-    let adminMB = await AssoAdminMB.new(assoOrg3Members.address, wannabeMemberToo);
-    let voteCountBefore = await adminMB.voteCount();
-    await adminMB.vote({from: wannabeMember});
-    let voteCountAfter = await adminMB.voteCount();
-    await adminMB.vote({from: wannabeMember});
-    let voteCountAfter2 = await adminMB.voteCount();
-    assert.equal(voteCountBefore, 0, "No votes before");
-    assert.equal(voteCountAfter, 1, "One single vote after");
-    assert.equal(voteCountAfter2, 1, "One single vote after duplicate vote");
-  });
-
-  it("fake unvote please", async() => {
-    let adminSD = await AssoAdminSD.new(assoOrg3Members.address);
-    let voteCountBefore = await adminSD.voteCount();
-    await adminSD.vote({from: wannabeMember});
-    await adminSD.unvote({from: wannabeMemberToo});
-    let voteCountAfter = await adminSD.voteCount();
-    let didVote = await adminSD.didVotes(wannabeMember);
-    let didNotVote = await adminSD.didVotes(wannabeMemberToo);
     assert.equal(voteCountBefore, 0, "No votes before");
     assert.equal(voteCountAfter, 1, "One single vote after");
     assert.isTrue(didVote, "He did vote");
@@ -129,40 +91,6 @@ contract('AssociationAdministration', async(accounts) => {
     await assoOrg2Members.switchMaintenanceMode({from:owner});
     await tryCatch(assoOrg2Members.handleOwnerchangeAction(adminOC.address), errTypes.revert);
   });
-
-  it("Self destruct", async() => {
-    let assoOrg = await AssoOrg.new();
-    let adminSD = await AssoAdminSD.new(assoOrg.address);
-    await adminSD.vote();
-    await assoOrg.handleSelfdestructAction(adminSD.address);
-  });
-
-  it("Member ban", async() => {
-    let assoOrg2Mem = await AssoOrg.new();
-    // first cooptation
-    let cooptCtr3 = await AssoCoopt.new(assoOrg2Mem.address, {from: wannabeMember});
-    await cooptCtr3.cooptMember();
-    await assoOrg2Mem.cooptMember(cooptCtr3.address, {from: owner});
-    
-    let adminMB = await AssoAdminMB.new(assoOrg2Mem.address, wannabeMember);
-    await adminMB.vote();
-    let memberCountBefore = await assoOrg2Mem.membersCount();
-    await assoOrg2Mem.handleMemberbanAction(adminMB.address);
-    let memberCountAfter = await assoOrg2Mem.membersCount();
-
-    assert.equal(memberCountBefore, 2, "2 members before");
-    assert.equal(memberCountAfter, 1, "One member after");
-  })
-
-  it("Owner ban impossible", async() => {
-    let assoOrg = await AssoOrg.new();
-    await tryCatch(AssoAdminMB.new(assoOrg.address, owner), errTypes.revert);
-  })
-
-  it("Non member ban impossible", async() => {
-    let assoOrg = await AssoOrg.new();
-    await tryCatch(AssoAdminMB.new(assoOrg.address, wannabeMemberToo), errTypes.revert);
-  })
 
   it("Owner owner change ??", async() => {
     let assoOrg = await AssoOrg.new();

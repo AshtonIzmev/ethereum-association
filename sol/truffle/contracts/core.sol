@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.7.0;
 
-import "../contracts/referendum.sol";
 import "../contracts/administration.sol";
 
 contract AssociationOrg {
     
     mapping (address => bool) public members;
+    mapping (string => bool) public referendums;
     mapping (address => uint) scores;
     mapping (address => uint) lastScoreUpdate;
     uint public membersCount;
@@ -46,22 +46,16 @@ contract AssociationOrg {
     function switchMaintenanceMode() public onlyOwner {
         maintenanceMode = !maintenanceMode;
     }
-    
-    /// Propose $(_cooptedMember) to be a part of the organization
-    function cooptMember(address _cooptCtr) public maintenanceOff {
-        AssociationCoopt assoCooptCtr = AssociationCoopt(_cooptCtr);
-        require(
-            assoCooptCtr.assoCtr() == this, 
-            "Invalid CooptationContract reference to MoroccanContract");
-        require(
-            assoCooptCtr.cooptationCount() > membersCount/2,
-            "Insufficient number of member cooptations (need 51%)");
-        require(
-            !members[assoCooptCtr.cooptedMember()], 
-            "Already a member");
-        members[assoCooptCtr.cooptedMember()] = true;
-        scores[assoCooptCtr.cooptedMember()] = 90;
-        lastScoreUpdate[assoCooptCtr.cooptedMember()] = block.number;
+
+    function handleCooptationAction(address payable _adminCtr) public maintenanceOff {
+        AssociationAdministrationCooptation assoAdminCtr = AssociationAdministrationCooptation(_adminCtr);
+        require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.COOPTATION, "Cooptation action required");
+        require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
+        require(assoAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
+        require(!members[assoAdminCtr.proposedMember()], "Already a member");
+        members[assoAdminCtr.proposedMember()] = true;
+        scores[assoAdminCtr.proposedMember()] = 90;
+        lastScoreUpdate[assoAdminCtr.proposedMember()] = block.number;
         membersCount ++;
     }
 
@@ -95,16 +89,13 @@ contract AssociationOrg {
         selfdestruct(owner);
     }
 
-    /**
-    function handleRewardAction(address _rewardCtr) public maintenanceOff {
-        AssociationReward assoRewardCtr = AssociationReward(_rewardCtr);
-        require(members[assoRewardCtr.proposedMember()], "Rewarded address must be a member");
-        require(assoRewardCtr.assoCtr() == this, "Invalid RewardContract reference to MoroccanContract");
-        require(assoRewardCtr.voteCount() > membersCount/10, "Need at least 10% of the votes ");
-        scores[assoRewardCtr.proposedMember()] = getScore(assoRewardCtr.proposedMember()) + assoRewardCtr.reward();
-        lastScoreUpdate[assoRewardCtr.proposedMember()] = block.number;
+    function handleReferendumAction(address payable _adminCtr) public maintenanceOff {
+        AssociationAdministrationReferendum assoAdminCtr = AssociationAdministrationReferendum(_adminCtr);
+        require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.REFERENDUM, "Referendum action required");
+        require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
+        require(assoAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
+        referendums[assoAdminCtr.referendumQuestion()] = true;
     }
-     */
     
     /// Check if I am a member (same as calling members public variable)
     function amIMember() public view returns (bool) {
@@ -117,35 +108,5 @@ contract AssociationOrg {
         // score is decreasing by 1 every day (given 15 secondes ethereum block)
         uint sc = scores[_address] - ((1 + block.number - lastScoreUpdate[_address])/5760);
         return sc;
-    }
-}
-
-contract AssociationCoopt {
-    
-    AssociationOrg public assoCtr;
-
-    address public cooptedMember;
-    mapping (address => bool) public cooptations;
-    uint public cooptationCount;
-    
-    constructor(address _assoCtr) {
-        cooptedMember = msg.sender;
-        assoCtr = AssociationOrg(_assoCtr); 
-    }
-    
-    modifier onlyMembers() {
-        require(
-            assoCtr.members(msg.sender),
-            "Only members are allowed to call this"
-        );
-        _;
-    }
-    
-    /// Propose $(_cooptedMember) to be a part of the organization
-    function cooptMember() public onlyMembers {
-        if (!cooptations[msg.sender]) {
-            cooptations[msg.sender] = true;
-            cooptationCount ++;
-        }
     }
 }

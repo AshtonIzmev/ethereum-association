@@ -5,7 +5,7 @@ import "../contracts/core.sol";
 
 abstract contract AssociationAdministration {
     
-    enum AdminAction {MEMBERBAN, OWNERCHANGE, SELFDESTRUCT}
+    enum AdminAction {MEMBERBAN, OWNERCHANGE, SELFDESTRUCT, COOPTATION, REFERENDUM}
     
     AssociationOrg public assoCtr;
 
@@ -69,6 +69,30 @@ contract AssociationAdministrationSelfdestruct is AssociationAdministration {
     AdminAction public adminAction = AdminAction.SELFDESTRUCT;
     constructor(address _assoCtr) {
         assoCtr = AssociationOrg(_assoCtr);
+    }
+    function getAdminActionType() public override view returns (AdminAction) {
+        return adminAction;
+    }
+}
+
+contract AssociationAdministrationCooptation is AssociationAdministration {
+    AdminAction public adminAction = AdminAction.COOPTATION;
+    constructor(address _assoCtr) {
+        proposedMember = msg.sender;
+        assoCtr = AssociationOrg(_assoCtr);
+    }
+    function getAdminActionType() public override view returns (AdminAction) {
+        return adminAction;
+    }
+}
+
+contract AssociationAdministrationReferendum is AssociationAdministration {
+    AdminAction public adminAction = AdminAction.REFERENDUM;
+    string public referendumQuestion;
+    constructor(address _assoCtr, string memory _question) {
+        proposedMember = msg.sender;
+        assoCtr = AssociationOrg(_assoCtr);
+        referendumQuestion = _question;
     }
     function getAdminActionType() public override view returns (AdminAction) {
         return adminAction;
