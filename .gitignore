@@ -1,3 +1,8 @@
 eth/data
 sol/truffle/node_modules
 sol/truffle/build/
+sol/truffle/send-ether.js
+
+deploy_curieux_ma.sh
+deploy_ethereum.sh
+deploy_send_ether.sh

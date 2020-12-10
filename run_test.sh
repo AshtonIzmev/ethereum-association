@@ -3,4 +3,3 @@
 cd ./sol/truffle
 
 truffle test
-

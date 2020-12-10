@@ -13,7 +13,7 @@ Les instructions suivantes permettent de l'installer sous Ubuntu : https://githu
 `ETHDIR=. && geth --datadir ${ETHDIR}/data init ${ETHDIR}/genesis.json`
 
 2. Puis on lance l'instance avec la console :  
-̀`ETHDIR=. &&  geth --datadir ${ETHDIR}/data --nodiscover --networkid 2120212 --port 32313 --rpcport 8543 -verbosity 6 console 2>> ${ETHDIR}/01.log`  
+̀`ETHDIR=. &&  geth --datadir ${ETHDIR}/data --nodiscover --networkid 2120212 --port 32313 --rpcport 8545 -verbosity 6 console 2>> ${ETHDIR}/01.log`  
 Normalement, il n'y a pas de peers :  
 `admin.peers` renvoie []  
 Pour trouver l'enode de l'instance :  
@@ -42,5 +42,3 @@ De la documentation se trouve ici : https://github.com/ethereum/go-ethereum/wiki
 3. On peuple le fichier _static-nodes.json_ avec les noeuds connus.
 4. On informe ces noeuds de notre arrivée sur le réseau afin qu'ils puissent aussi rajouter la nouvelle entrée dans leur _static-nodes.json_
 5. On ouvre les ports rpc de l'instance et on lance le mineur pour se synchroniser avec les autres noeuds (après avoir vérifié que l'ether miné est bien envoyé dans l'adresse puits)
-
-# Clients

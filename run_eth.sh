@@ -1,3 +1,4 @@
 #!/bin/bash
 
-ganache-cli -p 8545
+cd sol/truffle
+ganache-cli -p 8545 --networkId 1338
