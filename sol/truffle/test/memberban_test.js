@@ -15,7 +15,7 @@ contract('AssociationAdministration', async(accounts) => {
   let wannabeMemberToo    = accounts[6];
 
   before(async() => {
-    assoOrg3Members = await AssoOrg.new();
+    assoOrg3Members = await AssoOrg.new("testAssociation3");
     // first cooptation
     let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -26,7 +26,7 @@ contract('AssociationAdministration', async(accounts) => {
     await cooptCtr2.vote({from: wannabeMember})
     await assoOrg3Members.handleCooptationAction(cooptCtr2.address, {from: wannabeMemberToo});
 
-    assoOrg2Members = await AssoOrg.new();
+    assoOrg2Members = await AssoOrg.new("testAssociation2");
     // first cooptation
     let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, {from: wannabeMember});
     await cooptCtr3.vote();
@@ -58,7 +58,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Member ban", async() => {
-    let assoOrg2Mem = await AssoOrg.new();
+    let assoOrg2Mem = await AssoOrg.new("testAssociation2");
     // first cooptation
     let cooptCtr3 = await AssoCoopt.new(assoOrg2Mem.address, {from: wannabeMember});
     await cooptCtr3.vote();
@@ -74,13 +74,26 @@ contract('AssociationAdministration', async(accounts) => {
     assert.equal(memberCountAfter, 1, "One member after");
   })
 
+  it("Duplicate Member ban", async() => {
+    let assoOrg2Mem = await AssoOrg.new("testAssociation2");
+    // first cooptation
+    let cooptCtr3 = await AssoCoopt.new(assoOrg2Mem.address, {from: wannabeMember});
+    await cooptCtr3.vote();
+    await assoOrg2Mem.handleCooptationAction(cooptCtr3.address, {from: owner});
+    
+    let adminMB = await AssoAdminMB.new(assoOrg2Mem.address, wannabeMember);
+    await adminMB.vote();
+    await assoOrg2Mem.handleMemberbanAction(adminMB.address);
+    await tryCatch(assoOrg2Mem.handleMemberbanAction(adminMB.address), errTypes.revert);
+  })
+
   it("Owner ban impossible", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     await tryCatch(AssoAdminMB.new(assoOrg.address, owner), errTypes.revert);
   })
 
   it("Non member ban impossible", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     await tryCatch(AssoAdminMB.new(assoOrg.address, wannabeMemberToo), errTypes.revert);
   })
 

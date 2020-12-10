@@ -11,7 +11,7 @@ contract('AssociationOrg', async (accounts) => {
   let wannabeMember = accounts[5];
 
   before(async() => {
-    assoSimpleOrg = await AssoOrg.new();
+    assoSimpleOrg = await AssoOrg.new("testAssociation");
   });
 
   it("should make the creator of the contract the owner", async() => {
@@ -22,6 +22,11 @@ contract('AssociationOrg', async (accounts) => {
   it("We should have only one member at start", async() => {
     let memCount = await assoSimpleOrg.membersCount();
     assert.equal(memCount, 1, "Only one member");
+  })
+
+  it("Name is correct", async() => {
+    let memCount = await assoSimpleOrg.name();
+    assert.equal(memCount, "testAssociation", "Name is correct");
   })
 
   it("Owner is a member :)", async() => {

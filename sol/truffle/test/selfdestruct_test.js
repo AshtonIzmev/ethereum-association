@@ -16,7 +16,7 @@ contract('AssociationAdministration', async(accounts) => {
 
 
   before(async() => {
-    assoOrg3Members = await AssoOrg.new();
+    assoOrg3Members = await AssoOrg.new("testAssociation3");
     // first cooptation
     let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -27,7 +27,7 @@ contract('AssociationAdministration', async(accounts) => {
     await cooptCtr2.vote({from: wannabeMember})
     await assoOrg3Members.handleCooptationAction(cooptCtr2.address, {from: wannabeMemberToo});
 
-    assoOrg2Members = await AssoOrg.new();
+    assoOrg2Members = await AssoOrg.new("testAssociation2");
     // first cooptation
     let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, {from: wannabeMember});
     await cooptCtr3.vote();
@@ -49,7 +49,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Self destruct", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     let adminSD = await AssoAdminSD.new(assoOrg.address);
     await adminSD.vote();
     await assoOrg.handleSelfdestructAction(adminSD.address);

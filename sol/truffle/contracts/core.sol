@@ -6,17 +6,20 @@ import "../contracts/administration.sol";
 contract AssociationOrg {
     
     mapping (address => bool) public members;
-    mapping (string => bool) public referendums;
+    mapping (address => bool) public seenAdmins;
     mapping (address => uint) scores;
     mapping (address => uint) lastScoreUpdate;
     uint public membersCount;
     address payable public owner;
     bool public maintenanceMode;
+    string public name;
+    string[] public referendums;
     
-    constructor() {
+    constructor(string memory _name) {
         owner = msg.sender;
         members[msg.sender] = true;
         scores[msg.sender] = 90;
+        name = _name;
         lastScoreUpdate[msg.sender] = block.number;
         membersCount = 1;
     }
@@ -57,6 +60,7 @@ contract AssociationOrg {
         scores[assoAdminCtr.proposedMember()] = 90;
         lastScoreUpdate[assoAdminCtr.proposedMember()] = block.number;
         membersCount ++;
+        seenAdmins[_adminCtr] = true;
     }
 
     function handleMemberbanAction(address payable _adminCtr) public maintenanceOff {
@@ -67,8 +71,10 @@ contract AssociationOrg {
         require(membersCount > 1, "Can't ban if only a one member left");
         require(assoAdminCtr.proposedMember() != owner, "Member to ban cannot be the owner");
         require(members[assoAdminCtr.proposedMember()], "Member to ban is not a member");
+        require(!seenAdmins[_adminCtr], "Already acted administration proposal");
         members[assoAdminCtr.proposedMember()] = false;
         membersCount --;
+        seenAdmins[_adminCtr] = true;
     }
 
     function handleOwnerchangeAction(address payable _adminCtr) public maintenanceOff {
@@ -78,7 +84,9 @@ contract AssociationOrg {
         require(assoAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
         require(assoAdminCtr.proposedMember() != owner, "New owner cannot be the current owner");
         require(members[assoAdminCtr.proposedMember()], "New owner is not a member");
+        require(!seenAdmins[_adminCtr], "Already acted administration proposal");
         owner = assoAdminCtr.proposedMember();
+        seenAdmins[_adminCtr] = true;
     }
 
     function handleSelfdestructAction(address payable _adminCtr) public maintenanceOff {
@@ -86,7 +94,9 @@ contract AssociationOrg {
         require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.SELFDESTRUCT, "Selfdestruct action required");
         require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
         require(assoAdminCtr.voteCount() > (2*membersCount)/3, "Need at least 66% of the votes ");
+        require(!seenAdmins[_adminCtr], "Already acted administration proposal");
         selfdestruct(owner);
+        seenAdmins[_adminCtr] = true;
     }
 
     function handleReferendumAction(address payable _adminCtr) public maintenanceOff {
@@ -94,7 +104,9 @@ contract AssociationOrg {
         require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.REFERENDUM, "Referendum action required");
         require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
         require(assoAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
-        referendums[assoAdminCtr.referendumQuestion()] = true;
+        require(!seenAdmins[_adminCtr], "Already acted administration proposal");
+        referendums.push(assoAdminCtr.referendumQuestion());
+        seenAdmins[_adminCtr] = true;
     }
     
     /// Check if I am a member (same as calling members public variable)
@@ -102,11 +114,19 @@ contract AssociationOrg {
         return members[msg.sender];
     }
 
-    /// Check if I am a member (same as calling members public variable)
     function getScore(address _address) public view returns (uint) {
         require(members[_address], "_add is not a member");
         // score is decreasing by 1 every day (given 15 secondes ethereum block)
         uint sc = scores[_address] - ((1 + block.number - lastScoreUpdate[_address])/5760);
         return sc;
     }
+
+    function getReferendum(uint index) public view returns(string memory) {
+        return referendums[index];
+    }
+
+    function getReferendumsCount() public view returns(uint) {
+        return referendums.length;
+    }
+    
 }

@@ -14,7 +14,7 @@ contract('AssociationAdministration', async(accounts) => {
   let wannabeMemberToo    = accounts[6];
 
   before(async() => {
-    assoOrg3Members = await AssoOrg.new();
+    assoOrg3Members = await AssoOrg.new("testAssociation3");
     // first cooptation
     let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -80,6 +80,41 @@ contract('AssociationAdministration', async(accounts) => {
     assert.equal(voteCountAfter, 1, "One single vote after");
     assert.isTrue(didVote, "He did vote");
     assert.isFalse(didNotVote, "He did not vote");
+  });
+
+  it("Valid referendum", async() => {
+    let assoRef = await AssoReferendum.new(assoOrg3Members.address, "What is the question ?");
+    await assoRef.vote({from: owner});
+    await assoRef.vote({from: wannabeMember});
+    await assoRef.vote({from: wannabeMemberToo});
+    await assoOrg3Members.handleReferendumAction(assoRef.address);
+    let count = await assoOrg3Members.getReferendumsCount();
+    let proposition = await assoOrg3Members.getReferendum(0);
+    assert.equal(proposition, "What is the question ?");
+    assert.equal(count, 1);
+
+    let assoRef2 = await AssoReferendum.new(assoOrg3Members.address, "What is the answer ?");
+    await assoRef2.vote({from: owner});
+    await assoRef2.vote({from: wannabeMember});
+    await assoRef2.vote({from: wannabeMemberToo});
+    await assoOrg3Members.handleReferendumAction(assoRef2.address);
+    let count2 = await assoOrg3Members.getReferendumsCount();
+    let proposition2 = await assoOrg3Members.getReferendum(1);
+    assert.equal(proposition2, "What is the answer ?");
+    assert.equal(count2, 2);
+  });
+
+  it("Duplicate referendum", async() => {
+    let assoRef = await AssoReferendum.new(assoOrg3Members.address, "42");
+    await assoRef.vote({from: owner});
+    await assoRef.vote({from: wannabeMember});
+    await assoRef.vote({from: wannabeMemberToo});
+    await assoOrg3Members.handleReferendumAction(assoRef.address);
+    await tryCatch(assoOrg3Members.handleReferendumAction(assoRef.address), errTypes.revert);
+    let count = await assoOrg3Members.getReferendumsCount();
+    let proposition = await assoOrg3Members.getReferendum(2);
+    assert.equal(proposition, "42");
+    assert.equal(count, 3);
   });
 
 });

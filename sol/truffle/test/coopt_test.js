@@ -13,7 +13,7 @@ contract('AssociationAdministration', async(accounts) => {
   let wannabeMemberTooToo = accounts[7];
 
   it("Cooptation of the creator is ok", async() => {
-    let assoOrg = await AssoOrg.new({from: owner});
+    let assoOrg = await AssoOrg.new("testAssociation", {from: owner});
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     let cooptedMem = await cooptCtr.proposedMember();
     await cooptCtr.vote({from: owner});
@@ -30,7 +30,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Accepted cooptation", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     await cooptCtr.vote();
     await assoOrg.handleCooptationAction(cooptCtr.address, {from: owner});
@@ -41,7 +41,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Refused cooptation in maintenance mode", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     await assoOrg.switchMaintenanceMode();
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -49,7 +49,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Accepted double cooptation", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     // first cooptation
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -65,7 +65,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Accepted triple cooptation", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     // first cooptation
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -86,15 +86,15 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Invalid cooptation organisation reference", async() => {
-    let assoOrg = await AssoOrg.new();
-    let assoOrgFake = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
+    let assoOrgFake = await AssoOrg.new("testAssociationFake");
     let cooptCtr = await AssoCoopt.new(assoOrgFake.address, {from: wannabeMember});
     await cooptCtr.vote();
     await tryCatch(assoOrg.handleCooptationAction(cooptCtr.address, {from: owner}), errTypes.revert);
   });
 
   it("Insufficient cooptations", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     // first cooptation OK
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -106,7 +106,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Already a member", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     // first cooptation OK
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -119,9 +119,17 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Cooptation of a random guy is not ok", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
     await tryCatch(cooptCtr.vote.call({from: randomGuy}), errTypes.revert);
+  });
+
+  it("Duplicate valid cooptation", async() => {
+    let assoOrg = await AssoOrg.new("testAssociation");
+    let cooptCtr = await AssoCoopt.new(assoOrg.address, {from: wannabeMember});
+    await cooptCtr.vote();
+    await assoOrg.handleCooptationAction(cooptCtr.address, {from: owner});
+    await tryCatch(assoOrg.handleCooptationAction(cooptCtr.address, {from: owner}), errTypes.revert);
   });
 
 });

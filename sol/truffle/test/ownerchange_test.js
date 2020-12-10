@@ -18,7 +18,7 @@ contract('AssociationAdministration', async(accounts) => {
 
 
   before(async() => {
-    assoOrg3Members = await AssoOrg.new();
+    assoOrg3Members = await AssoOrg.new("testAssociation3");
     // first cooptation
     let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
     await cooptCtr.vote();
@@ -29,7 +29,7 @@ contract('AssociationAdministration', async(accounts) => {
     await cooptCtr2.vote({from: wannabeMember})
     await assoOrg3Members.handleCooptationAction(cooptCtr2.address, {from: wannabeMemberToo});
 
-    assoOrg2Members = await AssoOrg.new();
+    assoOrg2Members = await AssoOrg.new("testAssociation2");
     // first cooptation
     let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, {from: wannabeMember});
     await cooptCtr3.vote();
@@ -60,8 +60,8 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("bad assoOrg reference", async() => {
-    let assoOrg = await AssoOrg.new();
-    let assoOrgFake = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
+    let assoOrgFake = await AssoOrg.new("testAssociationFake");
     let assoAdminOC = await AssoAdminOC.new(assoOrgFake.address, {from: randomGuy});
     await assoAdminOC.vote();
     await tryCatch(assoOrg.handleOwnerchangeAction(assoAdminOC.address), errTypes.revert);  
@@ -84,6 +84,18 @@ contract('AssociationAdministration', async(accounts) => {
     assert.equal(ownerAfter2, owner, "Owneship After again");
   });
 
+  it("Duplicate vote OWNERSHIP change", async() => {
+    let adminOC = await AssoAdminOC.new(assoOrg2Members.address, {from: wannabeMember});
+    await adminOC.vote();
+    await adminOC.vote({from:wannabeMember});
+    await assoOrg2Members.handleOwnerchangeAction(adminOC.address);
+    let adminOC2 = await AssoAdminOC.new(assoOrg2Members.address, {from: owner});
+    await adminOC2.vote();
+    await adminOC2.vote({from:wannabeMember});
+    await assoOrg2Members.handleOwnerchangeAction(adminOC2.address);
+    await tryCatch(assoOrg2Members.handleOwnerchangeAction(adminOC.address), errTypes.revert);
+  });
+
   it("Simple vote OWNERSHIP change refused because maintenance mode", async() => {
     let adminOC = await AssoAdminOC.new(assoOrg2Members.address, {from: wannabeMember});
     await adminOC.vote();
@@ -92,8 +104,9 @@ contract('AssociationAdministration', async(accounts) => {
     await tryCatch(assoOrg2Members.handleOwnerchangeAction(adminOC.address), errTypes.revert);
   });
 
+
   it("Owner owner change ??", async() => {
-    let assoOrg = await AssoOrg.new();
+    let assoOrg = await AssoOrg.new("testAssociation");
     await tryCatch(AssoAdminOC.new(assoOrg.address, {from: owner}), errTypes.revert);
   })
 
