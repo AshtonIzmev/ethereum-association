@@ -108,8 +108,7 @@ enode=`geth attach /home/ethereum/distributor/data/geth.ipc --exec admin.nodeInf
 geth attach /home/ethereum/node/data/geth.ipc --exec "admin.addPeer(${enode})"
 geth attach /home/ethereum/node/data/geth.ipc --exec "admin.peers"
 
-geth attach /home/ethereum/distributor/data/geth.ipc --exec "admin.peers"
+geth attach /home/ethereum/distributor/data/geth.ipc
 
-systemctl  stop gethn gethd
-
-systemctl  start gethn gethd
+systemctl stop gethn gethd
+systemctl start gethn gethd
