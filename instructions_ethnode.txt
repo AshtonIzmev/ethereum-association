@@ -99,14 +99,15 @@ rm -rf node/data/geth distributor/data/geth node/data/history distributor/data/h
 /usr/bin/geth init --datadir /home/ethereum/node/data /home/ethereum/node/genesis.json
 /usr/bin/geth init --datadir /home/ethereum/distributor/data /home/ethereum/node/genesis.json
 
-/usr/bin/geth --datadir /home/ethereum/distributor/data --nodiscover --networkid 212 --port 30305 --unlock 0xF72eF0d377515c11056660be5D65A3B407095254 --password /home/ethereum/distributor/password.txt --mine --syncmode full
+/usr/bin/geth --datadir /home/ethereum/distributor/data --nodiscover --networkid 212 --port 30305 --unlock 0xF72eF0d377515c11056660be5D65A3B407095254 --password /home/ethereum/distributor/password.txt --miner.gasprice 0 --txpool.pricelimit 0  --mine --syncmode full
 
-/usr/bin/geth --datadir /home/ethereum/node/data --networkid 212 --http --http.addr 0.0.0.0 --http.corsdomain "curieux.ma" --http.api web3,personal,eth,net --port 30303 --syncmode full
+/usr/bin/geth --datadir /home/ethereum/node/data --networkid 212 --http --http.addr 0.0.0.0 --http.corsdomain "curieux.ma" --miner.gasprice 0 --txpool.pricelimit 0 --http.api web3,personal,eth,net --http.vhosts '*' --port 30303 --syncmode full
 
 
 enode=`geth attach /home/ethereum/distributor/data/geth.ipc --exec admin.nodeInfo.enode`
 geth attach /home/ethereum/node/data/geth.ipc --exec "admin.addPeer(${enode})"
 geth attach /home/ethereum/node/data/geth.ipc --exec "admin.peers"
+
 
 geth attach /home/ethereum/distributor/data/geth.ipc
 geth attach /home/ethereum/node/data/geth.ipc

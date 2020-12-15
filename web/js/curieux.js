@@ -5,6 +5,9 @@ const ethereumPort = '8545'
 // DICTIONNARIES
 /////////////////////////
 
+const gasGlobal = 6054108;
+const gasPriceGlobal = '2000000000';
+
 var dictLib = {
     "0": "est un bannissement de membre",
     "2": "est une dissolution d'association",
@@ -303,7 +306,9 @@ function createAssociation() {
                     arguments: [name]
                 })
                     .send({
-                        from: account
+                        from: account,
+                        gas: gasGlobal,
+                        gasPrice: gasPriceGlobal
                     }, function (error, transactionHash) { console.log(transactionHash); })
                     .on('error', function (error) {
                         console.log(error);
@@ -348,7 +353,11 @@ function createAdmin(args, ctrJson, callback_success, typeStr, statuId) {
                     data: bytecode,
                     arguments: args
                 })
-                    .send({ from: account }, function (error, transactionHash) { console.log(transactionHash); })
+                    .send({ 
+                        from: account,
+                        gas: gasGlobal,
+                        gasPrice: gasPriceGlobal
+                    }, function (error, transactionHash) { console.log(transactionHash); })
                     .on('error', function (error) {
                         console.log(error);
                         $('.toast-header').text(typeStr);
@@ -574,7 +583,9 @@ function seekHistoricAdminContract(address) {
 function handleVoteAdminContract(ctr, account) {
     if (!ctr) { $("#seek-admin").val(""); return; }
     ctr.methods.vote().send({
-        from: account
+        from: account,
+        gas: gasGlobal,
+        gasPrice: gasPriceGlobal
     }, function (error, transactionHash) {
         console.log(transactionHash);
     })
@@ -606,7 +617,9 @@ function voteForAdminContract() {
 function handleActAdminContract(ctr, account) {
     if (!ctr) { $("#seek-admin").val(""); return; }
     ctr.methods[dictMethods[$("#admin-select").text()]]($("#seek-admin").val()).send({
-        from: account
+        from: account,
+        gas: gasGlobal,
+        gasPrice: gasPriceGlobal
     }, function (error, transactionHash) {
         console.log(transactionHash);
     })

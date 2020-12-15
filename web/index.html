@@ -95,9 +95,10 @@
 				</div>
 				<div class="card-body details-hide" id="sought-assoc">
 					<p><span class='title'>Association</span> <span id='name-seek-assoc'></span> : <span id='addassoc'></span></p>
+
 					<div class="myassoc">
 						<p><span class='title'>Président</span> : <span id="president"></span></p>
-						<span id="become-owner">
+						<span id="become-owner" class="ismember">
 							<button onclick="becomeOwner()" type="button" class="btn btn-lg btn-block btn-dark mb-2">Devenir président</button>
 						</span>
 						<div id="become-owner-statut"></div>
@@ -126,14 +127,14 @@
 
 					<p><span class='title'>Nombre de membres</span> : <span id="nbmembers"></span></p>
 
-					<span id="member-ban">
+					<span id="member-ban" class="ismember">
 						<h6>Bannir un membre</h6>
 						<input type='text' class='form-control mb-2' id='member-ban-member' placeholder='Membre à bannir'>
 						<button onclick='memberBan()' type='button' class='btn btn-lg btn-block btn-primary mb-2'>Proposer</button>
 					</span>
 					<div id="member-ban-statut"></div>
 
-					<span id="ask-referendum">
+					<span id="ask-referendum" class="ismember">
 						<h6>Demander un referendum</h6>
 						<input type='text' class='form-control mb-2' id='ask-referendum-question' placeholder='Question fermée à poser'>
 						<button onclick='sendReferendum()' type='button' class='btn btn-lg btn-block btn-primary mb-2'>Proposer</button>
