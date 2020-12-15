@@ -235,7 +235,7 @@ async function main() {
         web3.eth.getCoinbase(function (err, account) {
             if (err === null) {
                 web3.eth.getBalance(account, function (err, balance) {
-                    $("#accountAddress").html("Votre adresse public / compte Ethereum: " + account + " avec un solde de " + Math.pow(10, (Math.log10(balance)-18)) + "ETH");
+                    $("#accountAddress").html("Votre adresse public / compte Ethereum: " + account + " avec un solde de " + web3.utils.fromWei(balance, 'ether') + "ETH");
                 });
             }
         });

@@ -2,7 +2,7 @@
 apt-get update
 apt-get upgrade
 
-apt-get install fail2ban
+apt-get install -y fail2ban
 
 useradd deploy -s /bin/bash
 mkdir /home/deploy
@@ -109,6 +109,7 @@ geth attach /home/ethereum/node/data/geth.ipc --exec "admin.addPeer(${enode})"
 geth attach /home/ethereum/node/data/geth.ipc --exec "admin.peers"
 
 geth attach /home/ethereum/distributor/data/geth.ipc
+geth attach /home/ethereum/node/data/geth.ipc
 
 systemctl stop gethn gethd
 systemctl start gethn gethd
