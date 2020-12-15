@@ -239,6 +239,7 @@ async function main() {
             if (err === null) {
                 web3.eth.getBalance(account, function (err, balance) {
                     $("#accountAddress").html("Votre adresse public / compte Ethereum: " + account + " avec un solde de " + web3.utils.fromWei(balance, 'ether') + "ETH");
+                    $(".container").show();
                 });
             }
         });
