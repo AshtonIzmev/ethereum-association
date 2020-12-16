@@ -8,12 +8,23 @@ const ethereumPort = '8545'
 const gasGlobal = 6054108;
 const gasPriceGlobal = '2000000000';
 
+eraseBtn1 = '  <button type="button" class="btn btn-danger" style="padding: 0;" onclick="removeFromStore(';
+eraseBtn2 = ');location.reload();"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg></button>';
+
 var dictLib = {
     "0": "est un bannissement de membre",
     "2": "est une dissolution d'association",
     "3": "est une cooptation",
     "4": "est un referendum",
     "1": "est un changement de propriétaire"
+};
+
+var dictSeuil = {
+    "0": 34,
+    "2": 67,
+    "3": 51,
+    "4": 51,
+    "1": 51
 };
 
 var dictContract = {
@@ -132,7 +143,12 @@ function loadAssociationHistoric() {
         $("#assoc-histo").append(
             "<p>Association <a title='Charger cette association' href='#reche' onclick='seekHistoricAssociation(\"" + tuple[0] + "\")'>"
             + tuple[0] + "</a> créée à "
-            + tuple[1] + "</p>");
+            + tuple[1] 
+            + eraseBtn1
+            + "'" + tuple[0] + "'" 
+            + ",'associations'" 
+            + eraseBtn2
+            + "</p>");
     });
 }
 
@@ -144,7 +160,12 @@ function loadCooptationHistoric() {
         $("#coopt-histo").append(
             "<p>Cooptation <a title='Charger cette cooptation' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
             + tuple[0] + "</a> créée à "
-            + tuple[1] + "</p>");
+            + tuple[1] 
+            + eraseBtn1
+            + "'" + tuple[0] + "'" 
+            + ",'cooptations'" 
+            + eraseBtn2
+            + "</p>");
     });
 }
 
@@ -156,7 +177,12 @@ function loadBanHistoric() {
         $("#ban-histo").append(
             "<p>Bannissement <a title='Charger ce bannissement' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
             + tuple[0] + "</a> créée à "
-            + tuple[1] + "</p>");
+            + tuple[1] 
+            + eraseBtn1
+            + "'" + tuple[0] + "'" 
+            + ",'bans'" 
+            + eraseBtn2
+            + "</p>");
     });
 }
 
@@ -168,7 +194,12 @@ function loadDissolHistoric() {
         $("#dissol-histo").append(
             "<p>Dissolution <a title='Charger cette dissolution' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
             + tuple[0] + "</a> créée à "
-            + tuple[1] + "</p>");
+            + tuple[1] 
+            + eraseBtn1
+            + "'" + tuple[0] + "'" 
+            + ",'dissolutions'" 
+            + eraseBtn2
+            + "</p>");
     });
 }
 
@@ -180,7 +211,12 @@ function loadOCHistoric() {
         $("#oc-histo").append(
             "<p>Changement de propriétaire <a title='Charger ce changement de propriétaire' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
             + tuple[0] + "</a> créée à "
-            + tuple[1] + "</p>");
+            + tuple[1] 
+            + eraseBtn1
+            + "'" + tuple[0] + "'" 
+            + ",'ownerchanges'" 
+            + eraseBtn2
+            + "</p>");
     });
 }
 
@@ -192,7 +228,12 @@ function loadReferendumHistoric() {
         $("#refer-histo").append(
             "<p>Referendum <a title='Charger ce referendum' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
             + tuple[0] + "</a> créée à "
-            + tuple[1] + "</p>");
+            + tuple[1] 
+            + eraseBtn1
+            + "'" + tuple[0] + "'" 
+            + ",'referendums'" 
+            + eraseBtn2
+            + "</p>");
     });
 }
 
@@ -461,6 +502,17 @@ function handleSeekAssociation(ctr, account) {
     }).catch(function (error) { showToast(); console.log(error); return; });
 };
 
+function setMemberCountForVote(address, nbV, seuil) {
+    getCtrObj(address, "AssociationOrg.json", function(ctr, account) {
+        ctr.methods.membersCount().call().then(function (nb) {
+            $("#details-admin-membercount").text(" sur " + nb + " membre(s) soit " + 100*nbV/nb + "%");
+            if (100*nbV >= seuil*nb) { 
+                $("#seuil-enough").show();
+            }
+        }).catch(function (error) { showToast(); console.log(error); return; });
+    });
+};
+
 /////////////////////////
 // CREATE ADMIN CONTRACT
 /////////////////////////
@@ -548,10 +600,6 @@ function handleSeekAdminContract(ctr, account) {
         $("#addadmin-admin").text(adminAddress);
         $("#details-admin-type").text(dictLib[tp]);
 
-        ctr.methods.assoCtr().call().then(function (add) {
-            $("#addassoc-admin").text(add);
-        }).catch(function (error) { showToast(); console.log(error); return; });
-
         ctr.methods.proposedMember().call().then(function (member) {
             if (member != "0x0000000000000000000000000000000000000000") {
                 $("#details-admin-member").text(" concernant la personne " + member);
@@ -560,6 +608,11 @@ function handleSeekAdminContract(ctr, account) {
 
         ctr.methods.voteCount().call().then(function (nbVote) {
             $("#details-admin-vote").text(nbVote);
+            $("#details-admin-seuil").text("(seuil requis : " + dictSeuil[tp] + "%)");
+            ctr.methods.assoCtr().call().then(function (add) {
+                $("#addassoc-admin").text(add);
+                setMemberCountForVote(add, nbVote, dictSeuil[tp])
+            }).catch(function (error) { showToast(); console.log(error); return; });
         }).catch(function (error) { showToast(); console.log(error); return; });
 
         ctr.methods.didVotes(account).call().then(function (didVote) {

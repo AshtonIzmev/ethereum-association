@@ -172,6 +172,8 @@
 								Il y a 
 								<span id='details-admin-vote'></span>
 								votes en faveur
+								<span id="details-admin-membercount"></span>
+								<span id="details-admin-seuil"></span>
 								<span id='details-admin-didvote'></span>
 							</p>
 
@@ -181,15 +183,17 @@
 								<span id="vote-status"></span>
 							</p>
 
-							<p>
-								Si vous pensez qu'il y a assez de vote pour, il est possible d'acter l'action d'administration :
-							</p>
+							<span id="seuil-enough" style="display:none;">
+								<p>
+									Lorsque le seuil requis est atteint, il est possible d'acter l'action d'administration :
+								</p>
 
-							<button onclick="actAdminContract()" id="act-admin" type="button" class="btn btn-lg btn-block btn-info mb-2">Acter</button>
+								<button onclick="actAdminContract()" id="act-admin" type="button" class="btn btn-lg btn-block btn-info mb-2">Acter</button>
 
-							<p>
-								<span id="act-status"></span>
-							</p>
+								<p>
+									<span id="act-status"></span>
+								</p>
+							</span>
 
 						</div>
 					</ul>
