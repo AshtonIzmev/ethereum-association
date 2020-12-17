@@ -367,7 +367,12 @@ function getEther() {
                     .fail(function (jqxhr, textStatus, error) {
                         $('.toast-header').text("Envoi d'Ether");
                         if (jqxhr.responseJSON) {
-                            $('.toast-body').text(jqxhr.responseJSON.data.stack.split('t.')[0]);
+                            if (jqxhr.responseJSON.data) {
+                                $('.toast-body').text(jqxhr.responseJSON.data.stack.split('t.')[0]);
+                            }
+                            if (jqxhr.responseJSON.response) {
+                                $('.toast-body').text(jqxhr.responseJSON.response);
+                            }
                         } else {
                             $('.toast-body').text("Une erreur est survenue");
                         }
