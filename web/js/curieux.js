@@ -101,148 +101,83 @@ function escapeXml(unsafe) {
 var emptyRes = '{"r":[]}';
 
 function getStore() {
-    return {
-        "associations": window.localStorage.getItem('associations') || emptyRes,
-        "cooptations": window.localStorage.getItem('cooptations') || emptyRes,
-        "bans": window.localStorage.getItem('bans') || emptyRes,
-        "dissolutions": window.localStorage.getItem('dissolutions') || emptyRes,
-        "ownerchanges": window.localStorage.getItem('ownerchanges') || emptyRes,
-        "referendums": window.localStorage.getItem('referendums') || emptyRes
-    };
+    return window.localStorage.getItem('events') || emptyRes;
 };
 
 function addToStore(assoc, typeStore) {
-    var current = window.localStorage.getItem(typeStore) || emptyRes;
+    var current = window.localStorage.getItem("events") || emptyRes;
     dicur = JSON.parse(current);
-    dicur['r'].push((assoc + '|' + new Date().toISOString()));
-    window.localStorage.setItem(typeStore, JSON.stringify(dicur));
+    dicur['r'].push((assoc + '|' + new Date().toISOString() + "|" + typeStore));
+    window.localStorage.setItem("events", JSON.stringify(dicur));
 };
 
-function removeFromStore(assoc, typeStore) {
-    var current = window.localStorage.getItem(typeStore) || emptyRes;
+function addRechercheToStore(assoc, typeStore) {
+    var current = window.localStorage.getItem("events") || emptyRes;
     dicur = JSON.parse(current);
-    var ind = dicur['r'].map(x => x.split("|")[0]).indexOf(assoc)
+    var ind = dicur['r'].map(x => x.split("|")[0]).indexOf(assoc);
+    if (ind > -1) {
+        return;
+    }
+    dicur['r'].push((assoc + '|' + new Date().toISOString() + "|" + typeStore));
+    window.localStorage.setItem("events", JSON.stringify(dicur));
+};
+
+function removeFromStore(assoc) {
+    var current = window.localStorage.getItem("events") || emptyRes;
+    dicur = JSON.parse(current);
+    var ind = dicur['r'].map(x => x.split("|")[0]).indexOf(assoc);
     if (ind > -1) {
         dicur['r'].splice(ind, 1);
     }
-    window.localStorage.setItem(typeStore, JSON.stringify(dicur));
+    window.localStorage.setItem("events", JSON.stringify(dicur));
 };
 
-function addAssociationToStore(assoc) { addToStore(assoc, "associations"); };
-function addCooptationToStore(assoc) { addToStore(assoc, "cooptations"); };
-function addBanToStore(assoc) { addToStore(assoc, "bans"); };
-function addDissolutionToStore(assoc) { addToStore(assoc, "dissolutions"); };
-function addOwnerChangeToStore(assoc) { addToStore(assoc, "ownerchanges"); };
-function addReferendumToStore(assoc) { addToStore(assoc, "referendums"); };
+function addAssociationToStore(assoc) { addToStore(assoc, "association"); };
+function addCooptationToStore(assoc) { addToStore(assoc, "cooptation"); };
+function addBanToStore(assoc) { addToStore(assoc, "ban"); };
+function addDissolutionToStore(assoc) { addToStore(assoc, "dissolution"); };
+function addOwnerChangeToStore(assoc) { addToStore(assoc, "ownerchange"); };
+function addReferendumToStore(assoc) { addToStore(assoc, "referendum"); };
 
-function loadAssociationHistoric() {
-    var assoList = JSON.parse(getStore()['associations'])['r'];
-    $("#assoc-histo").html("")
-    assoList.forEach(function (a) {
+function loadHistoric() {
+    var eventList = JSON.parse(getStore())['r'];
+    $("#event-histo").html("");
+    eventList.forEach(function (a) {
         var tuple = a.split("|");
-        $("#assoc-histo").append(
-            "<p>Association <a title='Charger cette association' href='#reche' onclick='seekHistoricAssociation(\"" + tuple[0] + "\")'>"
-            + tuple[0] + "</a> créée à "
-            + tuple[1] 
-            + eraseBtn1
-            + "'" + tuple[0] + "'" 
-            + ",'associations'" 
-            + eraseBtn2
-            + "</p>");
+        if (!tuple[2].startsWith("r_")) {
+            $("#event-histo").append(
+                "<p>"
+                + tuple[2].charAt(0).toUpperCase() + tuple[2].slice(1)
+                + " <a title='Charger "
+                + tuple[2]
+                + "' href='#reche' onclick='"
+                + (tuple[2] == "association" ? "seekHistoricAssociation" : "seekHistoricAdminContract")
+                + "(\"" + tuple[0] + "\")'>"
+                + tuple[0] + "</a> <span class='creaevent'>créée</span> à "
+                + tuple[1] 
+                + eraseBtn1
+                + "'" + tuple[0] + "'" 
+                + eraseBtn2
+                + "</p>"
+            );
+        } else {
+            $("#event-histo").append(
+                "<p>"
+                + tuple[2].charAt(2).toUpperCase() + tuple[2].slice(3)
+                + " <a title='Charger "
+                + tuple[2]
+                + "' href='#reche' onclick='"
+                + (tuple[2] == "r_association" ? "seekHistoricAssociation" : "seekHistoricAdminContract")
+                + "(\"" + tuple[0] + "\")'>"
+                + tuple[0] + "</a> <span class='rechevent'>recherchée</span> à "
+                + tuple[1] 
+                + eraseBtn1
+                + "'" + tuple[0] + "'" 
+                + eraseBtn2
+                + "</p>"
+            );
+        }
     });
-}
-
-function loadCooptationHistoric() {
-    var list = JSON.parse(getStore()['cooptations'])['r'];
-    $("#coopt-histo").html("")
-    list.forEach(function (a) {
-        var tuple = a.split("|");
-        $("#coopt-histo").append(
-            "<p>Cooptation <a title='Charger cette cooptation' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
-            + tuple[0] + "</a> créée à "
-            + tuple[1] 
-            + eraseBtn1
-            + "'" + tuple[0] + "'" 
-            + ",'cooptations'" 
-            + eraseBtn2
-            + "</p>");
-    });
-}
-
-function loadBanHistoric() {
-    var list = JSON.parse(getStore()['bans'])['r'];
-    $("#ban-histo").html("")
-    list.forEach(function (a) {
-        var tuple = a.split("|");
-        $("#ban-histo").append(
-            "<p>Bannissement <a title='Charger ce bannissement' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
-            + tuple[0] + "</a> créée à "
-            + tuple[1] 
-            + eraseBtn1
-            + "'" + tuple[0] + "'" 
-            + ",'bans'" 
-            + eraseBtn2
-            + "</p>");
-    });
-}
-
-function loadDissolHistoric() {
-    var list = JSON.parse(getStore()['dissolutions'])['r'];
-    $("#dissol-histo").html("")
-    list.forEach(function (a) {
-        var tuple = a.split("|");
-        $("#dissol-histo").append(
-            "<p>Dissolution <a title='Charger cette dissolution' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
-            + tuple[0] + "</a> créée à "
-            + tuple[1] 
-            + eraseBtn1
-            + "'" + tuple[0] + "'" 
-            + ",'dissolutions'" 
-            + eraseBtn2
-            + "</p>");
-    });
-}
-
-function loadOCHistoric() {
-    var list = JSON.parse(getStore()['ownerchanges'])['r'];
-    $("#oc-histo").html("")
-    list.forEach(function (a) {
-        var tuple = a.split("|");
-        $("#oc-histo").append(
-            "<p>Changement de propriétaire <a title='Charger ce changement de propriétaire' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
-            + tuple[0] + "</a> créée à "
-            + tuple[1] 
-            + eraseBtn1
-            + "'" + tuple[0] + "'" 
-            + ",'ownerchanges'" 
-            + eraseBtn2
-            + "</p>");
-    });
-}
-
-function loadReferendumHistoric() {
-    var list = JSON.parse(getStore()['referendums'])['r'];
-    $("#refer-histo").html("")
-    list.forEach(function (a) {
-        var tuple = a.split("|");
-        $("#refer-histo").append(
-            "<p>Referendum <a title='Charger ce referendum' href='#gesti' onclick='seekHistoricAdminContract(\"" + tuple[0] + "\")'>"
-            + tuple[0] + "</a> créée à "
-            + tuple[1] 
-            + eraseBtn1
-            + "'" + tuple[0] + "'" 
-            + ",'referendums'" 
-            + eraseBtn2
-            + "</p>");
-    });
-}
-
-function loadAdminHistoric() {
-    loadBanHistoric();
-    loadCooptationHistoric();
-    loadDissolHistoric();
-    loadOCHistoric();
-    loadReferendumHistoric();
 };
 
 /////////////////////////
@@ -286,12 +221,7 @@ async function main() {
         });
     });
     $('.toast').toast({ 'delay': 2000 });
-    loadAssociationHistoric();
-    loadBanHistoric();
-    loadCooptationHistoric();
-    loadDissolHistoric();
-    loadOCHistoric();
-    loadReferendumHistoric();
+    loadHistoric();
 };
 
 function getContractAdminJson() {
@@ -373,7 +303,7 @@ function createAssociation() {
                         $('.toast-body').text("Un contrat d'association a bien été créé à l'adresse " + newContractInstance.options.address);
                         $('.toast').toast({ 'delay': 2000 }).toast('show');
                         $("#created-assoc").append("<p> Association créée à l'adresse <span class='bold'>" + newContractInstance.options.address + "</span> à " + ds + "</p>");
-                        loadAssociationHistoric();
+                        loadHistoric();
                     });
             });
         });
@@ -416,7 +346,7 @@ function createAdmin(args, ctrJson, callback_success, typeStr, statuId) {
                     .then(function (data) {
                         $("#" + statuId).html("");
                         callback_success(data);
-                        loadAdminHistoric();
+                        loadHistoric();
                     });
             });
         })
@@ -466,6 +396,8 @@ function seekHistoricAssociation(address) {
 function handleSeekAssociation(ctr, account) {
     var address = $("#seek-assoc").val();
     if (!ctr) { $("#seek-assoc").val(""); return; }
+    addRechercheToStore(address, "r_association");
+    loadHistoric();
     ctr.methods.owner().call().then(function (pdt) {
         toggleBlock("details");
         $("#details-assoc").show();
@@ -589,6 +521,8 @@ function selfDestruct() {
 function handleSeekAdminContract(ctr, account) {
     var adminAddress = $("#seek-admin").val();
     if (!ctr) { $("#seek-admin").val(""); return; }
+    addRechercheToStore(adminAddress, "r_administration");
+    loadHistoric();
     ctr.methods.getAdminActionType().call().then(function (tp) {
         toggleBlock("gerer");
         if (tp != $("#admin-select").text()) {
@@ -693,8 +627,8 @@ function handleActAdminContract(ctr, account) {
         .then(function (data) {
             $("#act-status").text("Action réussie. L'association a bien été impactée");
             seekAdminContract();
-            removeFromStore($("#seek-admin").val(), dictType[$("#admin-select").text()]);
-            loadAdminHistoric();
+            removeFromStore($("#seek-admin").val());
+            loadHistoric();
         });
 };
 

@@ -60,3 +60,13 @@ html {
 .underline {
   text-decoration: underline;
 }
+
+.rechevent {
+  font-weight: bolder;
+  color: teal;
+}
+
+.creaevent {
+  font-weight: bolder;
+  color: tomato;
+}
