@@ -21,6 +21,8 @@ contract AssociationOrg {
     
     
     constructor(string memory _name, string memory _memberName) {
+        require(bytes(_name).length != 0, "Association name cannot be empty");
+        require(bytes(_memberName).length != 0, "Member name cannot be empty");
         owner = msg.sender;
         members[msg.sender] = true;
         name = _name;

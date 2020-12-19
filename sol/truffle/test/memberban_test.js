@@ -68,6 +68,7 @@ contract('AssociationAdministration', async(accounts) => {
     
     let adminMB = await AssoAdminMB.new(assoOrg2Mem.address, wannabeMember);
     await adminMB.vote();
+    await adminMB.vote({from: wannabeMember});
     let memberCountBefore = await assoOrg2Mem.membersCount();
     await assoOrg2Mem.handleMemberbanAction(adminMB.address);
     let memberCountAfter = await assoOrg2Mem.membersCount();
@@ -90,6 +91,7 @@ contract('AssociationAdministration', async(accounts) => {
     
     let adminMB = await AssoAdminMB.new(assoOrg2Mem.address, wannabeMember);
     await adminMB.vote();
+    await adminMB.vote({from: wannabeMember});
     await assoOrg2Mem.handleMemberbanAction(adminMB.address);
     await tryCatch(assoOrg2Mem.handleMemberbanAction(adminMB.address), errTypes.revert);
   })

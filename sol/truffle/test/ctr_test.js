@@ -32,6 +32,12 @@ contract('AssociationOrg', async (accounts) => {
     assert.equal(memCount, 1, "Only one member");
   })
 
+  it("Should not allow empty member name of association name", async() => {
+    await tryCatch(AssoOrg.new("testAssociation", ""), errTypes.revert);
+    await tryCatch(AssoOrg.new("", "Issam_test"), errTypes.revert);
+    await tryCatch(AssoOrg.new("", ""), errTypes.revert);
+  })
+
   it("Name is correct", async() => {
     let memCount = await assoSimpleOrg.name();
     assert.equal(memCount, "testAssociation", "Name is correct");

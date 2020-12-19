@@ -79,6 +79,7 @@ contract AssociationAdministrationCooptation is AssociationAdministration {
     AdminAction public adminAction = AdminAction.COOPTATION;
     string public memberName;
     constructor(address _assoCtr, string memory _memberName) {
+        require(bytes(_memberName).length > 0, "Member name cannot be empty");
         proposedMember = msg.sender;
         memberName = _memberName;
         assoCtr = AssociationOrg(_assoCtr);
@@ -92,6 +93,7 @@ contract AssociationAdministrationReferendum is AssociationAdministration {
     AdminAction public adminAction = AdminAction.REFERENDUM;
     string public referendumQuestion;
     constructor(address _assoCtr, string memory _question) {
+        require(bytes(_question).length > 0, "Question name cannot be empty");
         proposedMember = msg.sender;
         assoCtr = AssociationOrg(_assoCtr);
         referendumQuestion = _question;

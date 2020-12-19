@@ -87,13 +87,13 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"assoCtr\",\"outputs\":[{\"internalType\":\"contract AssociationOrg\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"didVotes\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAdminActionType\",\"outputs\":[{\"internalType\":\"enum AssociationAdministration.AdminAction\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"proposedMember\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unvote\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vote\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"voteCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"unvote()\":{\"notice\":\"Unvote for the administration action\"},\"vote()\":{\"notice\":\"Vote for the administration action\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/issam/git/ethereum-association/sol/truffle/contracts/administration.sol\":\"AssociationAdministration\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/issam/git/ethereum-association/sol/truffle/contracts/administration.sol\":{\"keccak256\":\"0x2b441ceeb203c1b5eb5cf78d050a099f0f707961470c43f20f0f613d4924b05f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a5a33822d61873e37b8c4734d3513e636ef6812aac06ce9e180e76b26d437d4\",\"dweb:/ipfs/QmezStx4Pb1kcf5GeoCd6E8gdPR7bcGt52bYVDRmzLQaHZ\"]},\"/home/issam/git/ethereum-association/sol/truffle/contracts/core.sol\":{\"keccak256\":\"0x93c6eec70520579fcf5be4d80f0d37fa9092b1d4448cca81cdba8fe5d4a3d431\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://595171096f11a5f5210d52c7030d1c52683ecda58af27a7195a4cd341272f2ad\",\"dweb:/ipfs/Qmc35Th7GNQwsXAhxHbB8EifaeQJ1b1VXezbP3ZPtyFWYv\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"assoCtr\",\"outputs\":[{\"internalType\":\"contract AssociationOrg\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"didVotes\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAdminActionType\",\"outputs\":[{\"internalType\":\"enum AssociationAdministration.AdminAction\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"proposedMember\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unvote\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vote\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"voteCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"unvote()\":{\"notice\":\"Unvote for the administration action\"},\"vote()\":{\"notice\":\"Vote for the administration action\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/issam/git/ethereum-association/sol/truffle/contracts/administration.sol\":\"AssociationAdministration\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/issam/git/ethereum-association/sol/truffle/contracts/administration.sol\":{\"keccak256\":\"0xfc13d639ea6c010b9e8ae9c9b04456c1bb7899b1386d41a71c082e747b6a1c47\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://039bb019ccaa40017ed8ec8e0dd6f95c63c04d642a066546131898f0d0cf5d4c\",\"dweb:/ipfs/QmUBcUR96YYBePZTz4JxTZ3ATFLuFNLHXhaw3nMdzqFji3\"]},\"/home/issam/git/ethereum-association/sol/truffle/contracts/core.sol\":{\"keccak256\":\"0x75cc30a5c6bd9e760ad27e31e5ca5a75560c7b8e7583c921ca8da2b255869868\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5c28772c0d9f6845f0172ec93f2bd2eed805881103df6bd15c27c68c90811cd1\",\"dweb:/ipfs/QmNWz7hgfGYWaz4acWUFvijuDUUUC5xmNauhn336c93JJA\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.7.0;\n\nimport \"../contracts/core.sol\";\n\nabstract contract AssociationAdministration {\n    \n    enum AdminAction {MEMBERBAN, OWNERCHANGE, SELFDESTRUCT, COOPTATION, REFERENDUM}\n    \n    AssociationOrg public assoCtr;\n\n    address payable public proposedMember;\n    mapping (address => bool) public didVotes;\n    uint public voteCount;\n    \n    modifier onlyMembers() {\n        require(\n            assoCtr.members(msg.sender),\n            \"Only members are allowed to call this\"\n        );\n        _;\n    }\n\n    /// Vote for the administration action\n    function vote() public onlyMembers {\n        if (!didVotes[msg.sender]) {\n            didVotes[msg.sender] = true;\n            voteCount ++;\n        }\n    }\n\n    /// Unvote for the administration action\n    function unvote() public onlyMembers {\n        if (didVotes[msg.sender]) {\n            didVotes[msg.sender] = false;\n            voteCount --;\n        }\n    }\n\n    function getAdminActionType() public virtual view returns (AdminAction);\n}\n\ncontract AssociationAdministrationMemberban is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.MEMBERBAN;\n    constructor(address _assoCtr, address payable _proposedMember) {\n        proposedMember = _proposedMember;\n        assoCtr = AssociationOrg(_assoCtr);\n        require(assoCtr.members(_proposedMember), \"Only members can be banned\");\n        require(_proposedMember != assoCtr.owner(), \"Owner cannot be banned, change owner first\");\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationOwnerchange is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.OWNERCHANGE;\n    constructor(address _assoCtr) {\n        proposedMember = msg.sender;\n        assoCtr = AssociationOrg(_assoCtr);\n        require(msg.sender != assoCtr.owner(), \"New owner cannot be old owner\");\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationSelfdestruct is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.SELFDESTRUCT;\n    constructor(address _assoCtr) {\n        assoCtr = AssociationOrg(_assoCtr);\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationCooptation is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.COOPTATION;\n    constructor(address _assoCtr) {\n        proposedMember = msg.sender;\n        assoCtr = AssociationOrg(_assoCtr);\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationReferendum is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.REFERENDUM;\n    string public referendumQuestion;\n    constructor(address _assoCtr, string memory _question) {\n        proposedMember = msg.sender;\n        assoCtr = AssociationOrg(_assoCtr);\n        referendumQuestion = _question;\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.7.0;\n\nimport \"../contracts/core.sol\";\n\nabstract contract AssociationAdministration {\n    \n    enum AdminAction {MEMBERBAN, OWNERCHANGE, SELFDESTRUCT, COOPTATION, REFERENDUM}\n    \n    AssociationOrg public assoCtr;\n\n    address payable public proposedMember;\n    mapping (address => bool) public didVotes;\n    uint public voteCount;\n    \n    modifier onlyMembers() {\n        require(\n            assoCtr.members(msg.sender),\n            \"Only members are allowed to call this\"\n        );\n        _;\n    }\n\n    /// Vote for the administration action\n    function vote() public onlyMembers {\n        if (!didVotes[msg.sender]) {\n            didVotes[msg.sender] = true;\n            voteCount ++;\n        }\n    }\n\n    /// Unvote for the administration action\n    function unvote() public onlyMembers {\n        if (didVotes[msg.sender]) {\n            didVotes[msg.sender] = false;\n            voteCount --;\n        }\n    }\n\n    function getAdminActionType() public virtual view returns (AdminAction);\n}\n\ncontract AssociationAdministrationMemberban is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.MEMBERBAN;\n    constructor(address _assoCtr, address payable _proposedMember) {\n        proposedMember = _proposedMember;\n        assoCtr = AssociationOrg(_assoCtr);\n        require(assoCtr.members(_proposedMember), \"Only members can be banned\");\n        require(_proposedMember != assoCtr.owner(), \"Owner cannot be banned, change owner first\");\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationOwnerchange is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.OWNERCHANGE;\n    constructor(address _assoCtr) {\n        proposedMember = msg.sender;\n        assoCtr = AssociationOrg(_assoCtr);\n        require(msg.sender != assoCtr.owner(), \"New owner cannot be old owner\");\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationSelfdestruct is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.SELFDESTRUCT;\n    constructor(address _assoCtr) {\n        assoCtr = AssociationOrg(_assoCtr);\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationCooptation is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.COOPTATION;\n    string public memberName;\n    constructor(address _assoCtr, string memory _memberName) {\n        require(bytes(_memberName).length > 0, \"Member name cannot be empty\");\n        proposedMember = msg.sender;\n        memberName = _memberName;\n        assoCtr = AssociationOrg(_assoCtr);\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}\n\ncontract AssociationAdministrationReferendum is AssociationAdministration {\n    AdminAction public adminAction = AdminAction.REFERENDUM;\n    string public referendumQuestion;\n    constructor(address _assoCtr, string memory _question) {\n        require(bytes(_question).length > 0, \"Question name cannot be empty\");\n        proposedMember = msg.sender;\n        assoCtr = AssociationOrg(_assoCtr);\n        referendumQuestion = _question;\n    }\n    function getAdminActionType() public override view returns (AdminAction) {\n        return adminAction;\n    }\n}",
   "sourcePath": "/home/issam/git/ethereum-association/sol/truffle/contracts/administration.sol",
   "ast": {
     "absolutePath": "/home/issam/git/ethereum-association/sol/truffle/contracts/administration.sol",
@@ -102,7 +102,7 @@
         84
       ],
       "AssociationAdministrationCooptation": [
-        239
+        258
       ],
       "AssociationAdministrationMemberban": [
         135
@@ -111,13 +111,13 @@
         178
       ],
       "AssociationAdministrationReferendum": [
-        280
+        310
       ],
       "AssociationAdministrationSelfdestruct": [
         206
       ]
     },
-    "id": 281,
+    "id": 311,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -136,8 +136,8 @@
         "file": "../contracts/core.sol",
         "id": 2,
         "nodeType": "ImportDirective",
-        "scope": 281,
-        "sourceUnit": 868,
+        "scope": 311,
+        "sourceUnit": 905,
         "src": "56:31:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -208,7 +208,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AssociationOrg_$867",
+              "typeIdentifier": "t_contract$_AssociationOrg_$904",
               "typeString": "contract AssociationOrg"
             },
             "typeName": {
@@ -216,10 +216,10 @@
               "id": 9,
               "name": "AssociationOrg",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 867,
+              "referencedDeclaration": 904,
               "src": "233:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                "typeIdentifier": "t_contract$_AssociationOrg_$904",
                 "typeString": "contract AssociationOrg"
               }
             },
@@ -392,7 +392,7 @@
                             "referencedDeclaration": 10,
                             "src": "445:7:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                              "typeIdentifier": "t_contract$_AssociationOrg_$904",
                               "typeString": "contract AssociationOrg"
                             }
                           },
@@ -403,7 +403,7 @@
                           "lValueRequested": false,
                           "memberName": "members",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 287,
+                          "referencedDeclaration": 325,
                           "src": "445:15:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -1101,7 +1101,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "89:958:0"
       },
       {
@@ -1268,7 +1268,7 @@
                       "referencedDeclaration": 10,
                       "src": "1303:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -1302,10 +1302,10 @@
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
+                        "referencedDeclaration": 904,
                         "src": "1313:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
@@ -1320,13 +1320,13 @@
                       "src": "1313:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
                     "src": "1303:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
@@ -1371,7 +1371,7 @@
                             "referencedDeclaration": 10,
                             "src": "1355:7:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                              "typeIdentifier": "t_contract$_AssociationOrg_$904",
                               "typeString": "contract AssociationOrg"
                             }
                           },
@@ -1382,7 +1382,7 @@
                           "lValueRequested": false,
                           "memberName": "members",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 287,
+                          "referencedDeclaration": 325,
                           "src": "1355:15:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -1511,7 +1511,7 @@
                               "referencedDeclaration": 10,
                               "src": "1455:7:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                                "typeIdentifier": "t_contract$_AssociationOrg_$904",
                                 "typeString": "contract AssociationOrg"
                               }
                             },
@@ -1522,7 +1522,7 @@
                             "lValueRequested": false,
                             "memberName": "owner",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 303,
+                            "referencedDeclaration": 333,
                             "src": "1455:13:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$__$returns$_t_address_payable_$",
@@ -1794,7 +1794,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "1049:590:0"
       },
       {
@@ -1977,7 +1977,7 @@
                       "referencedDeclaration": 10,
                       "src": "1861:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -2011,10 +2011,10 @@
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
+                        "referencedDeclaration": 904,
                         "src": "1871:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
@@ -2029,13 +2029,13 @@
                       "src": "1871:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
                     "src": "1861:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
@@ -2103,7 +2103,7 @@
                               "referencedDeclaration": 10,
                               "src": "1927:7:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                                "typeIdentifier": "t_contract$_AssociationOrg_$904",
                                 "typeString": "contract AssociationOrg"
                               }
                             },
@@ -2114,7 +2114,7 @@
                             "lValueRequested": false,
                             "memberName": "owner",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 303,
+                            "referencedDeclaration": 333,
                             "src": "1927:13:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$__$returns$_t_address_payable_$",
@@ -2357,7 +2357,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "1641:457:0"
       },
       {
@@ -2478,7 +2478,7 @@
                       "referencedDeclaration": 10,
                       "src": "2285:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -2512,10 +2512,10 @@
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
+                        "referencedDeclaration": 904,
                         "src": "2295:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
@@ -2530,13 +2530,13 @@
                       "src": "2295:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
                     "src": "2285:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
@@ -2696,7 +2696,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "2100:341:0"
       },
       {
@@ -2727,9 +2727,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 239,
+        "id": 258,
         "linearizedBaseContracts": [
-          239,
+          258,
           84
         ],
         "name": "AssociationAdministrationCooptation",
@@ -2743,7 +2743,7 @@
             "name": "adminAction",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 239,
+            "scope": 258,
             "src": "2523:55:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2795,416 +2795,15 @@
             "visibility": "public"
           },
           {
-            "body": {
-              "id": 228,
-              "nodeType": "Block",
-              "src": "2614:88:0",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 220,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 217,
-                      "name": "proposedMember",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 12,
-                      "src": "2624:14:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_address_payable",
-                        "typeString": "address payable"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "expression": {
-                        "argumentTypes": null,
-                        "id": 218,
-                        "name": "msg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": -15,
-                        "src": "2641:3:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_magic_message",
-                          "typeString": "msg"
-                        }
-                      },
-                      "id": 219,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": false,
-                      "lValueRequested": false,
-                      "memberName": "sender",
-                      "nodeType": "MemberAccess",
-                      "referencedDeclaration": null,
-                      "src": "2641:10:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_address_payable",
-                        "typeString": "address payable"
-                      }
-                    },
-                    "src": "2624:27:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address_payable",
-                      "typeString": "address payable"
-                    }
-                  },
-                  "id": 221,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2624:27:0"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 226,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 222,
-                      "name": "assoCtr",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 10,
-                      "src": "2661:7:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
-                        "typeString": "contract AssociationOrg"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "arguments": [
-                        {
-                          "argumentTypes": null,
-                          "id": 224,
-                          "name": "_assoCtr",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 214,
-                          "src": "2686:8:0",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_address",
-                            "typeString": "address"
-                          }
-                        }
-                      ],
-                      "expression": {
-                        "argumentTypes": [
-                          {
-                            "typeIdentifier": "t_address",
-                            "typeString": "address"
-                          }
-                        ],
-                        "id": 223,
-                        "name": "AssociationOrg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
-                        "src": "2671:14:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
-                          "typeString": "type(contract AssociationOrg)"
-                        }
-                      },
-                      "id": 225,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": false,
-                      "kind": "typeConversion",
-                      "lValueRequested": false,
-                      "names": [],
-                      "nodeType": "FunctionCall",
-                      "src": "2671:24:0",
-                      "tryCall": false,
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
-                        "typeString": "contract AssociationOrg"
-                      }
-                    },
-                    "src": "2661:34:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
-                      "typeString": "contract AssociationOrg"
-                    }
-                  },
-                  "id": 227,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2661:34:0"
-                }
-              ]
-            },
-            "documentation": null,
-            "id": 229,
-            "implemented": true,
-            "kind": "constructor",
-            "modifiers": [],
-            "name": "",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 215,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 214,
-                  "mutability": "mutable",
-                  "name": "_assoCtr",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 229,
-                  "src": "2596:16:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 213,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2596:7:0",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2595:18:0"
-            },
-            "returnParameters": {
-              "id": 216,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2614:0:0"
-            },
-            "scope": 239,
-            "src": "2584:118:0",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "public"
-          },
-          {
-            "baseFunctions": [
-              83
-            ],
-            "body": {
-              "id": 237,
-              "nodeType": "Block",
-              "src": "2780:35:0",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 235,
-                    "name": "adminAction",
-                    "nodeType": "Identifier",
-                    "overloadedDeclarations": [],
-                    "referencedDeclaration": 212,
-                    "src": "2797:11:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_AdminAction_$8",
-                      "typeString": "enum AssociationAdministration.AdminAction"
-                    }
-                  },
-                  "functionReturnParameters": 234,
-                  "id": 236,
-                  "nodeType": "Return",
-                  "src": "2790:18:0"
-                }
-              ]
-            },
-            "documentation": null,
-            "functionSelector": "485eaa01",
-            "id": 238,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getAdminActionType",
-            "nodeType": "FunctionDefinition",
-            "overrides": {
-              "id": 231,
-              "nodeType": "OverrideSpecifier",
-              "overrides": [],
-              "src": "2744:8:0"
-            },
-            "parameters": {
-              "id": 230,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2734:2:0"
-            },
-            "returnParameters": {
-              "id": 234,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 233,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 238,
-                  "src": "2767:11:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_AdminAction_$8",
-                    "typeString": "enum AssociationAdministration.AdminAction"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 232,
-                    "name": "AdminAction",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 8,
-                    "src": "2767:11:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_AdminAction_$8",
-                      "typeString": "enum AssociationAdministration.AdminAction"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2766:13:0"
-            },
-            "scope": 239,
-            "src": "2707:108:0",
-            "stateMutability": "view",
-            "virtual": false,
-            "visibility": "public"
-          }
-        ],
-        "scope": 281,
-        "src": "2443:374:0"
-      },
-      {
-        "abstract": false,
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 240,
-              "name": "AssociationAdministration",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 84,
-              "src": "2867:25:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AssociationAdministration_$84",
-                "typeString": "contract AssociationAdministration"
-              }
-            },
-            "id": 241,
-            "nodeType": "InheritanceSpecifier",
-            "src": "2867:25:0"
-          }
-        ],
-        "contractDependencies": [
-          84
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": true,
-        "id": 280,
-        "linearizedBaseContracts": [
-          280,
-          84
-        ],
-        "name": "AssociationAdministrationReferendum",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
             "constant": false,
-            "functionSelector": "2fd415b2",
-            "id": 245,
+            "functionSelector": "07c21383",
+            "id": 214,
             "mutability": "mutable",
-            "name": "adminAction",
+            "name": "memberName",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 280,
-            "src": "2899:55:0",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_enum$_AdminAction_$8",
-              "typeString": "enum AssociationAdministration.AdminAction"
-            },
-            "typeName": {
-              "contractScope": null,
-              "id": 242,
-              "name": "AdminAction",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 8,
-              "src": "2899:11:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_enum$_AdminAction_$8",
-                "typeString": "enum AssociationAdministration.AdminAction"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "expression": {
-                "argumentTypes": null,
-                "id": 243,
-                "name": "AdminAction",
-                "nodeType": "Identifier",
-                "overloadedDeclarations": [],
-                "referencedDeclaration": 8,
-                "src": "2932:11:0",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_enum$_AdminAction_$8_$",
-                  "typeString": "type(enum AssociationAdministration.AdminAction)"
-                }
-              },
-              "id": 244,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "lValueRequested": false,
-              "memberName": "REFERENDUM",
-              "nodeType": "MemberAccess",
-              "referencedDeclaration": null,
-              "src": "2932:22:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_enum$_AdminAction_$8",
-                "typeString": "enum AssociationAdministration.AdminAction"
-              }
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": false,
-            "functionSelector": "18dae1dc",
-            "id": 247,
-            "mutability": "mutable",
-            "name": "referendumQuestion",
-            "nodeType": "VariableDeclaration",
-            "overrides": null,
-            "scope": 280,
-            "src": "2960:32:0",
+            "scope": 258,
+            "src": "2584:24:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3212,10 +2811,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 246,
+              "id": 213,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "2960:6:0",
+              "src": "2584:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -3226,26 +2825,207 @@
           },
           {
             "body": {
-              "id": 269,
+              "id": 247,
               "nodeType": "Block",
-              "src": "3053:128:0",
+              "src": "2671:201:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 257,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 228,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 224,
+                                "name": "_memberName",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 218,
+                                "src": "2695:11:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 223,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "2689:5:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": {
+                                "id": 222,
+                                "name": "bytes",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "2689:5:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": null,
+                                  "typeString": null
+                                }
+                              }
+                            },
+                            "id": 225,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "2689:18:0",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          },
+                          "id": 226,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2689:25:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 227,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2717:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "2689:29:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4d656d626572206e616d652063616e6e6f7420626520656d707479",
+                        "id": 229,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2720:29:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_87e30dc2d7b2e5c9b106c98e9818bc46460bc44fd0a4356f4a45627066b54322",
+                          "typeString": "literal_string \"Member name cannot be empty\""
+                        },
+                        "value": "Member name cannot be empty"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_87e30dc2d7b2e5c9b106c98e9818bc46460bc44fd0a4356f4a45627066b54322",
+                          "typeString": "literal_string \"Member name cannot be empty\""
+                        }
+                      ],
+                      "id": 221,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "2681:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 230,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2681:69:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 231,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2681:69:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 235,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 254,
+                      "id": 232,
                       "name": "proposedMember",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 12,
-                      "src": "3063:14:0",
+                      "src": "2760:14:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
@@ -3257,18 +3037,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 255,
+                        "id": 233,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": -15,
-                        "src": "3080:3:0",
+                        "src": "2777:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 256,
+                      "id": 234,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3276,40 +3056,86 @@
                       "memberName": "sender",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "3080:10:0",
+                      "src": "2777:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "src": "3063:27:0",
+                    "src": "2760:27:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "id": 258,
+                  "id": 236,
                   "nodeType": "ExpressionStatement",
-                  "src": "3063:27:0"
+                  "src": "2760:27:0"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 263,
+                    "id": 239,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 259,
+                      "id": 237,
+                      "name": "memberName",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 214,
+                      "src": "2797:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 238,
+                      "name": "_memberName",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 218,
+                      "src": "2810:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "2797:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 240,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2797:24:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 245,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 241,
                       "name": "assoCtr",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 10,
-                      "src": "3100:7:0",
+                      "src": "2831:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -3320,12 +3146,12 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 261,
+                          "id": 243,
                           "name": "_assoCtr",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 249,
-                          "src": "3125:8:0",
+                          "referencedDeclaration": 216,
+                          "src": "2856:8:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -3339,18 +3165,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 260,
+                        "id": 242,
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
-                        "src": "3110:14:0",
+                        "referencedDeclaration": 904,
+                        "src": "2841:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
-                      "id": 262,
+                      "id": 244,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3358,73 +3184,27 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "3110:24:0",
+                      "src": "2841:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
-                    "src": "3100:34:0",
+                    "src": "2831:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
-                  "id": 264,
+                  "id": 246,
                   "nodeType": "ExpressionStatement",
-                  "src": "3100:34:0"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 267,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 265,
-                      "name": "referendumQuestion",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 247,
-                      "src": "3144:18:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 266,
-                      "name": "_question",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 251,
-                      "src": "3165:9:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_memory_ptr",
-                        "typeString": "string memory"
-                      }
-                    },
-                    "src": "3144:30:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 268,
-                  "nodeType": "ExpressionStatement",
-                  "src": "3144:30:0"
+                  "src": "2831:34:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 270,
+            "id": 248,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -3432,18 +3212,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 252,
+              "id": 219,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 249,
+                  "id": 216,
                   "mutability": "mutable",
                   "name": "_assoCtr",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 270,
-                  "src": "3010:16:0",
+                  "scope": 248,
+                  "src": "2626:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3451,10 +3231,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 248,
+                    "id": 215,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3010:7:0",
+                    "src": "2626:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3466,13 +3246,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 251,
+                  "id": 218,
                   "mutability": "mutable",
-                  "name": "_question",
+                  "name": "_memberName",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 270,
-                  "src": "3028:23:0",
+                  "scope": 248,
+                  "src": "2644:25:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -3480,10 +3260,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 250,
+                    "id": 217,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3028:6:0",
+                    "src": "2644:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -3493,16 +3273,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3009:43:0"
+              "src": "2625:45:0"
             },
             "returnParameters": {
-              "id": 253,
+              "id": 220,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3053:0:0"
+              "src": "2671:0:0"
             },
-            "scope": 280,
-            "src": "2998:183:0",
+            "scope": 258,
+            "src": "2614:258:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
@@ -3512,64 +3292,64 @@
               83
             ],
             "body": {
-              "id": 278,
+              "id": 256,
               "nodeType": "Block",
-              "src": "3259:35:0",
+              "src": "2950:35:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 276,
+                    "id": 254,
                     "name": "adminAction",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 245,
-                    "src": "3276:11:0",
+                    "referencedDeclaration": 212,
+                    "src": "2967:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_enum$_AdminAction_$8",
                       "typeString": "enum AssociationAdministration.AdminAction"
                     }
                   },
-                  "functionReturnParameters": 275,
-                  "id": 277,
+                  "functionReturnParameters": 253,
+                  "id": 255,
                   "nodeType": "Return",
-                  "src": "3269:18:0"
+                  "src": "2960:18:0"
                 }
               ]
             },
             "documentation": null,
             "functionSelector": "485eaa01",
-            "id": 279,
+            "id": 257,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getAdminActionType",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 272,
+              "id": 250,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
-              "src": "3223:8:0"
+              "src": "2914:8:0"
             },
             "parameters": {
-              "id": 271,
+              "id": 249,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3213:2:0"
+              "src": "2904:2:0"
             },
             "returnParameters": {
-              "id": 275,
+              "id": 253,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 274,
+                  "id": 252,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 279,
-                  "src": "3246:11:0",
+                  "scope": 257,
+                  "src": "2937:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3578,11 +3358,11 @@
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 273,
+                    "id": 251,
                     "name": "AdminAction",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 8,
-                    "src": "3246:11:0",
+                    "src": "2937:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_enum$_AdminAction_$8",
                       "typeString": "enum AssociationAdministration.AdminAction"
@@ -3592,20 +3372,705 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3245:13:0"
+              "src": "2936:13:0"
             },
-            "scope": 280,
-            "src": "3186:108:0",
+            "scope": 258,
+            "src": "2877:108:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 281,
-        "src": "2819:477:0"
+        "scope": 311,
+        "src": "2443:544:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 259,
+              "name": "AssociationAdministration",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 84,
+              "src": "3037:25:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AssociationAdministration_$84",
+                "typeString": "contract AssociationAdministration"
+              }
+            },
+            "id": 260,
+            "nodeType": "InheritanceSpecifier",
+            "src": "3037:25:0"
+          }
+        ],
+        "contractDependencies": [
+          84
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 310,
+        "linearizedBaseContracts": [
+          310,
+          84
+        ],
+        "name": "AssociationAdministrationReferendum",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "2fd415b2",
+            "id": 264,
+            "mutability": "mutable",
+            "name": "adminAction",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 310,
+            "src": "3069:55:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_AdminAction_$8",
+              "typeString": "enum AssociationAdministration.AdminAction"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 261,
+              "name": "AdminAction",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8,
+              "src": "3069:11:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_AdminAction_$8",
+                "typeString": "enum AssociationAdministration.AdminAction"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "expression": {
+                "argumentTypes": null,
+                "id": 262,
+                "name": "AdminAction",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 8,
+                "src": "3102:11:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_enum$_AdminAction_$8_$",
+                  "typeString": "type(enum AssociationAdministration.AdminAction)"
+                }
+              },
+              "id": 263,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "memberName": "REFERENDUM",
+              "nodeType": "MemberAccess",
+              "referencedDeclaration": null,
+              "src": "3102:22:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_AdminAction_$8",
+                "typeString": "enum AssociationAdministration.AdminAction"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "18dae1dc",
+            "id": 266,
+            "mutability": "mutable",
+            "name": "referendumQuestion",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 310,
+            "src": "3130:32:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 265,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "3130:6:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 299,
+              "nodeType": "Block",
+              "src": "3223:207:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 280,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 276,
+                                "name": "_question",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 270,
+                                "src": "3247:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 275,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "3241:5:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": {
+                                "id": 274,
+                                "name": "bytes",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "3241:5:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": null,
+                                  "typeString": null
+                                }
+                              }
+                            },
+                            "id": 277,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "3241:16:0",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          },
+                          "id": 278,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "3241:23:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 279,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "3267:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "3241:27:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "5175657374696f6e206e616d652063616e6e6f7420626520656d707479",
+                        "id": 281,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "3270:31:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_70301ce473622ee3f2c856b7af42dd9b16a2ea93c7aaaf46f73aaf21e275a19a",
+                          "typeString": "literal_string \"Question name cannot be empty\""
+                        },
+                        "value": "Question name cannot be empty"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_70301ce473622ee3f2c856b7af42dd9b16a2ea93c7aaaf46f73aaf21e275a19a",
+                          "typeString": "literal_string \"Question name cannot be empty\""
+                        }
+                      ],
+                      "id": 273,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "3233:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 282,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3233:69:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 283,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3233:69:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 287,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 284,
+                      "name": "proposedMember",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "3312:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 285,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -15,
+                        "src": "3329:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 286,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "3329:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "3312:27:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "id": 288,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3312:27:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 293,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 289,
+                      "name": "assoCtr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "3349:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
+                        "typeString": "contract AssociationOrg"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 291,
+                          "name": "_assoCtr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 268,
+                          "src": "3374:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 290,
+                        "name": "AssociationOrg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 904,
+                        "src": "3359:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
+                          "typeString": "type(contract AssociationOrg)"
+                        }
+                      },
+                      "id": 292,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "3359:24:0",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
+                        "typeString": "contract AssociationOrg"
+                      }
+                    },
+                    "src": "3349:34:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
+                      "typeString": "contract AssociationOrg"
+                    }
+                  },
+                  "id": 294,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3349:34:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 297,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 295,
+                      "name": "referendumQuestion",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 266,
+                      "src": "3393:18:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 296,
+                      "name": "_question",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 270,
+                      "src": "3414:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "3393:30:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 298,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3393:30:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 300,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 271,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 268,
+                  "mutability": "mutable",
+                  "name": "_assoCtr",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 300,
+                  "src": "3180:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 267,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3180:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 270,
+                  "mutability": "mutable",
+                  "name": "_question",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 300,
+                  "src": "3198:23:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 269,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3198:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3179:43:0"
+            },
+            "returnParameters": {
+              "id": 272,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3223:0:0"
+            },
+            "scope": 310,
+            "src": "3168:262:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              83
+            ],
+            "body": {
+              "id": 308,
+              "nodeType": "Block",
+              "src": "3508:35:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 306,
+                    "name": "adminAction",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 264,
+                    "src": "3525:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_AdminAction_$8",
+                      "typeString": "enum AssociationAdministration.AdminAction"
+                    }
+                  },
+                  "functionReturnParameters": 305,
+                  "id": 307,
+                  "nodeType": "Return",
+                  "src": "3518:18:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "485eaa01",
+            "id": 309,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAdminActionType",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 302,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "3472:8:0"
+            },
+            "parameters": {
+              "id": 301,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3462:2:0"
+            },
+            "returnParameters": {
+              "id": 305,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 304,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 309,
+                  "src": "3495:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_AdminAction_$8",
+                    "typeString": "enum AssociationAdministration.AdminAction"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 303,
+                    "name": "AdminAction",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 8,
+                    "src": "3495:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_AdminAction_$8",
+                      "typeString": "enum AssociationAdministration.AdminAction"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3494:13:0"
+            },
+            "scope": 310,
+            "src": "3435:108:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 311,
+        "src": "2989:556:0"
       }
     ],
-    "src": "32:3264:0"
+    "src": "32:3513:0"
   },
   "legacyAST": {
     "absolutePath": "/home/issam/git/ethereum-association/sol/truffle/contracts/administration.sol",
@@ -3614,7 +4079,7 @@
         84
       ],
       "AssociationAdministrationCooptation": [
-        239
+        258
       ],
       "AssociationAdministrationMemberban": [
         135
@@ -3623,13 +4088,13 @@
         178
       ],
       "AssociationAdministrationReferendum": [
-        280
+        310
       ],
       "AssociationAdministrationSelfdestruct": [
         206
       ]
     },
-    "id": 281,
+    "id": 311,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -3648,8 +4113,8 @@
         "file": "../contracts/core.sol",
         "id": 2,
         "nodeType": "ImportDirective",
-        "scope": 281,
-        "sourceUnit": 868,
+        "scope": 311,
+        "sourceUnit": 905,
         "src": "56:31:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3720,7 +4185,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AssociationOrg_$867",
+              "typeIdentifier": "t_contract$_AssociationOrg_$904",
               "typeString": "contract AssociationOrg"
             },
             "typeName": {
@@ -3728,10 +4193,10 @@
               "id": 9,
               "name": "AssociationOrg",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 867,
+              "referencedDeclaration": 904,
               "src": "233:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                "typeIdentifier": "t_contract$_AssociationOrg_$904",
                 "typeString": "contract AssociationOrg"
               }
             },
@@ -3904,7 +4369,7 @@
                             "referencedDeclaration": 10,
                             "src": "445:7:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                              "typeIdentifier": "t_contract$_AssociationOrg_$904",
                               "typeString": "contract AssociationOrg"
                             }
                           },
@@ -3915,7 +4380,7 @@
                           "lValueRequested": false,
                           "memberName": "members",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 287,
+                          "referencedDeclaration": 325,
                           "src": "445:15:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -4613,7 +5078,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "89:958:0"
       },
       {
@@ -4780,7 +5245,7 @@
                       "referencedDeclaration": 10,
                       "src": "1303:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -4814,10 +5279,10 @@
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
+                        "referencedDeclaration": 904,
                         "src": "1313:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
@@ -4832,13 +5297,13 @@
                       "src": "1313:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
                     "src": "1303:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
@@ -4883,7 +5348,7 @@
                             "referencedDeclaration": 10,
                             "src": "1355:7:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                              "typeIdentifier": "t_contract$_AssociationOrg_$904",
                               "typeString": "contract AssociationOrg"
                             }
                           },
@@ -4894,7 +5359,7 @@
                           "lValueRequested": false,
                           "memberName": "members",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 287,
+                          "referencedDeclaration": 325,
                           "src": "1355:15:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -5023,7 +5488,7 @@
                               "referencedDeclaration": 10,
                               "src": "1455:7:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                                "typeIdentifier": "t_contract$_AssociationOrg_$904",
                                 "typeString": "contract AssociationOrg"
                               }
                             },
@@ -5034,7 +5499,7 @@
                             "lValueRequested": false,
                             "memberName": "owner",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 303,
+                            "referencedDeclaration": 333,
                             "src": "1455:13:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$__$returns$_t_address_payable_$",
@@ -5306,7 +5771,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "1049:590:0"
       },
       {
@@ -5489,7 +5954,7 @@
                       "referencedDeclaration": 10,
                       "src": "1861:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -5523,10 +5988,10 @@
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
+                        "referencedDeclaration": 904,
                         "src": "1871:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
@@ -5541,13 +6006,13 @@
                       "src": "1871:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
                     "src": "1861:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
@@ -5615,7 +6080,7 @@
                               "referencedDeclaration": 10,
                               "src": "1927:7:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                                "typeIdentifier": "t_contract$_AssociationOrg_$904",
                                 "typeString": "contract AssociationOrg"
                               }
                             },
@@ -5626,7 +6091,7 @@
                             "lValueRequested": false,
                             "memberName": "owner",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 303,
+                            "referencedDeclaration": 333,
                             "src": "1927:13:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$__$returns$_t_address_payable_$",
@@ -5869,7 +6334,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "1641:457:0"
       },
       {
@@ -5990,7 +6455,7 @@
                       "referencedDeclaration": 10,
                       "src": "2285:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -6024,10 +6489,10 @@
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
+                        "referencedDeclaration": 904,
                         "src": "2295:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
@@ -6042,13 +6507,13 @@
                       "src": "2295:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
                     "src": "2285:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
@@ -6208,7 +6673,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 281,
+        "scope": 311,
         "src": "2100:341:0"
       },
       {
@@ -6239,9 +6704,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 239,
+        "id": 258,
         "linearizedBaseContracts": [
-          239,
+          258,
           84
         ],
         "name": "AssociationAdministrationCooptation",
@@ -6255,7 +6720,7 @@
             "name": "adminAction",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 239,
+            "scope": 258,
             "src": "2523:55:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6307,416 +6772,15 @@
             "visibility": "public"
           },
           {
-            "body": {
-              "id": 228,
-              "nodeType": "Block",
-              "src": "2614:88:0",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 220,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 217,
-                      "name": "proposedMember",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 12,
-                      "src": "2624:14:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_address_payable",
-                        "typeString": "address payable"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "expression": {
-                        "argumentTypes": null,
-                        "id": 218,
-                        "name": "msg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": -15,
-                        "src": "2641:3:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_magic_message",
-                          "typeString": "msg"
-                        }
-                      },
-                      "id": 219,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": false,
-                      "lValueRequested": false,
-                      "memberName": "sender",
-                      "nodeType": "MemberAccess",
-                      "referencedDeclaration": null,
-                      "src": "2641:10:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_address_payable",
-                        "typeString": "address payable"
-                      }
-                    },
-                    "src": "2624:27:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address_payable",
-                      "typeString": "address payable"
-                    }
-                  },
-                  "id": 221,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2624:27:0"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 226,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 222,
-                      "name": "assoCtr",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 10,
-                      "src": "2661:7:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
-                        "typeString": "contract AssociationOrg"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "arguments": [
-                        {
-                          "argumentTypes": null,
-                          "id": 224,
-                          "name": "_assoCtr",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 214,
-                          "src": "2686:8:0",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_address",
-                            "typeString": "address"
-                          }
-                        }
-                      ],
-                      "expression": {
-                        "argumentTypes": [
-                          {
-                            "typeIdentifier": "t_address",
-                            "typeString": "address"
-                          }
-                        ],
-                        "id": 223,
-                        "name": "AssociationOrg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
-                        "src": "2671:14:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
-                          "typeString": "type(contract AssociationOrg)"
-                        }
-                      },
-                      "id": 225,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": false,
-                      "kind": "typeConversion",
-                      "lValueRequested": false,
-                      "names": [],
-                      "nodeType": "FunctionCall",
-                      "src": "2671:24:0",
-                      "tryCall": false,
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
-                        "typeString": "contract AssociationOrg"
-                      }
-                    },
-                    "src": "2661:34:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
-                      "typeString": "contract AssociationOrg"
-                    }
-                  },
-                  "id": 227,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2661:34:0"
-                }
-              ]
-            },
-            "documentation": null,
-            "id": 229,
-            "implemented": true,
-            "kind": "constructor",
-            "modifiers": [],
-            "name": "",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 215,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 214,
-                  "mutability": "mutable",
-                  "name": "_assoCtr",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 229,
-                  "src": "2596:16:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 213,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2596:7:0",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2595:18:0"
-            },
-            "returnParameters": {
-              "id": 216,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2614:0:0"
-            },
-            "scope": 239,
-            "src": "2584:118:0",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "public"
-          },
-          {
-            "baseFunctions": [
-              83
-            ],
-            "body": {
-              "id": 237,
-              "nodeType": "Block",
-              "src": "2780:35:0",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 235,
-                    "name": "adminAction",
-                    "nodeType": "Identifier",
-                    "overloadedDeclarations": [],
-                    "referencedDeclaration": 212,
-                    "src": "2797:11:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_AdminAction_$8",
-                      "typeString": "enum AssociationAdministration.AdminAction"
-                    }
-                  },
-                  "functionReturnParameters": 234,
-                  "id": 236,
-                  "nodeType": "Return",
-                  "src": "2790:18:0"
-                }
-              ]
-            },
-            "documentation": null,
-            "functionSelector": "485eaa01",
-            "id": 238,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getAdminActionType",
-            "nodeType": "FunctionDefinition",
-            "overrides": {
-              "id": 231,
-              "nodeType": "OverrideSpecifier",
-              "overrides": [],
-              "src": "2744:8:0"
-            },
-            "parameters": {
-              "id": 230,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2734:2:0"
-            },
-            "returnParameters": {
-              "id": 234,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 233,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 238,
-                  "src": "2767:11:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_AdminAction_$8",
-                    "typeString": "enum AssociationAdministration.AdminAction"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 232,
-                    "name": "AdminAction",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 8,
-                    "src": "2767:11:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_AdminAction_$8",
-                      "typeString": "enum AssociationAdministration.AdminAction"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2766:13:0"
-            },
-            "scope": 239,
-            "src": "2707:108:0",
-            "stateMutability": "view",
-            "virtual": false,
-            "visibility": "public"
-          }
-        ],
-        "scope": 281,
-        "src": "2443:374:0"
-      },
-      {
-        "abstract": false,
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 240,
-              "name": "AssociationAdministration",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 84,
-              "src": "2867:25:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AssociationAdministration_$84",
-                "typeString": "contract AssociationAdministration"
-              }
-            },
-            "id": 241,
-            "nodeType": "InheritanceSpecifier",
-            "src": "2867:25:0"
-          }
-        ],
-        "contractDependencies": [
-          84
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": true,
-        "id": 280,
-        "linearizedBaseContracts": [
-          280,
-          84
-        ],
-        "name": "AssociationAdministrationReferendum",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
             "constant": false,
-            "functionSelector": "2fd415b2",
-            "id": 245,
+            "functionSelector": "07c21383",
+            "id": 214,
             "mutability": "mutable",
-            "name": "adminAction",
+            "name": "memberName",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 280,
-            "src": "2899:55:0",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_enum$_AdminAction_$8",
-              "typeString": "enum AssociationAdministration.AdminAction"
-            },
-            "typeName": {
-              "contractScope": null,
-              "id": 242,
-              "name": "AdminAction",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 8,
-              "src": "2899:11:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_enum$_AdminAction_$8",
-                "typeString": "enum AssociationAdministration.AdminAction"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "expression": {
-                "argumentTypes": null,
-                "id": 243,
-                "name": "AdminAction",
-                "nodeType": "Identifier",
-                "overloadedDeclarations": [],
-                "referencedDeclaration": 8,
-                "src": "2932:11:0",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_enum$_AdminAction_$8_$",
-                  "typeString": "type(enum AssociationAdministration.AdminAction)"
-                }
-              },
-              "id": 244,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "lValueRequested": false,
-              "memberName": "REFERENDUM",
-              "nodeType": "MemberAccess",
-              "referencedDeclaration": null,
-              "src": "2932:22:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_enum$_AdminAction_$8",
-                "typeString": "enum AssociationAdministration.AdminAction"
-              }
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": false,
-            "functionSelector": "18dae1dc",
-            "id": 247,
-            "mutability": "mutable",
-            "name": "referendumQuestion",
-            "nodeType": "VariableDeclaration",
-            "overrides": null,
-            "scope": 280,
-            "src": "2960:32:0",
+            "scope": 258,
+            "src": "2584:24:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -6724,10 +6788,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 246,
+              "id": 213,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "2960:6:0",
+              "src": "2584:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -6738,26 +6802,207 @@
           },
           {
             "body": {
-              "id": 269,
+              "id": 247,
               "nodeType": "Block",
-              "src": "3053:128:0",
+              "src": "2671:201:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 257,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 228,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 224,
+                                "name": "_memberName",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 218,
+                                "src": "2695:11:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 223,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "2689:5:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": {
+                                "id": 222,
+                                "name": "bytes",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "2689:5:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": null,
+                                  "typeString": null
+                                }
+                              }
+                            },
+                            "id": 225,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "2689:18:0",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          },
+                          "id": 226,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2689:25:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 227,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2717:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "2689:29:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4d656d626572206e616d652063616e6e6f7420626520656d707479",
+                        "id": 229,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2720:29:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_87e30dc2d7b2e5c9b106c98e9818bc46460bc44fd0a4356f4a45627066b54322",
+                          "typeString": "literal_string \"Member name cannot be empty\""
+                        },
+                        "value": "Member name cannot be empty"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_87e30dc2d7b2e5c9b106c98e9818bc46460bc44fd0a4356f4a45627066b54322",
+                          "typeString": "literal_string \"Member name cannot be empty\""
+                        }
+                      ],
+                      "id": 221,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "2681:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 230,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2681:69:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 231,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2681:69:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 235,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 254,
+                      "id": 232,
                       "name": "proposedMember",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 12,
-                      "src": "3063:14:0",
+                      "src": "2760:14:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
@@ -6769,18 +7014,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 255,
+                        "id": 233,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": -15,
-                        "src": "3080:3:0",
+                        "src": "2777:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 256,
+                      "id": 234,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -6788,40 +7033,86 @@
                       "memberName": "sender",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "3080:10:0",
+                      "src": "2777:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "src": "3063:27:0",
+                    "src": "2760:27:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "id": 258,
+                  "id": 236,
                   "nodeType": "ExpressionStatement",
-                  "src": "3063:27:0"
+                  "src": "2760:27:0"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 263,
+                    "id": 239,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 259,
+                      "id": 237,
+                      "name": "memberName",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 214,
+                      "src": "2797:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 238,
+                      "name": "_memberName",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 218,
+                      "src": "2810:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "2797:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 240,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2797:24:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 245,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 241,
                       "name": "assoCtr",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 10,
-                      "src": "3100:7:0",
+                      "src": "2831:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
@@ -6832,12 +7123,12 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 261,
+                          "id": 243,
                           "name": "_assoCtr",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 249,
-                          "src": "3125:8:0",
+                          "referencedDeclaration": 216,
+                          "src": "2856:8:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -6851,18 +7142,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 260,
+                        "id": 242,
                         "name": "AssociationOrg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 867,
-                        "src": "3110:14:0",
+                        "referencedDeclaration": 904,
+                        "src": "2841:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$867_$",
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
                           "typeString": "type(contract AssociationOrg)"
                         }
                       },
-                      "id": 262,
+                      "id": 244,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -6870,73 +7161,27 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "3110:24:0",
+                      "src": "2841:24:0",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
                         "typeString": "contract AssociationOrg"
                       }
                     },
-                    "src": "3100:34:0",
+                    "src": "2831:34:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AssociationOrg_$867",
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
                       "typeString": "contract AssociationOrg"
                     }
                   },
-                  "id": 264,
+                  "id": 246,
                   "nodeType": "ExpressionStatement",
-                  "src": "3100:34:0"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 267,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 265,
-                      "name": "referendumQuestion",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 247,
-                      "src": "3144:18:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 266,
-                      "name": "_question",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 251,
-                      "src": "3165:9:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_memory_ptr",
-                        "typeString": "string memory"
-                      }
-                    },
-                    "src": "3144:30:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 268,
-                  "nodeType": "ExpressionStatement",
-                  "src": "3144:30:0"
+                  "src": "2831:34:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 270,
+            "id": 248,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -6944,18 +7189,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 252,
+              "id": 219,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 249,
+                  "id": 216,
                   "mutability": "mutable",
                   "name": "_assoCtr",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 270,
-                  "src": "3010:16:0",
+                  "scope": 248,
+                  "src": "2626:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6963,10 +7208,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 248,
+                    "id": 215,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3010:7:0",
+                    "src": "2626:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -6978,13 +7223,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 251,
+                  "id": 218,
                   "mutability": "mutable",
-                  "name": "_question",
+                  "name": "_memberName",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 270,
-                  "src": "3028:23:0",
+                  "scope": 248,
+                  "src": "2644:25:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -6992,10 +7237,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 250,
+                    "id": 217,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3028:6:0",
+                    "src": "2644:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -7005,16 +7250,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3009:43:0"
+              "src": "2625:45:0"
             },
             "returnParameters": {
-              "id": 253,
+              "id": 220,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3053:0:0"
+              "src": "2671:0:0"
             },
-            "scope": 280,
-            "src": "2998:183:0",
+            "scope": 258,
+            "src": "2614:258:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
@@ -7024,64 +7269,64 @@
               83
             ],
             "body": {
-              "id": 278,
+              "id": 256,
               "nodeType": "Block",
-              "src": "3259:35:0",
+              "src": "2950:35:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 276,
+                    "id": 254,
                     "name": "adminAction",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 245,
-                    "src": "3276:11:0",
+                    "referencedDeclaration": 212,
+                    "src": "2967:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_enum$_AdminAction_$8",
                       "typeString": "enum AssociationAdministration.AdminAction"
                     }
                   },
-                  "functionReturnParameters": 275,
-                  "id": 277,
+                  "functionReturnParameters": 253,
+                  "id": 255,
                   "nodeType": "Return",
-                  "src": "3269:18:0"
+                  "src": "2960:18:0"
                 }
               ]
             },
             "documentation": null,
             "functionSelector": "485eaa01",
-            "id": 279,
+            "id": 257,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getAdminActionType",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 272,
+              "id": 250,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
-              "src": "3223:8:0"
+              "src": "2914:8:0"
             },
             "parameters": {
-              "id": 271,
+              "id": 249,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3213:2:0"
+              "src": "2904:2:0"
             },
             "returnParameters": {
-              "id": 275,
+              "id": 253,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 274,
+                  "id": 252,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 279,
-                  "src": "3246:11:0",
+                  "scope": 257,
+                  "src": "2937:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -7090,11 +7335,11 @@
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 273,
+                    "id": 251,
                     "name": "AdminAction",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 8,
-                    "src": "3246:11:0",
+                    "src": "2937:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_enum$_AdminAction_$8",
                       "typeString": "enum AssociationAdministration.AdminAction"
@@ -7104,20 +7349,705 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3245:13:0"
+              "src": "2936:13:0"
             },
-            "scope": 280,
-            "src": "3186:108:0",
+            "scope": 258,
+            "src": "2877:108:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 281,
-        "src": "2819:477:0"
+        "scope": 311,
+        "src": "2443:544:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 259,
+              "name": "AssociationAdministration",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 84,
+              "src": "3037:25:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AssociationAdministration_$84",
+                "typeString": "contract AssociationAdministration"
+              }
+            },
+            "id": 260,
+            "nodeType": "InheritanceSpecifier",
+            "src": "3037:25:0"
+          }
+        ],
+        "contractDependencies": [
+          84
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 310,
+        "linearizedBaseContracts": [
+          310,
+          84
+        ],
+        "name": "AssociationAdministrationReferendum",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "2fd415b2",
+            "id": 264,
+            "mutability": "mutable",
+            "name": "adminAction",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 310,
+            "src": "3069:55:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_AdminAction_$8",
+              "typeString": "enum AssociationAdministration.AdminAction"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 261,
+              "name": "AdminAction",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8,
+              "src": "3069:11:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_AdminAction_$8",
+                "typeString": "enum AssociationAdministration.AdminAction"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "expression": {
+                "argumentTypes": null,
+                "id": 262,
+                "name": "AdminAction",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 8,
+                "src": "3102:11:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_enum$_AdminAction_$8_$",
+                  "typeString": "type(enum AssociationAdministration.AdminAction)"
+                }
+              },
+              "id": 263,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "memberName": "REFERENDUM",
+              "nodeType": "MemberAccess",
+              "referencedDeclaration": null,
+              "src": "3102:22:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_AdminAction_$8",
+                "typeString": "enum AssociationAdministration.AdminAction"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "18dae1dc",
+            "id": 266,
+            "mutability": "mutable",
+            "name": "referendumQuestion",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 310,
+            "src": "3130:32:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 265,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "3130:6:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 299,
+              "nodeType": "Block",
+              "src": "3223:207:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 280,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 276,
+                                "name": "_question",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 270,
+                                "src": "3247:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 275,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "3241:5:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": {
+                                "id": 274,
+                                "name": "bytes",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "3241:5:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": null,
+                                  "typeString": null
+                                }
+                              }
+                            },
+                            "id": 277,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "3241:16:0",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          },
+                          "id": 278,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "3241:23:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 279,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "3267:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "3241:27:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "5175657374696f6e206e616d652063616e6e6f7420626520656d707479",
+                        "id": 281,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "3270:31:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_70301ce473622ee3f2c856b7af42dd9b16a2ea93c7aaaf46f73aaf21e275a19a",
+                          "typeString": "literal_string \"Question name cannot be empty\""
+                        },
+                        "value": "Question name cannot be empty"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_70301ce473622ee3f2c856b7af42dd9b16a2ea93c7aaaf46f73aaf21e275a19a",
+                          "typeString": "literal_string \"Question name cannot be empty\""
+                        }
+                      ],
+                      "id": 273,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "3233:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 282,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3233:69:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 283,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3233:69:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 287,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 284,
+                      "name": "proposedMember",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "3312:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 285,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -15,
+                        "src": "3329:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 286,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "3329:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "3312:27:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "id": 288,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3312:27:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 293,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 289,
+                      "name": "assoCtr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "3349:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
+                        "typeString": "contract AssociationOrg"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 291,
+                          "name": "_assoCtr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 268,
+                          "src": "3374:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 290,
+                        "name": "AssociationOrg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 904,
+                        "src": "3359:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_AssociationOrg_$904_$",
+                          "typeString": "type(contract AssociationOrg)"
+                        }
+                      },
+                      "id": 292,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "3359:24:0",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AssociationOrg_$904",
+                        "typeString": "contract AssociationOrg"
+                      }
+                    },
+                    "src": "3349:34:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AssociationOrg_$904",
+                      "typeString": "contract AssociationOrg"
+                    }
+                  },
+                  "id": 294,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3349:34:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 297,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 295,
+                      "name": "referendumQuestion",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 266,
+                      "src": "3393:18:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 296,
+                      "name": "_question",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 270,
+                      "src": "3414:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "3393:30:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 298,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3393:30:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 300,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 271,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 268,
+                  "mutability": "mutable",
+                  "name": "_assoCtr",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 300,
+                  "src": "3180:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 267,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3180:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 270,
+                  "mutability": "mutable",
+                  "name": "_question",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 300,
+                  "src": "3198:23:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 269,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3198:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3179:43:0"
+            },
+            "returnParameters": {
+              "id": 272,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3223:0:0"
+            },
+            "scope": 310,
+            "src": "3168:262:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              83
+            ],
+            "body": {
+              "id": 308,
+              "nodeType": "Block",
+              "src": "3508:35:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 306,
+                    "name": "adminAction",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 264,
+                    "src": "3525:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_AdminAction_$8",
+                      "typeString": "enum AssociationAdministration.AdminAction"
+                    }
+                  },
+                  "functionReturnParameters": 305,
+                  "id": 307,
+                  "nodeType": "Return",
+                  "src": "3518:18:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "485eaa01",
+            "id": 309,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAdminActionType",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 302,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "3472:8:0"
+            },
+            "parameters": {
+              "id": 301,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3462:2:0"
+            },
+            "returnParameters": {
+              "id": 305,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 304,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 309,
+                  "src": "3495:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_AdminAction_$8",
+                    "typeString": "enum AssociationAdministration.AdminAction"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 303,
+                    "name": "AdminAction",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 8,
+                    "src": "3495:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_AdminAction_$8",
+                      "typeString": "enum AssociationAdministration.AdminAction"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3494:13:0"
+            },
+            "scope": 310,
+            "src": "3435:108:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 311,
+        "src": "2989:556:0"
       }
     ],
-    "src": "32:3264:0"
+    "src": "32:3513:0"
   },
   "compiler": {
     "name": "solc",
@@ -7125,7 +8055,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.4",
-  "updatedAt": "2020-12-10T20:25:32.826Z",
+  "updatedAt": "2020-12-19T22:37:50.531Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -12,6 +12,11 @@ contract('AssociationAdministration', async(accounts) => {
   let wannabeMemberToo = accounts[6];
   let wannabeMemberTooToo = accounts[7];
 
+  it("Should not allow empty coopted member name", async() => {
+    let assoOrg = await AssoOrg.new("testAssociation", "Issam_test", {from: owner});
+    await tryCatch(AssoCoopt.new(assoOrg.address, ""), errTypes.revert);
+  })
+
   it("Cooptation of the creator is ok", async() => {
     let assoOrg = await AssoOrg.new("testAssociation", "Issam_test", {from: owner});
     let cooptCtr = await AssoCoopt.new(assoOrg.address, "Ali_test", {from: wannabeMember});
