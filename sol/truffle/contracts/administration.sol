@@ -77,8 +77,10 @@ contract AssociationAdministrationSelfdestruct is AssociationAdministration {
 
 contract AssociationAdministrationCooptation is AssociationAdministration {
     AdminAction public adminAction = AdminAction.COOPTATION;
-    constructor(address _assoCtr) {
+    string public memberName;
+    constructor(address _assoCtr, string memory _memberName) {
         proposedMember = msg.sender;
+        memberName = _memberName;
         assoCtr = AssociationOrg(_assoCtr);
     }
     function getAdminActionType() public override view returns (AdminAction) {

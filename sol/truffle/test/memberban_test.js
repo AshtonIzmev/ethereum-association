@@ -15,20 +15,20 @@ contract('AssociationAdministration', async(accounts) => {
   let wannabeMemberToo    = accounts[6];
 
   before(async() => {
-    assoOrg3Members = await AssoOrg.new("testAssociation3");
+    assoOrg3Members = await AssoOrg.new("testAssociation3", "Issam_test");
     // first cooptation
-    let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
+    let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, "Mohamed_test", {from: wannabeMember});
     await cooptCtr.vote();
     await assoOrg3Members.handleCooptationAction(cooptCtr.address, {from: owner});
     // second cooptation
-    let cooptCtr2 = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMemberToo});
+    let cooptCtr2 = await AssoCoopt.new(assoOrg3Members.address, "Mohamed_test", {from: wannabeMemberToo});
     await cooptCtr2.vote();
     await cooptCtr2.vote({from: wannabeMember})
     await assoOrg3Members.handleCooptationAction(cooptCtr2.address, {from: wannabeMemberToo});
 
-    assoOrg2Members = await AssoOrg.new("testAssociation2");
+    assoOrg2Members = await AssoOrg.new("testAssociation2", "Issam_test");
     // first cooptation
-    let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, {from: wannabeMember});
+    let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, "Mohamed_test", {from: wannabeMember});
     await cooptCtr3.vote();
     await assoOrg2Members.handleCooptationAction(cooptCtr3.address, {from: owner});
   });
@@ -58,11 +58,13 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Member ban", async() => {
-    let assoOrg2Mem = await AssoOrg.new("testAssociation2");
+    let assoOrg2Mem = await AssoOrg.new("testAssociation2", "Issam_test");
     // first cooptation
-    let cooptCtr3 = await AssoCoopt.new(assoOrg2Mem.address, {from: wannabeMember});
+    let cooptCtr3 = await AssoCoopt.new(assoOrg2Mem.address, "Ali_test", {from: wannabeMember});
     await cooptCtr3.vote();
     await assoOrg2Mem.handleCooptationAction(cooptCtr3.address, {from: owner});
+
+    let memberHistoricCountBefore = await assoOrg2Mem.getMemberHistoricCount();
     
     let adminMB = await AssoAdminMB.new(assoOrg2Mem.address, wannabeMember);
     await adminMB.vote();
@@ -70,14 +72,19 @@ contract('AssociationAdministration', async(accounts) => {
     await assoOrg2Mem.handleMemberbanAction(adminMB.address);
     let memberCountAfter = await assoOrg2Mem.membersCount();
 
+    let memberHistoricCountAfter = await assoOrg2Mem.getMemberHistoricCount();
+
+    assert.equal(memberHistoricCountBefore, 2, "Association has 2 historic members");
+    assert.equal(memberHistoricCountAfter, 2, "Number of historic members should never decrease");
+
     assert.equal(memberCountBefore, 2, "2 members before");
     assert.equal(memberCountAfter, 1, "One member after");
   })
 
   it("Duplicate Member ban", async() => {
-    let assoOrg2Mem = await AssoOrg.new("testAssociation2");
+    let assoOrg2Mem = await AssoOrg.new("testAssociation2", "Issam_test");
     // first cooptation
-    let cooptCtr3 = await AssoCoopt.new(assoOrg2Mem.address, {from: wannabeMember});
+    let cooptCtr3 = await AssoCoopt.new(assoOrg2Mem.address, "Ali_test", {from: wannabeMember});
     await cooptCtr3.vote();
     await assoOrg2Mem.handleCooptationAction(cooptCtr3.address, {from: owner});
     
@@ -88,12 +95,12 @@ contract('AssociationAdministration', async(accounts) => {
   })
 
   it("Owner ban impossible", async() => {
-    let assoOrg = await AssoOrg.new("testAssociation");
+    let assoOrg = await AssoOrg.new("testAssociation", "Issam_test");
     await tryCatch(AssoAdminMB.new(assoOrg.address, owner), errTypes.revert);
   })
 
   it("Non member ban impossible", async() => {
-    let assoOrg = await AssoOrg.new("testAssociation");
+    let assoOrg = await AssoOrg.new("testAssociation", "Issam_test");
     await tryCatch(AssoAdminMB.new(assoOrg.address, wannabeMemberToo), errTypes.revert);
   })
 

@@ -11,12 +11,20 @@ contract('AssociationOrg', async (accounts) => {
   let wannabeMember = accounts[5];
 
   before(async() => {
-    assoSimpleOrg = await AssoOrg.new("testAssociation");
+    assoSimpleOrg = await AssoOrg.new("testAssociation", "Issam_test");
   });
 
   it("should make the creator of the contract the owner", async() => {
     let _owner = await assoSimpleOrg.owner();
     assert.equal(_owner, owner, "Owner is the creator of the contract");
+  })
+
+  it("owner should be in member log", async() => {
+    let memberHistoricCount = await assoSimpleOrg.getMemberHistoricCount();
+    let _owner = await assoSimpleOrg.membersHistoric(0);
+    assert.equal(memberHistoricCount, 1, "Owner is the only member");
+    assert.equal(_owner.addr, owner, "Owner is the only member");
+    assert.equal(_owner.name, "Issam_test", "Owner is the only member");
   })
 
   it("We should have only one member at start", async() => {

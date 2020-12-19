@@ -18,20 +18,20 @@ contract('AssociationAdministration', async(accounts) => {
 
 
   before(async() => {
-    assoOrg3Members = await AssoOrg.new("testAssociation3");
+    assoOrg3Members = await AssoOrg.new("testAssociation3", "Issam_test");
     // first cooptation
-    let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
+    let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, "Ali_test", {from: wannabeMember});
     await cooptCtr.vote();
     await assoOrg3Members.handleCooptationAction(cooptCtr.address, {from: owner});
     // second cooptation
-    let cooptCtr2 = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMemberToo});
+    let cooptCtr2 = await AssoCoopt.new(assoOrg3Members.address, "Mohamed_test", {from: wannabeMemberToo});
     await cooptCtr2.vote();
     await cooptCtr2.vote({from: wannabeMember})
     await assoOrg3Members.handleCooptationAction(cooptCtr2.address, {from: wannabeMemberToo});
 
-    assoOrg2Members = await AssoOrg.new("testAssociation2");
+    assoOrg2Members = await AssoOrg.new("testAssociation2", "Issam_test");
     // first cooptation
-    let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, {from: wannabeMember});
+    let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, "Ali_test", {from: wannabeMember});
     await cooptCtr3.vote();
     await assoOrg2Members.handleCooptationAction(cooptCtr3.address, {from: owner});
   });
@@ -60,8 +60,8 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("bad assoOrg reference", async() => {
-    let assoOrg = await AssoOrg.new("testAssociation");
-    let assoOrgFake = await AssoOrg.new("testAssociationFake");
+    let assoOrg = await AssoOrg.new("testAssociation", "Issam_test");
+    let assoOrgFake = await AssoOrg.new("testAssociationFake", "Issam_fake_test");
     let assoAdminOC = await AssoAdminOC.new(assoOrgFake.address, {from: randomGuy});
     await assoAdminOC.vote();
     await tryCatch(assoOrg.handleOwnerchangeAction(assoAdminOC.address), errTypes.revert);  
@@ -69,19 +69,27 @@ contract('AssociationAdministration', async(accounts) => {
 
   it("Simple vote OWNERSHIP change", async() => {
     let adminOC = await AssoAdminOC.new(assoOrg2Members.address, {from: wannabeMember});
+    let memberHistoricCount1 = await assoOrg2Members.getMemberHistoricCount();
     await adminOC.vote();
     await adminOC.vote({from:wannabeMember});
     let ownerBefore = await assoOrg2Members.owner();
     await assoOrg2Members.handleOwnerchangeAction(adminOC.address);
+    let memberHistoricCount2 = await assoOrg2Members.getMemberHistoricCount();
     let ownerAfter = await assoOrg2Members.owner();
     let adminOC2 = await AssoAdminOC.new(assoOrg2Members.address, {from: owner});
     await adminOC2.vote();
     await adminOC2.vote({from:wannabeMember});
     await assoOrg2Members.handleOwnerchangeAction(adminOC2.address);
+    let memberHistoricCount3 = await assoOrg2Members.getMemberHistoricCount();
     let ownerAfter2 = await assoOrg2Members.owner();
+
     assert.equal(ownerBefore, owner, "Owneship Before");
     assert.equal(ownerAfter, wannabeMember, "Owneship changed :) Good luck");
     assert.equal(ownerAfter2, owner, "Owneship After again");
+
+    assert.equal(memberHistoricCount1, 2, "Historic member count still the same");
+    assert.equal(memberHistoricCount2, 2, "Historic member count still the same");
+    assert.equal(memberHistoricCount3, 2, "Historic member count still the same");
   });
 
   it("Duplicate vote OWNERSHIP change", async() => {
@@ -106,7 +114,7 @@ contract('AssociationAdministration', async(accounts) => {
 
 
   it("Owner owner change ??", async() => {
-    let assoOrg = await AssoOrg.new("testAssociation");
+    let assoOrg = await AssoOrg.new("testAssociation", "Issam_test");
     await tryCatch(AssoAdminOC.new(assoOrg.address, {from: owner}), errTypes.revert);
   })
 

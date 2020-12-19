@@ -16,20 +16,20 @@ contract('AssociationAdministration', async(accounts) => {
 
 
   before(async() => {
-    assoOrg3Members = await AssoOrg.new("testAssociation3");
+    assoOrg3Members = await AssoOrg.new("testAssociation3", "Issam_test");
     // first cooptation
-    let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMember});
+    let cooptCtr = await AssoCoopt.new(assoOrg3Members.address, "Ali_test", {from: wannabeMember});
     await cooptCtr.vote();
     await assoOrg3Members.handleCooptationAction(cooptCtr.address, {from: owner});
     // second cooptation
-    let cooptCtr2 = await AssoCoopt.new(assoOrg3Members.address, {from: wannabeMemberToo});
+    let cooptCtr2 = await AssoCoopt.new(assoOrg3Members.address, "Mohamed_test", {from: wannabeMemberToo});
     await cooptCtr2.vote();
     await cooptCtr2.vote({from: wannabeMember})
     await assoOrg3Members.handleCooptationAction(cooptCtr2.address, {from: wannabeMemberToo});
 
-    assoOrg2Members = await AssoOrg.new("testAssociation2");
+    assoOrg2Members = await AssoOrg.new("testAssociation2", "Issam_test");
     // first cooptation
-    let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, {from: wannabeMember});
+    let cooptCtr3 = await AssoCoopt.new(assoOrg2Members.address, "Anass_test", {from: wannabeMember});
     await cooptCtr3.vote();
     await assoOrg2Members.handleCooptationAction(cooptCtr3.address, {from: owner});
   });
@@ -49,7 +49,7 @@ contract('AssociationAdministration', async(accounts) => {
   });
 
   it("Self destruct", async() => {
-    let assoOrg = await AssoOrg.new("testAssociation");
+    let assoOrg = await AssoOrg.new("testAssociation", "Issam_test");
     let adminSD = await AssoAdminSD.new(assoOrg.address);
     await adminSD.vote();
     await assoOrg.handleSelfdestructAction(adminSD.address);

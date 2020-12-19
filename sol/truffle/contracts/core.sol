@@ -4,24 +4,31 @@ pragma solidity 0.7.0;
 import "../contracts/administration.sol";
 
 contract AssociationOrg {
-    
+
+    struct MemberStruct {
+        address addr;
+        string name;
+    }
+    MemberStruct[] public membersHistoric;
     mapping (address => bool) public members;
-    mapping (address => bool) public seenAdmins;
-    mapping (address => uint) scores;
-    mapping (address => uint) lastScoreUpdate;
     uint public membersCount;
+
+    mapping (address => bool) public seenAdmins;
     address payable public owner;
     bool public maintenanceMode;
     string public name;
     string[] public referendums;
     
-    constructor(string memory _name) {
+    
+    constructor(string memory _name, string memory _memberName) {
         owner = msg.sender;
         members[msg.sender] = true;
-        scores[msg.sender] = 90;
         name = _name;
-        lastScoreUpdate[msg.sender] = block.number;
         membersCount = 1;
+        MemberStruct memory newMember;
+        newMember.addr = msg.sender;
+        newMember.name = _memberName;
+        membersHistoric.push(newMember);
     }
     
     modifier onlyOwner() {
@@ -54,11 +61,16 @@ contract AssociationOrg {
         AssociationAdministrationCooptation assoAdminCtr = AssociationAdministrationCooptation(_adminCtr);
         require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.COOPTATION, "Cooptation action required");
         require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
-        require(assoAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
+        require(assoAdminCtr.voteCount() * 2 >= membersCount, "Need at least 50% of the votes");
         require(!members[assoAdminCtr.proposedMember()], "Already a member");
+        require(!seenAdmins[_adminCtr], "Already acted administration proposal");
         members[assoAdminCtr.proposedMember()] = true;
-        scores[assoAdminCtr.proposedMember()] = 90;
-        lastScoreUpdate[assoAdminCtr.proposedMember()] = block.number;
+
+        MemberStruct memory newMember;
+        newMember.addr = assoAdminCtr.proposedMember();
+        newMember.name = assoAdminCtr.memberName();
+        membersHistoric.push(newMember);
+
         membersCount ++;
         seenAdmins[_adminCtr] = true;
     }
@@ -67,7 +79,7 @@ contract AssociationOrg {
         AssociationAdministrationMemberban assoAdminCtr = AssociationAdministrationMemberban(_adminCtr);
         require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.MEMBERBAN, "Memberban action required");
         require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
-        require(assoAdminCtr.voteCount() > membersCount/3, "Need at least 34% of the votes");
+        require(assoAdminCtr.voteCount() * 2 > membersCount, "Need at least 51% of the votes");
         require(membersCount > 1, "Can't ban if only a one member left");
         require(assoAdminCtr.proposedMember() != owner, "Member to ban cannot be the owner");
         require(members[assoAdminCtr.proposedMember()], "Member to ban is not a member");
@@ -81,7 +93,7 @@ contract AssociationOrg {
         AssociationAdministrationOwnerchange assoAdminCtr = AssociationAdministrationOwnerchange(_adminCtr);
         require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.OWNERCHANGE, "Ownerchange action required");
         require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
-        require(assoAdminCtr.voteCount() > membersCount/2, "Need at least 51% of the votes");
+        require(assoAdminCtr.voteCount() * 2 > membersCount, "Need at least 51% of the votes");
         require(assoAdminCtr.proposedMember() != owner, "New owner cannot be the current owner");
         require(members[assoAdminCtr.proposedMember()], "New owner is not a member");
         require(!seenAdmins[_adminCtr], "Already acted administration proposal");
@@ -93,7 +105,7 @@ contract AssociationOrg {
         AssociationAdministrationSelfdestruct assoAdminCtr = AssociationAdministrationSelfdestruct(_adminCtr);
         require(assoAdminCtr.adminAction() == AssociationAdministration.AdminAction.SELFDESTRUCT, "Selfdestruct action required");
         require(assoAdminCtr.assoCtr() == this, "Invalid AdministrationContract reference to MoroccanContract");
-        require(assoAdminCtr.voteCount() > (2*membersCount)/3, "Need at least 66% of the votes ");
+        require(assoAdminCtr.voteCount() * 3 > 2 * membersCount, "Need at least 66% of the votes ");
         require(!seenAdmins[_adminCtr], "Already acted administration proposal");
         selfdestruct(owner);
         seenAdmins[_adminCtr] = true;
@@ -114,15 +126,8 @@ contract AssociationOrg {
         return members[msg.sender];
     }
 
-    function getScore(address _address) public view returns (uint) {
-        require(members[_address], "_add is not a member");
-        // score is decreasing by 1 every day (given 15 secondes ethereum block)
-        uint sc = scores[_address] - ((1 + block.number - lastScoreUpdate[_address])/5760);
-        return sc;
-    }
-
-    function getReferendum(uint index) public view returns(string memory) {
-        return referendums[index];
+    function getMemberHistoricCount() public view returns(uint count) {
+        return membersHistoric.length;
     }
 
     function getReferendumsCount() public view returns(uint) {
