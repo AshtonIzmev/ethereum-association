@@ -7,6 +7,6 @@ Pour compiler le code solidity et lancer les tests unitaires, il faut les paquet
 ## Execution des tests
 Il faut d'abord lancer testrpc sur le port par exemple 1337 dans le dossier _moroccan.datascientist/sol/truffle_
 ```bash
-ganache-cli --network-id 1337
+ganache-cli --network-id 1338
 truffle test
 ```
