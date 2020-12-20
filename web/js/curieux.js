@@ -400,12 +400,12 @@ function seekHistoricAssociation(address) {
     getCtrObj(address, "AssociationOrg.json", handleSeekAssociation);
 };
 
-function handleSeekAssociation(ctr, account) {
+function handleSeekAssociation(ctrAsso, account) {
     var address = $("#seek-assoc").val();
-    if (!ctr) { $("#seek-assoc").val(""); return; }
+    if (!ctrAsso) { $("#seek-assoc").val(""); return; }
     addRechercheToStore(address, "r_association");
     loadHistoric();
-    ctr.methods.owner().call().then(function (pdt) {
+    ctrAsso.methods.owner().call().then(function (pdt) {
         toggleBlock("details");
         $("#details-assoc").show();
         $("#addassoc").text(address);
@@ -415,37 +415,37 @@ function handleSeekAssociation(ctr, account) {
         $(".seassoc").toggle(!ismyassoc);
     }).catch(function (error) { showToast(); console.log(error); return; });
 
-    ctr.methods.name().call().then(function (name) {
+    ctrAsso.methods.name().call().then(function (name) {
         $("#name-seek-assoc").html(escapeXml(name));
     }).catch(function (error) { showToast(); console.log(error); return; });
 
-    ctr.methods.members(account).call().then(function (isMember) {
+    ctrAsso.methods.members(account).call().then(function (isMember) {
         $(".ismember").toggle(isMember);
         $(".notmember").toggle(!isMember);
     }).catch(function (error) { showToast(); console.log(error); return; });
 
-    ctr.methods.membersCount().call().then(function (nb) {
+    ctrAsso.methods.membersCount().call().then(function (nb) {
         $("#nbmembers").text(nb)
     }).catch(function (error) { showToast(); console.log(error); return; });
 
-    ctr.methods.getReferendumsCount().call().then(function (nb) {
+    ctrAsso.methods.getReferendumsCount().call().then(function (nb) {
         $("#referendum-list").html("");
         if (nb > 0) {
             $("#referendum-list").append("<p>" + nb + " question(s) votée(s)</p>");
             for (i = 0; i < nb; i++) {
-                ctr.methods.referendums(i).call().then(function (q) {
+                ctrAsso.methods.referendums(i).call().then(function (q) {
                     $("#referendum-list").append("<p><span class='bold'>" + escapeXml(q) + "</span> : OUI </p>");
                 }).catch(function (error) { showToast(); console.log(error); return; });
             }
         }
     }).catch(function (error) { showToast(); console.log(error); return; });
 
-    ctr.methods.getMemberHistoricCount().call().then(function (nb) {
+    ctrAsso.methods.getMemberHistoricCount().call().then(function (nb) {
         $("#member-list").html("");
         $("#member-list").append("<p>Membres (vous pouvez proposer le bannissement) :</p>");
         for (i = 0; i < nb; i++) {
-            ctr.methods.membersHistoric(i).call().then(function (mh) {
-                ctr.methods.members(mh.addr).call().then(function (isMember) {
+            ctrAsso.methods.membersHistoric(i).call().then(function (mh) {
+                ctrAsso.methods.members(mh.addr).call().then(function (isMember) {
                     if (isMember) {
                         $("#member-list").append('<p><span class="bold">' + escapeXml(mh.name) + '</span> - ' + escapeXml(mh.addr) + '</span> <button type="button" class="btn btn-danger" style="padding: 0;" onclick="specificMemberBan(\'' + mh.addr + '\');">Bannir</button> </p>');
                     }
@@ -559,34 +559,35 @@ function selfDestruct() {
 // HANDLE ADMIN CONTRACT
 /////////////////////////
 
-function handleSeekAdminContract(ctr, account) {
+function handleSeekAdminContract(ctrAdmin, account) {
     var adminAddress = $("#seek-admin").val();
-    if (!ctr) { $("#seek-admin").val(""); return; }
+    if (!ctrAdmin) { $("#seek-admin").val(""); return; }
     addRechercheToStore(adminAddress, "r_administration");
     loadHistoric();
-    ctr.methods.getAdminActionType().call().then(function (tp) {
+    ctrAdmin.methods.getAdminActionType().call().then(function (tp) {
         toggleBlock("gerer");
         if (tp != $("#admin-select").text()) {
             $("#admin-select").text(tp);
             seekAdminContract();
+            return;
         }
 
         $("#details-admin").show();
         $("#addadmin-admin").text(adminAddress);
         $("#details-admin-type").text(dictLib[tp]);
 
-        ctr.methods.proposedMember().call().then(function (member) {
+        ctrAdmin.methods.proposedMember().call().then(function (member) {
             $("#details-admin-member").text("");
             var detailLib = "";
             if (member != "0x0000000000000000000000000000000000000000" && tp != "4" && tp != 2) {
                 detailLib += " concernant la personne " + member;
             }
             if (tp == "4") {
-                ctr.methods.referendumQuestion().call().then(function (q) {
+                ctrAdmin.methods.referendumQuestion().call().then(function (q) {
                     $("#details-admin-member").text(detailLib + ". Question : " + q);
                 }).catch(function (error) { console.log(error); return; });
             } else if (tp == "3") {
-                ctr.methods.memberName().call().then(function (n) {
+                ctrAdmin.methods.memberName().call().then(function (n) {
                     $("#details-admin-member").text(detailLib + ". Peudonyme : " + n);
                 }).catch(function (error) { console.log(error); return; });
             } else {
@@ -594,13 +595,13 @@ function handleSeekAdminContract(ctr, account) {
             }
         }).catch(function (error) { console.log(error); return; });
 
-        ctr.methods.voteCount().call().then(function (nbVote) {
+        ctrAdmin.methods.voteCount().call().then(function (nbVote) {
             $("#details-admin-vote").text(nbVote);
             $("#details-admin-seuil").text("(seuil requis : " + dictSeuil[tp] + "%)");
-            ctr.methods.assoCtr().call().then(function (add) {
+            ctrAdmin.methods.assoCtr().call().then(function (add) {
                 $("#addassoc-admin").text(add);
                 setMemberCountForVote(add, nbVote, dictSeuil[tp]);
-                ctr.methods.didVotes(account).call().then(function (didVote) {
+                ctrAdmin.methods.didVotes(account).call().then(function (didVote) {
                     $("#details-admin-didvote").text(didVote ? ". Vous avez déjà voté pour" : "");
                     if (!didVote) {
                         chooseIfCanVote(add);
@@ -608,6 +609,28 @@ function handleSeekAdminContract(ctr, account) {
                 }).catch(function (error) { showToast(); console.log(error); return; });
             }).catch(function (error) { showToast(); console.log(error); return; });
         }).catch(function (error) { showToast(); console.log(error); return; });
+
+        ctrAdmin.methods.assoCtr().call().then(function (add) {
+            $("#vote-list").html("");
+            getCtrObj(add, "AssociationOrg.json", function(ctrAsso, account) {
+                ctrAsso.methods.getMemberHistoricCount().call().then(function (nb) {
+                    $("#vote-list").append("<p>Votes :</p>");
+                    for (i = 0; i < nb; i++) {
+                        ctrAsso.methods.membersHistoric(i).call().then(function (mh) {
+                            ctrAdmin.methods.didVotes(mh.addr).call().then(function (hasVoted) {
+                                ctrAsso.methods.members(mh.addr).call().then(function (isMember) {
+                                    if (isMember) {
+                                        $("#vote-list").append('<p><span class="bold">' + escapeXml(mh.name) + '</span> - ' + escapeXml(mh.addr) + ' ' + (hasVoted ? 'A VOTE OUI': '') + '</p>');
+                                    }
+                                }).catch(function (error) { console.log(error); return; });
+                            }).catch(function (error) { console.log(error); return; });
+                        }).catch(function (error) { console.log(error); return; });
+                    }
+                }).catch(function (error) { console.log(error); return; });
+            });
+        }).catch(function (error) { console.log(error); return; });
+
+
 
         
     }).catch(function (error) { showToast(); console.log(error); return; });
