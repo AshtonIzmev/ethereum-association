@@ -20,9 +20,9 @@ var dictLib = {
 };
 
 var dictSeuil = {
-    "0": 34,
+    "0": 51,
     "2": 67,
-    "3": 51,
+    "3": 50,
     "4": 51,
     "1": 51
 };
@@ -98,38 +98,39 @@ function escapeXml(unsafe) {
 // LOCAL STORAGE
 /////////////////////////
 
+var keyLocalStorage = "events_v0.3";
 var emptyRes = '{"r":[]}';
 
 function getStore() {
-    return window.localStorage.getItem('events') || emptyRes;
+    return window.localStorage.getItem(keyLocalStorage) || emptyRes;
 };
 
 function addToStore(assoc, typeStore) {
-    var current = window.localStorage.getItem("events") || emptyRes;
+    var current = window.localStorage.getItem(keyLocalStorage) || emptyRes;
     dicur = JSON.parse(current);
     dicur['r'].push((assoc + '|' + new Date().toISOString() + "|" + typeStore));
-    window.localStorage.setItem("events", JSON.stringify(dicur));
+    window.localStorage.setItem(keyLocalStorage, JSON.stringify(dicur));
 };
 
 function addRechercheToStore(assoc, typeStore) {
-    var current = window.localStorage.getItem("events") || emptyRes;
+    var current = window.localStorage.getItem(keyLocalStorage) || emptyRes;
     dicur = JSON.parse(current);
     var ind = dicur['r'].map(x => x.split("|")[0]).indexOf(assoc);
     if (ind > -1) {
         return;
     }
     dicur['r'].push((assoc + '|' + new Date().toISOString() + "|" + typeStore));
-    window.localStorage.setItem("events", JSON.stringify(dicur));
+    window.localStorage.setItem(keyLocalStorage, JSON.stringify(dicur));
 };
 
 function removeFromStore(assoc) {
-    var current = window.localStorage.getItem("events") || emptyRes;
+    var current = window.localStorage.getItem(keyLocalStorage) || emptyRes;
     dicur = JSON.parse(current);
     var ind = dicur['r'].map(x => x.split("|")[0]).indexOf(assoc);
     if (ind > -1) {
         dicur['r'].splice(ind, 1);
     }
-    window.localStorage.setItem("events", JSON.stringify(dicur));
+    window.localStorage.setItem(keyLocalStorage, JSON.stringify(dicur));
 };
 
 function addAssociationToStore(assoc) { addToStore(assoc, "association"); };
@@ -258,9 +259,10 @@ function getCtrObj(add, jsonContract, fun) {
 };
 
 function createAssociation() {
-    var name = $("#name-assoc").val();
-    if (name == "") {
-        showToastGeneric("Création d'association", "Merci de renseigner un nom", 5000);
+    var assocName = $("#name-assoc").val();
+    var memberName = $("#member-name-assoc").val();
+    if (assocName == "" || memberName == "") {
+        showToastGeneric("Création d'association", "Merci de renseigner un nom d'association et votre pseudonyme", 3000);
         return;
     }
     getWeb3().then((web3) => {
@@ -275,7 +277,7 @@ function createAssociation() {
                 let ctr = new web3.eth.Contract(abi);
                 ctr.deploy({
                     data: bytecode,
-                    arguments: [name]
+                    arguments: [assocName, memberName]
                 })
                     .send({
                         from: account,
@@ -359,7 +361,7 @@ function getEther() {
             if (err === null) {
                 $.getJSON('https://curieux.ma/getether/' + account)
                     .done(function (data) {
-                        $("#received-ether").append("<p> 1 Ether reçu. Récepissé de la transaction : " + data.response.split('\n')[0] + ". Il sera visible dans une dizaine de secondes.")
+                        $("#received-ether").append("<p> 1 Ether reçu. Récepissé de la transaction : " + data.response.split('\n')[0] + ". Il sera visible dans une dizaine de secondes (rechargez la page pour le visualiser)")
                         $('.toast-header').text("Envoi d'Ether");
                         $('.toast-body').text("Envoi d'ether à l'adresse réussi");
                         $('.toast').toast({ 'delay': 2000 }).toast('show');
@@ -429,12 +431,26 @@ function handleSeekAssociation(ctr, account) {
     ctr.methods.getReferendumsCount().call().then(function (nb) {
         $("#referendum-list").html("");
         if (nb > 0) {
-            $("#referendum-list").append("<p>Il y a " + nb + " question(s) votée(s)</p>");
+            $("#referendum-list").append("<p>" + nb + " question(s) votée(s)</p>");
             for (i = 0; i < nb; i++) {
-                ctr.methods.getReferendum(i).call().then(function (q) {
+                ctr.methods.referendums(i).call().then(function (q) {
                     $("#referendum-list").append("<p><span class='bold'>" + escapeXml(q) + "</span> : OUI </p>");
                 }).catch(function (error) { showToast(); console.log(error); return; });
             }
+        }
+    }).catch(function (error) { showToast(); console.log(error); return; });
+
+    ctr.methods.getMemberHistoricCount().call().then(function (nb) {
+        $("#member-list").html("");
+        $("#member-list").append("<p>Membres (vous pouvez proposer le bannissement) :</p>");
+        for (i = 0; i < nb; i++) {
+            ctr.methods.membersHistoric(i).call().then(function (mh) {
+                ctr.methods.members(mh.addr).call().then(function (isMember) {
+                    if (isMember) {
+                        $("#member-list").append('<p><span class="bold">' + escapeXml(mh.name) + '</span> - ' + escapeXml(mh.addr) + '</span> <button type="button" class="btn btn-danger" style="padding: 0;" onclick="specificMemberBan(\'' + mh.addr + '\');">Bannir</button> </p>');
+                    }
+                }).catch(function (error) { showToast(); console.log(error); return; });
+            }).catch(function (error) { showToast(); console.log(error); return; });
         }
     }).catch(function (error) { showToast(); console.log(error); return; });
 };
@@ -445,6 +461,16 @@ function setMemberCountForVote(address, nbV, seuil) {
             $("#details-admin-membercount").text(" sur " + nb + " membre(s) soit " + 100*nbV/nb + "%");
             if (100*nbV >= seuil*nb) { 
                 $("#seuil-enough").show();
+            }
+        }).catch(function (error) { showToast(); console.log(error); return; });
+    });
+};
+
+function chooseIfCanVote(address) {
+    getCtrObj(address, "AssociationOrg.json", function(ctr, account) {
+        ctr.methods.members(account).call().then(function (isMember) {
+            if (isMember) {
+                $("#can-vote").show();
             }
         }).catch(function (error) { showToast(); console.log(error); return; });
     });
@@ -468,6 +494,10 @@ function becomeOwner() {
 };
 
 function joinAssociation() {
+    if ($("#become-member-name").val() == "") {
+        showToastGeneric("Demande de cooptation", "Merci de renseigner votre pseudonyme", 3000);
+        return;
+    }
     function logOK(addObj) {
         var add = addObj.options.address;
         console.log(add)
@@ -477,10 +507,13 @@ function joinAssociation() {
         $("#become-member").html("<p class='bold'> Contrat de changement de cooptation créé à l'adresse " + add + "</p>");
         addCooptationToStore(add);
     }
-    createAdmin([$("#addassoc").text()], "AssociationAdministrationCooptation.json", logOK, "Cooptation de membre", "become-member-statut");
+    createAdmin([$("#addassoc").text(), $("#become-member-name").val()], "AssociationAdministrationCooptation.json", logOK, "Cooptation de membre", "become-member-statut");
 };
 
-function memberBan() {
+function specificMemberBan(account) {
+    if (account == "") {
+        return;
+    }
     function logOK(addObj) {
         var add = addObj.options.address;
         console.log(add)
@@ -490,10 +523,13 @@ function memberBan() {
         $("#member-ban").html("<p class='bold'>Le contrat d'un bannissement d'un membre de l'association choisie est créé à l'adresse " + add + "</p>");
         addBanToStore(add);
     }
-    createAdmin([$("#addassoc").text(), $("#member-ban-member").val()], "AssociationAdministrationMemberban.json", logOK, "Bannissement d'un membre", "member-ban-statut");
+    createAdmin([$("#addassoc").text(), account], "AssociationAdministrationMemberban.json", logOK, "Bannissement d'un membre", "member-ban-statut");
 };
 
 function sendReferendum() {
+    if ($("#ask-referendum-question").val() == "") {
+        return;
+    }
     function logOK(addObj) {
         var add = addObj.options.address;
         console.log(add)
@@ -540,26 +576,40 @@ function handleSeekAdminContract(ctr, account) {
         $("#details-admin-type").text(dictLib[tp]);
 
         ctr.methods.proposedMember().call().then(function (member) {
-            if (member != "0x0000000000000000000000000000000000000000") {
-                $("#details-admin-member").text(" concernant la personne " + member);
+            $("#details-admin-member").text("");
+            var detailLib = "";
+            if (member != "0x0000000000000000000000000000000000000000" && tp != "4" && tp != 2) {
+                detailLib += " concernant la personne " + member;
             }
-        }).catch(function (error) { showToast(); console.log(error); return; });
+            if (tp == "4") {
+                ctr.methods.referendumQuestion().call().then(function (q) {
+                    $("#details-admin-member").text(detailLib + ". Question : " + q);
+                }).catch(function (error) { console.log(error); return; });
+            } else if (tp == "3") {
+                ctr.methods.memberName().call().then(function (n) {
+                    $("#details-admin-member").text(detailLib + ". Peudonyme : " + n);
+                }).catch(function (error) { console.log(error); return; });
+            } else {
+                $("#details-admin-member").text(detailLib);
+            }
+        }).catch(function (error) { console.log(error); return; });
 
         ctr.methods.voteCount().call().then(function (nbVote) {
             $("#details-admin-vote").text(nbVote);
             $("#details-admin-seuil").text("(seuil requis : " + dictSeuil[tp] + "%)");
             ctr.methods.assoCtr().call().then(function (add) {
                 $("#addassoc-admin").text(add);
-                setMemberCountForVote(add, nbVote, dictSeuil[tp])
+                setMemberCountForVote(add, nbVote, dictSeuil[tp]);
+                ctr.methods.didVotes(account).call().then(function (didVote) {
+                    $("#details-admin-didvote").text(didVote ? ". Vous avez déjà voté pour" : "");
+                    if (!didVote) {
+                        chooseIfCanVote(add);
+                    }
+                }).catch(function (error) { showToast(); console.log(error); return; });
             }).catch(function (error) { showToast(); console.log(error); return; });
         }).catch(function (error) { showToast(); console.log(error); return; });
 
-        ctr.methods.didVotes(account).call().then(function (didVote) {
-            $("#details-admin-didvote").text(didVote ? ". Vous avez déjà voté pour" : "");
-            if (!didVote) {
-                $("#vote-for-admin").show();
-            }
-        }).catch(function (error) { showToast(); console.log(error); return; });
+        
     }).catch(function (error) { showToast(); console.log(error); return; });
 };
 
