@@ -216,13 +216,34 @@ async function main() {
             if (err === null) {
                 web3.eth.getBalance(account, function (err, balance) {
                     $("#accountAddress").html("Votre adresse public / compte Ethereum: " + account + " avec un solde de " + web3.utils.fromWei(balance, 'ether') + "ETH");
-                    $(".container").show();
+                    web3.eth.net.getNetworkType().then(function(tp) {
+                        if (tp == "private") {
+                            web3.eth.net.getId().then(function(id) {
+                                if (id == "985459") {
+                                    $(".container").show();
+                                    $("#network-problem").hide();
+                                }
+                            });
+                        }
+                    });
                 });
             }
         });
     });
     $('.toast').toast({ 'delay': 2000 });
     loadHistoric();
+};
+
+async function refreshEther() {
+    getWeb3().then((web3) => {
+        web3.eth.getCoinbase(function (err, account) {
+            if (err === null) {
+                web3.eth.getBalance(account, function (err, balance) {
+                    $("#accountAddress").html("Votre adresse public / compte Ethereum: " + account + " avec un solde de " + web3.utils.fromWei(balance, 'ether') + "ETH");
+                });
+            }
+        });
+    });
 };
 
 function getContractAdminJson() {
@@ -361,10 +382,14 @@ function getEther() {
             if (err === null) {
                 $.getJSON('https://curieux.ma/getether/' + account)
                     .done(function (data) {
-                        $("#received-ether").append("<p> 1 Ether reçu. Récepissé de la transaction : " + data.response.split('\n')[0] + ". Il sera visible dans une dizaine de secondes (rechargez la page pour le visualiser)")
+                        $("#received-ether").append("<p> 1 Ether reçu. Récepissé de la transaction : " + data.response.split('\n')[0] + ". Il sera visible dans une dizaine de secondes")
                         $('.toast-header').text("Envoi d'Ether");
                         $('.toast-body').text("Envoi d'ether à l'adresse réussi");
                         $('.toast').toast({ 'delay': 2000 }).toast('show');
+                        setTimeout(refreshEther, 5000);
+                        setTimeout(refreshEther, 10000);
+                        setTimeout(refreshEther, 15000);
+                        setTimeout(refreshEther, 20000);
                     })
                     .fail(function (jqxhr, textStatus, error) {
                         $('.toast-header').text("Envoi d'Ether");
