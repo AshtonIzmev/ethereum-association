@@ -2,6 +2,7 @@ eth/data
 sol/truffle/node_modules
 sol/truffle/build/
 sol/truffle/send-ether.js
+sol/truffle/node_modules/
 
 deploy_curieux_ma.sh
 deploy_ethereum.sh
