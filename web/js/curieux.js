@@ -512,7 +512,7 @@ function becomeOwner() {
         $('.toast-header').text("Changement de président");
         $('.toast-body').text("Un contrat de changement de président a bien été créé à l'adresse " + add);
         $('.toast').toast({ 'delay': 2000 }).toast('show');
-        $("#become-owner").html("<p class='bold'> Contrat de changement de propriétaire créé à l'adresse " + add + "</p>");
+        $("#become-owner").html("<p class='bold'>Le contrat de changement de propriétaire est créé à l'adresse suivante " + add + " à partager manuellement aux membres de l'association pour qu'ils votent pour votre mandat.</p>");
         addOwnerChangeToStore(add);
     }
     createAdmin([$("#addassoc").text()], "AssociationAdministrationOwnerchange.json", logOK, "Changement de président", "become-owner-statut");
@@ -529,7 +529,7 @@ function joinAssociation() {
         $('.toast-header').text("Demande de cooptation");
         $('.toast-body').text("Un contrat de cooptation a bien été créé à l'adresse " + add);
         $('.toast').toast({ 'delay': 2000 }).toast('show');
-        $("#become-member").html("<p class='bold'> Contrat de changement de cooptation créé à l'adresse " + add + "</p>");
+        $("#become-member").html("<p class='bold'>Le contrat de changement de cooptation est créé à l'adresse " + add + " à partager manuellement aux membres de l'association pour qu'ils votent pour votre adhésion.</p>");
         addCooptationToStore(add);
     }
     createAdmin([$("#addassoc").text(), $("#become-member-name").val()], "AssociationAdministrationCooptation.json", logOK, "Cooptation de membre", "become-member-statut");
@@ -545,7 +545,7 @@ function specificMemberBan(account) {
         $('.toast-header').text("Bannissement d'un membre");
         $('.toast-body').text("Un contrat de bannissement d'un membre a bien été créé à l'adresse " + add);
         $('.toast').toast({ 'delay': 2000 }).toast('show');
-        $("#member-ban").html("<p class='bold'>Le contrat d'un bannissement d'un membre de l'association choisie est créé à l'adresse " + add + "</p>");
+        $("#member-ban").html("<p class='bold'>Le contrat d'un bannissement est créé à l'adresse " + add + " à partager manuellement aux membres de l'association pour qu'ils votent pour le bannissement.</p>");
         addBanToStore(add);
     }
     createAdmin([$("#addassoc").text(), account], "AssociationAdministrationMemberban.json", logOK, "Bannissement d'un membre", "member-ban-statut");
@@ -561,7 +561,7 @@ function sendReferendum() {
         $('.toast-header').text("Referendum");
         $('.toast-body').text("Un contrat de referendum a bien été créé à l'adresse " + add);
         $('.toast').toast({ 'delay': 2000 }).toast('show');
-        $("#ask-referendum").html("<p class='bold'>Contrat de referendum pour les membres de l'association choisir est créé à l'adresse " + add + "</p>");
+        $("#ask-referendum").html("<p class='bold'>Le contrat de referendum est créé à l'adresse " + add + " à partager manuellement aux membres de l'association pour qu'ils votent pour votre question.</p>");
         addReferendumToStore(add);
     }
     createAdmin([$("#addassoc").text(), $("#ask-referendum-question").val()], "AssociationAdministrationReferendum.json", logOK, "Referendum", "ask-referendum-statut");
@@ -574,7 +574,7 @@ function selfDestruct() {
         $('.toast-header').text("Dissolution de l'association");
         $('.toast-body').text("Un contrat de dissolution de l'association a bien été créé à l'adresse " + add);
         $('.toast').toast({ 'delay': 2000 }).toast('show');
-        $("#destroy-assoc").html("<p class='bold'> Contrat de dissolution de l'association créé à l'adresse " + add + "</p>");
+        $("#destroy-assoc").html("<p class='bold'>Le contrat de dissolution de l'association est créé à l'adresse " + add + " à partager manuellement aux membres de l'association pour qu'ils votent pour la destruction.</p>");
         addDissolutionToStore(add);
     }
     createAdmin([$("#addassoc").text()], "AssociationAdministrationSelfdestruct.json", logOK, "Dissolution de l'association", "destroy-assoc-statut");
