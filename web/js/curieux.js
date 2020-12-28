@@ -11,6 +11,7 @@ async function main() {
             setBalance(web3, account);
         }
     });
+    
     $('.toast').toast({ 'delay': 2000 });
     loadHistoric();
 };
@@ -93,7 +94,7 @@ async function seekHistoricAssociation(address) {
 
     membersCountP.then(function (nb) {
         $("#nbmembers").text(nb)
-    }).catch(function (error) { showToast(); console.log(error); return; });
+    });
 
     // HANDLE Member List
     $("#member-list").html("");
@@ -121,12 +122,15 @@ async function seekHistoricAssociation(address) {
 
 function onSeekAdminContract() {
     var adminAddress = $("#seek-admin").val();
-    seekHistoricAdminContract(adminAddress);
+    handleSeekHistoricAdminContract(adminAddress);
 };
 
-async function seekHistoricAdminContract(adminAddress) {
+function seekHistoricAdminContract(adminAddress) {
+    handleSeekHistoricAdminContract(adminAddress);
+}
+
+async function handleSeekHistoricAdminContract(adminAddress) {
     $("#seek-admin").val(adminAddress);
-    var adminAddress = $("#seek-admin").val();
     let contractAdminObject = await getContractObject(adminAddress, getContractAdminJson());
     let account = await getPrimaryAccount();
     if (!contractAdminObject) { $("#seek-admin").val(""); return; }
@@ -203,9 +207,11 @@ async function seekHistoricAdminContract(adminAddress) {
     
 };
 
+function onVoteForAdminContract() {
+    voteForAdminContract();
+}
 
-async function onVoteForAdminContract() {
-    
+async function voteForAdminContract() {
     var adminAddress = $("#seek-admin").val();
     var contractObject = await getContractObject(adminAddress, getContractAdminJson());
 
@@ -232,7 +238,11 @@ async function onVoteForAdminContract() {
     callContractMethod(contractObject, contractMethod, contractArg, transactionHashCallback, errorCallback, finalCallback);
 };
 
-async function onActAdminContract() {
+function onActAdminContract() {
+    actAdminContract();
+}
+
+async function actAdminContract() {
     
     var adminAddress = $("#addassoc-admin").text();
     var contractObject = await getContractObject(adminAddress, "AssociationOrg.json");

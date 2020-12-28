@@ -28,26 +28,6 @@ async function getWeb3() {
     }
 };
 
-async function applyFuncToDeployedContract(contractAddress, jsonContract, callbackFunc) {
-    if (!contractAddress) {
-        showToast();
-        return;
-    }
-    let web3 = await getWeb3();
-    let account = await getPrimaryAccount();
-    $.getJSON('contracts/' + jsonContract, function (data) {
-        let abi = data['abi'];
-        var ctr;
-        try {
-            ctr = new web3.eth.Contract(abi, contractAddress, { from: account });
-        } catch (error) {
-            showToastAdmin();
-            return;
-        };
-        callbackFunc(ctr, account);
-    });
-};
-
 async function getContractObject(contractAddress, jsonContract) {
     if (!contractAddress) {
         showToast();
@@ -68,7 +48,7 @@ async function getContractObject(contractAddress, jsonContract) {
 };
 
 async function createContract(deploymentArgs, jsonContract, errorCallback, transactionHashCallback, finalCallback) {
-    var gasGlobal = 6054108;
+    var gasGlobal = 4054108;
     var gasPriceGlobal = '2000000000';
     let web3 = await getWeb3();
     let account = await getPrimaryAccount();
@@ -87,7 +67,7 @@ async function createContract(deploymentArgs, jsonContract, errorCallback, trans
 };
 
 async function callContractMethod(contractObject, methodTypeArg, methodCallArg, transactionHashCallback, errorCallback, finalCallback) {
-    var gasGlobal = 6054108;
+    var gasGlobal = 4054108;
     var gasPriceGlobal = '2000000000';
     let account = await getPrimaryAccount();
     var call;
