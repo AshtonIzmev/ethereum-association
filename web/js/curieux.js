@@ -4,17 +4,16 @@ async function main() {
     let web3Id = await web3.eth.net.getId();
     web3.eth.getCoinbase(function (err, account) {
         if (err === null) {
-            setBalance(web3, account);
-            if (netTyp == "private" && web3Id == "985459") {
+            if ((netTyp == "private") && (web3Id == "985459")) {
                 $(".container").show();
                 $("#network-problem").hide();
             }
+            setBalance(web3, account);
         }
     });
     $('.toast').toast({ 'delay': 2000 });
     loadHistoric();
 };
-
 
 /////////////////////////
 // HELPER

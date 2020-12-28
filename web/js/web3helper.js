@@ -1,4 +1,9 @@
+
+
+
 async function getWeb3() {
+    var ethereumHost = '209.250.236.210';
+    var ethereumPort = '8545';
     // Wait for loading completion to avoid race conditions with web3 injection timing.
     if (window.ethereum) {
         const web3 = new Web3(window.ethereum);
@@ -63,6 +68,8 @@ async function getContractObject(contractAddress, jsonContract) {
 };
 
 async function createContract(deploymentArgs, jsonContract, errorCallback, transactionHashCallback, finalCallback) {
+    var gasGlobal = 6054108;
+    var gasPriceGlobal = '2000000000';
     let web3 = await getWeb3();
     let account = await getPrimaryAccount();
     $.getJSON('contracts/' + jsonContract, function (data) {
@@ -80,6 +87,8 @@ async function createContract(deploymentArgs, jsonContract, errorCallback, trans
 };
 
 async function callContractMethod(contractObject, methodTypeArg, methodCallArg, transactionHashCallback, errorCallback, finalCallback) {
+    var gasGlobal = 6054108;
+    var gasPriceGlobal = '2000000000';
     let account = await getPrimaryAccount();
     var call;
     if (methodCallArg) {
